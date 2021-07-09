@@ -1,0 +1,12 @@
+{
+  "name": "blueocean",
+  "version": "1.0.0",
+  "description": "initial readme",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"basic test\" && exit 0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
