@@ -1,2 +1,4 @@
 node_modules
 firebase.config.js
+client/dist/bundle.js.map
+config.js

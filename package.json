@@ -4,15 +4,28 @@
   "description": "initial readme",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "react-dev": "webpack --mode=development --watch",
+    "start": "nodemon server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "express": "^4.17.1",
     "firebase": "^8.7.1",
-    "jest": "^27.0.6",
+    "http-server": "^0.12.3",
+    "nodemon": "^2.0.12",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.6",
+    "@babel/preset-env": "^7.14.7",
+    "@babel/preset-react": "^7.14.5",
+    "babel-loader": "^8.2.2",
+    "jest": "^27.0.6",
+    "webpack": "^5.44.0",
+    "webpack-cli": "^4.7.2"
   }
 }
