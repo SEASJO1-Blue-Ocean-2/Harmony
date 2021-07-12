@@ -1,3 +1,13 @@
 .other-signUp img {
   width: 8vw;
 }
+
+.login-logo {
+  width: 90vw;
+  height: 90vw;
+  border: solid 1px gray;
+}
+
+.container {
+  display: grid;
+}

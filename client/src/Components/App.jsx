@@ -19,8 +19,8 @@ const App = (props) => {
   const [user] = useAuthState(auth);
   return (<div>
     Hello World
-
-    <Signup auth={auth} db={db} />
+    <Login auth={auth} db={db} />
+    {/* <Signup auth={auth} db={db} /> */}
 
   </div>)
 };

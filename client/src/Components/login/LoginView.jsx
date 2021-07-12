@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import firebase from 'firebase/app';
 import 'firebase/auth';
-// import './login.css'
+import './login.css';
 
 
 const Login = ({ user, auth }) => {
@@ -21,7 +21,7 @@ const Login = ({ user, auth }) => {
     {user ? <div>Welcome Back</div>
     :
     <div>
-      <form>
+      <form className="signUp container">
         <label>
           Email:
           <input type="email" name="email" required/>
@@ -37,11 +37,11 @@ const Login = ({ user, auth }) => {
       </form>
       <div className="other-signUp"> ---------- OR -----------
         <div>
-          <img src="./img/google-logo.jpeg" alt="Google logo" style={{'width':'8vw'}}></img>
+          <img src="./img/google-logo.jpeg" alt="Google logo" ></img>
           <button onClick={signInWithGoogle}>Sign In with Google</button>
         </div>
         <div>
-          <img src="./img/fb-logo.png" alt="Facebook logo" style={{'width':'8vw'}}></img>
+          <img src="./img/fb-logo.png" alt="Facebook logo" ></img>
           <button onClick={signInWithGoogle}>Sign In with Google</button>
         </div>
       </div>
