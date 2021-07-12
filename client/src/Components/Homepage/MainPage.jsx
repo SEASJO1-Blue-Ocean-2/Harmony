@@ -12,7 +12,7 @@ export default function Main() {
   return (
     <>
       <NavigationBar />
-      <RoomsList />
+      {/* <RoomsList /> */}
    </>
   );
 }
