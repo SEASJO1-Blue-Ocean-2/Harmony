@@ -17,7 +17,7 @@ const App = (props) => {
   const [user] = useAuthState(auth);
   return (<div>
     Hello World
-    <Login user={user} />
+    <Login user={user} auth={auth} />
   </div>)
 };
 

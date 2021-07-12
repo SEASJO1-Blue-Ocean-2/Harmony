@@ -21836,7 +21836,8 @@ var App = function App(props) {
       user = _useAuthState2[0];
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Hello World", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_login_LoginView_jsx__WEBPACK_IMPORTED_MODULE_2__.default, {
-    user: user
+    user: user,
+    auth: auth
   }));
 };
 
@@ -21959,7 +21960,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var Login = function Login(_ref) {
-  var user = _ref.user;
+  var user = _ref.user,
+      auth = _ref.auth;
 
   var signIn = function signIn() {
     var provider = new firebase_app__WEBPACK_IMPORTED_MODULE_1__.default.auth.GoogleAuthProvider();
