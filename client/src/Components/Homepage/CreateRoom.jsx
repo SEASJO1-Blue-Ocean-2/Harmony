@@ -6,4 +6,4 @@ const CreateRoom = (props) => {
   )
 }
 
-default export CreateRoom;
+export default CreateRoom;
