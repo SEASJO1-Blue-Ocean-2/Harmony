@@ -26,3 +26,8 @@ button {
 input {
   width: 75vw;
 }
+
+.profileIcon {
+  float: right;
+  height: 50px;
+}

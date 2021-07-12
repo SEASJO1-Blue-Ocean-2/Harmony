@@ -1,10 +1,11 @@
 import React from 'react';
 import Room from './Room.jsx';
+import MainPage from './Homepage/MainPage.jsx';
 
 const App = (props) => {
   return (<div>
-    Hello World
-    <Room />
+    {/* <Room /> */}
+    <MainPage/>
   </div>)
 };
 
