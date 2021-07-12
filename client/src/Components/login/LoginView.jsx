@@ -10,9 +10,8 @@ const Login = ({ user, auth }) => {
     auth.signInWithPopup(provider);
   }
 
-
   return (<div>
-    {!user && <button onClick={signIn}>Sign In</button>}
+    {user ? user.email : <button onClick={signIn}>Sign In</button>}
   </div>)
 
 };
