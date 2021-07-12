@@ -1,6 +1,7 @@
 import React from 'react';
 import Room from './Room.jsx';
 import Login from './login/LoginView.jsx';
+import Signup from './login/SignupView.jsx';
 
 import firebase from 'firebase/app';
 import 'firebase/auth';
@@ -11,14 +12,16 @@ firebase.initializeApp(config);
 const auth = firebase.auth();
 const db = firebase.database();
 
-//
+//<Login user={user} auth={auth} />
+//<Room db={db} user={user}/>
 
 const App = (props) => {
   const [user] = useAuthState(auth);
   return (<div>
     Hello World
-    <Login user={user} auth={auth} />
-    {/* <Room db={db} user={user}/> */}
+
+    <Signup auth={auth} db={db} />
+
   </div>)
 };
 

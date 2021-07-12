@@ -3,6 +3,7 @@ import firebase from 'firebase/app';
 import 'firebase/analytics';
 import 'firebase/database';
 
+import { addData } from '../util.js';
 import { useList } from 'react-firebase-hooks/database';
 
 const Room = ({ db, user }) => {
@@ -12,25 +13,20 @@ const Room = ({ db, user }) => {
   const [snapshots, loading, error] = useList(dbRef);
 
 
-  console.log(dbRef, snapshots, loading, error);
-
-
   const sendMessage = (e) => {
     e.preventDefault();
+    var data = {
+      author: user.displayName,
+      uid: user.uid,
+      message: message
+    };
+    var res = addData(data, dbRef);
+    //res.then(d => console.log(d));
   };
 
   return (<div>
     <button onClick={() => {
-      var data = {
-        author: user.displayName,
-        uid: user.uid,
-        message: 'space test2'
-      };
-      var key = dbRef.push().key;
-      var path = roomName + '/' + key;
-      var updates = {};
-      updates[path] = data;
-      var res = dbRef.update(updates);
+
     }}>Add Data</button>
 
     {(
@@ -39,8 +35,7 @@ const Room = ({ db, user }) => {
           return <React.Fragment>
             {v.key}
             <ul>
-              {console.log(v.val())}
-              {Object.keys(v.val()).map(key => <li>{key}: </li>)}
+              {Object.keys(v.val()).map(key => <li>{key}: {v.val()[key]}</li>)}
             </ul>
           </React.Fragment>
         })}
