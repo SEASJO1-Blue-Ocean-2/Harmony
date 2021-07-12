@@ -3,7 +3,9 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/analytics';
 import 'firebase/database';
-import Friend from './Friend.jsx'
+import Friend from './Friend.jsx';
+import IncomingButton from './IncomingButton.jsx';
+import OutgoingButton from './OutgoingButton.jsx';
 
 import { useList } from 'react-firebase-hooks/database';
 
@@ -18,19 +20,22 @@ const FriendsList = (props) => {
   console.log('this is the friends list', friendsList);
   return (
     <div>
-      {!loading && friendsList.length > 0 && (
-        <div>
-          {friendsList.map(friendId => {
-            return (
-              // <div key={friendId.key}>
-                <Friend friendId={friendId} db={db} key={friendId.key}/>
-              // </div>
-            )
-          })}
-        </div>
-      )}
+      <h1 className="friends-list-title">Friends List</h1>
+      <div className="friends-list-conatiner">
+        {!loading && friendsList.length > 0 && (
+          <div>
+            {friendsList.map(friendId => (
+              <Friend friendId={friendId.val()} db={db} key={friendId.key}/>
+            ))}
+          </div>
+        )}
+      </div>
+      <div className="incoming-outgoing-container">
+        <IncomingButton />
+        <OutgoingButton />
+      </div>
     </div>
-  )
-}
+  );
+};
 
 export default FriendsList;

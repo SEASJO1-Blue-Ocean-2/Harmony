@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 
 const InviteToRoom = (props) => {
-
   const inviteToRoom = () => {
-    //something here with friends user id and room id
-  }
+    // something here with friends user id and room id
+  };
 
   const handleInvite = (event) => {
     event.preventDefault();
@@ -12,7 +11,7 @@ const InviteToRoom = (props) => {
   }
   return (
     <button type="button" onClick={handleInvite}>invite icon</button>
-  )
-}
+  );
+};
 
 export default InviteToRoom;

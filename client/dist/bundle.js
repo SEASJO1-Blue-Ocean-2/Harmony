@@ -21812,6 +21812,31 @@ var App = function App(props) {
 
 /***/ }),
 
+/***/ "./client/src/components/FriendsList/DirectMessageButton.jsx":
+/*!*******************************************************************!*\
+  !*** ./client/src/components/FriendsList/DirectMessageButton.jsx ***!
+  \*******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+
+var DirectMessageButton = function DirectMessageButton(props) {
+  var temp = '';
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "message-icon"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", null, "DM icon"));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (DirectMessageButton);
+
+/***/ }),
+
 /***/ "./client/src/components/FriendsList/Friend.jsx":
 /*!******************************************************!*\
   !*** ./client/src/components/FriendsList/Friend.jsx ***!
@@ -21824,7 +21849,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _inviteToRoom_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./inviteToRoom.jsx */ "./client/src/components/FriendsList/inviteToRoom.jsx");
+/* harmony import */ var _InviteToRoom_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./InviteToRoom.jsx */ "./client/src/components/FriendsList/InviteToRoom.jsx");
+/* harmony import */ var _DirectMessageButton_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./DirectMessageButton.jsx */ "./client/src/components/FriendsList/DirectMessageButton.jsx");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -21840,6 +21866,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 var Friend = function Friend(props) {
   var friendId = props.friendId,
       db = props.db;
@@ -21849,14 +21876,15 @@ var Friend = function Friend(props) {
       friendName = _useState2[0],
       setFriendName = _useState2[1];
 
-  var tempId = 'atkefMQZOGe0YQvC5sLBJd3zurY2';
-  var friendNameRef = db.ref("users/".concat(tempId, "/username"));
+  var tempId = 'A2PyioigFaYkKpPFqUcgNN5Gwkp1';
+  console.log('this is the friend ID', friendId);
+  var friendNameRef = db.ref("users/".concat(friendId, "/username"));
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     friendNameRef.on('value', function (snapshot) {
       setFriendName(JSON.stringify(snapshot.val()));
     });
   });
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, friendName), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_inviteToRoom_jsx__WEBPACK_IMPORTED_MODULE_1__.default, null));
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, friendName), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_DirectMessageButton_jsx__WEBPACK_IMPORTED_MODULE_2__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_InviteToRoom_jsx__WEBPACK_IMPORTED_MODULE_1__.default, null));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Friend);
@@ -21880,7 +21908,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var firebase_analytics__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! firebase/analytics */ "./node_modules/firebase/analytics/dist/index.esm.js");
 /* harmony import */ var firebase_database__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! firebase/database */ "./node_modules/firebase/database/dist/index.esm.js");
 /* harmony import */ var _Friend_jsx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Friend.jsx */ "./client/src/components/FriendsList/Friend.jsx");
-/* harmony import */ var react_firebase_hooks_database__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-firebase-hooks/database */ "./node_modules/react-firebase-hooks/database/dist/index.esm.js");
+/* harmony import */ var _IncomingButton_jsx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./IncomingButton.jsx */ "./client/src/components/FriendsList/IncomingButton.jsx");
+/* harmony import */ var _OutgoingButton_jsx__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./OutgoingButton.jsx */ "./client/src/components/FriendsList/OutgoingButton.jsx");
+/* harmony import */ var react_firebase_hooks_database__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-firebase-hooks/database */ "./node_modules/react-firebase-hooks/database/dist/index.esm.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -21892,6 +21922,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
 
 
 
@@ -21913,34 +21945,57 @@ var FriendsList = function FriendsList(props) {
       userId = _useState2[0],
       setUserId = _useState2[1];
 
-  var _useList = (0,react_firebase_hooks_database__WEBPACK_IMPORTED_MODULE_6__.useList)(db.ref("users/uid/friends")),
+  var _useList = (0,react_firebase_hooks_database__WEBPACK_IMPORTED_MODULE_8__.useList)(db.ref("users/uid/friends")),
       _useList2 = _slicedToArray(_useList, 3),
       friendsList = _useList2[0],
       loading = _useList2[1],
       error = _useList2[2];
 
   console.log('this is the friends list', friendsList);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, !loading && friendsList.length > 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, friendsList.map(function (friendId) {
-    return (
-      /*#__PURE__*/
-      // <div key={friendId.key}>
-      react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Friend_jsx__WEBPACK_IMPORTED_MODULE_5__.default, {
-        friendId: friendId,
-        db: db,
-        key: friendId.key
-      }) // </div>
-
-    );
-  })));
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", {
+    className: "friends-list-title"
+  }, "Friends List"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "friends-list-conatiner"
+  }, !loading && friendsList.length > 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, friendsList.map(function (friendId) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Friend_jsx__WEBPACK_IMPORTED_MODULE_5__.default, {
+      friendId: friendId.val(),
+      db: db,
+      key: friendId.key
+    });
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "incoming-outgoing-container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_IncomingButton_jsx__WEBPACK_IMPORTED_MODULE_6__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_OutgoingButton_jsx__WEBPACK_IMPORTED_MODULE_7__.default, null)));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FriendsList);
 
 /***/ }),
 
-/***/ "./client/src/components/FriendsList/inviteToRoom.jsx":
+/***/ "./client/src/components/FriendsList/IncomingButton.jsx":
+/*!**************************************************************!*\
+  !*** ./client/src/components/FriendsList/IncomingButton.jsx ***!
+  \**************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+
+var IncomingButton = function IncomingButton(props) {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", null, "Incoming"));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (IncomingButton);
+
+/***/ }),
+
+/***/ "./client/src/components/FriendsList/InviteToRoom.jsx":
 /*!************************************************************!*\
-  !*** ./client/src/components/FriendsList/inviteToRoom.jsx ***!
+  !*** ./client/src/components/FriendsList/InviteToRoom.jsx ***!
   \************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -21953,7 +22008,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var InviteToRoom = function InviteToRoom(props) {
-  var inviteToRoom = function inviteToRoom() {//something here with friends user id and room id
+  var inviteToRoom = function inviteToRoom() {// something here with friends user id and room id
   };
 
   var handleInvite = function handleInvite(event) {
@@ -21968,6 +22023,28 @@ var InviteToRoom = function InviteToRoom(props) {
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (InviteToRoom);
+
+/***/ }),
+
+/***/ "./client/src/components/FriendsList/OutgoingButton.jsx":
+/*!**************************************************************!*\
+  !*** ./client/src/components/FriendsList/OutgoingButton.jsx ***!
+  \**************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+
+var OutgoingButton = function OutgoingButton(props) {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", null, "Outgoing"));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (OutgoingButton);
 
 /***/ }),
 
@@ -22024,11 +22101,7 @@ var Room = function Room() {
       loading = _useList2[1],
       error = _useList2[2];
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, !loading && snapshots.length > 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, snapshots.map(function (v) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      key: v.key
-    }, JSON.stringify(v.val()));
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_FriendsList_FriendsList_jsx__WEBPACK_IMPORTED_MODULE_5__.default, {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_FriendsList_FriendsList_jsx__WEBPACK_IMPORTED_MODULE_5__.default, {
     db: db
   }));
 };
