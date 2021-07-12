@@ -21828,7 +21828,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 firebase_app__WEBPACK_IMPORTED_MODULE_3__.default.initializeApp((_config_js__WEBPACK_IMPORTED_MODULE_6___default()));
 var auth = firebase_app__WEBPACK_IMPORTED_MODULE_3__.default.auth();
-var db = firebase_app__WEBPACK_IMPORTED_MODULE_3__.default.database(); //    <Room />
+var db = firebase_app__WEBPACK_IMPORTED_MODULE_3__.default.database(); //
 
 var App = function App(props) {
   var _useAuthState = (0,react_firebase_hooks_auth__WEBPACK_IMPORTED_MODULE_5__.useAuthState)(auth),
@@ -21838,6 +21838,9 @@ var App = function App(props) {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Hello World", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_login_LoginView_jsx__WEBPACK_IMPORTED_MODULE_2__.default, {
     user: user,
     auth: auth
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Room_jsx__WEBPACK_IMPORTED_MODULE_1__.default, {
+    db: db,
+    user: user
   }));
 };
 
@@ -21879,7 +21882,10 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var Room = function Room() {
+var Room = function Room(_ref) {
+  var db = _ref.db,
+      user = _ref.user;
+
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
       _useState2 = _slicedToArray(_useState, 2),
       message = _useState2[0],
@@ -21921,8 +21927,8 @@ var Room = function Room() {
       var res = dbRef.update(updates);
     }
   }, "Add Data"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, snapshots.map(function (v) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, v.key, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, Object.keys(v.val()).map(function (val) {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, val, ": ", v.val()[val]);
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, v.key, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, console.log(v.val()), Object.keys(v.val()).map(function (key) {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, key, ": ");
     })));
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
     onSubmit: sendMessage
@@ -21968,7 +21974,13 @@ var Login = function Login(_ref) {
     auth.signInWithPopup(provider);
   };
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, user ? user.email : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+  var signOut = function signOut() {
+    auth.signOut();
+  };
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, user ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+    onClick: signOut
+  }, "Sign Out") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
     onClick: signIn
   }, "Sign In"));
 };

@@ -9,9 +9,12 @@ const Login = ({ user, auth }) => {
     const provider = new firebase.auth.GoogleAuthProvider();
     auth.signInWithPopup(provider);
   }
+  const signOut = () => {
+    auth.signOut();
+  };
 
   return (<div>
-    {user ? user.email : <button onClick={signIn}>Sign In</button>}
+    {user ? <button onClick={signOut}>Sign Out</button> : <button onClick={signIn}>Sign In</button>}
   </div>)
 
 };

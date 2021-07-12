@@ -11,13 +11,14 @@ firebase.initializeApp(config);
 const auth = firebase.auth();
 const db = firebase.database();
 
-//    <Room />
+//
 
 const App = (props) => {
   const [user] = useAuthState(auth);
   return (<div>
     Hello World
     <Login user={user} auth={auth} />
+    <Room db={db} user={user}/>
   </div>)
 };
 
