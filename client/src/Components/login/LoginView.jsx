@@ -19,7 +19,8 @@ const Login = ({ user, auth }) => {
   <div>
     {user && <button onClick={signOut}>Sign Out</button>}
     <div className="login-logo">HARMONY LOGO PLACE HOLDER</div>
-    {user ? <div>Welcome Back</div>
+    {user ? <Redirect to="/home" />
+
     :
     <div>
       <form className="signUp container">
