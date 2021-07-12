@@ -18,7 +18,7 @@ const App = (props) => {
   return (<div>
     Hello World
     <Login user={user} auth={auth} />
-    <Room db={db} user={user}/>
+    {/* <Room db={db} user={user}/> */}
   </div>)
 };
 
