@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React, {useState, useEffect} from 'react';
 
 const RoomEntry = ({ room, click }) => {
@@ -12,6 +11,3 @@ const RoomEntry = ({ room, click }) => {
 }
 
 export default RoomEntry;
-=======
-import React, {useState, useEffect} from 'react'
->>>>>>> temp

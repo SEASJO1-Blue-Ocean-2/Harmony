@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-<<<<<<< HEAD
 import RoomEntry from './RoomEntry.jsx';
 import CreateRoom from './CreateRoom.jsx';
-import Logout from './Logous.jsx';
+import Logout from './Logout.jsx';
 
 const RoomsList = (props) => {
   const [viewType, setView] = useState('your-rooms');
@@ -21,30 +20,10 @@ const RoomsList = (props) => {
 
   return (
     <div className='main-page'>
-=======
-
-const RoomsList = (props) => {
-  const [viewType, setView] = useState('your-rooms')
-  const [yourRooms, setRooms] = useState(['list', 'of', 'rooms'])
-  const [suggestedRooms, setSuggestions] = useState(['list', 'of', 'suggestions'])
-  const handleViewType = () => {
-    viewType === 'your-rooms'
-    ? viewType === 'your-rooms'
-      ? setView('suggestions')
-      : null
-    : viewType === 'suggestions'
-      ? setView('your-rooms')
-      : null
-  }
-
-  return (
-    <div>
->>>>>>> temp
 
       <div className='toggle-room-container'>
         <button
         className='toggle-room-button'
-<<<<<<< HEAD
         id='your-rooms'
         onClick={ handleViewType }
         >Your Rooms</button>
@@ -52,19 +31,11 @@ const RoomsList = (props) => {
         className='toggle-room-button'
         id='suggested-rooms'
         onClick={ handleViewType }
-=======
-        onClick={handleViewType}
-        >Your Rooms</button>
-        <button
-        className='toggle-room-button'
-        onClick={handleViewType}
->>>>>>> temp
         >Room Suggestions</button>
       </div>
 
       <div className='rooms-list'>
         {viewType === 'your-rooms'
-<<<<<<< HEAD
         ? yourRooms.map( (room, i) =>
           <RoomEntry
           key={i}
@@ -78,16 +49,6 @@ const RoomsList = (props) => {
       </div>
       <CreateRoom />
       <Logout />
-=======
-        ? yourRooms.map( (room, i) => {
-          <RoomEntry />
-        })
-        : suggestedRooms.map( (room, i) => {
-          <RoomEntry />
-        })}
-
-      </div>
->>>>>>> temp
     </div>
   )
 }

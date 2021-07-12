@@ -8,7 +8,6 @@ import {
 
 export default function App() {
   return (
-<<<<<<< HEAD
     <>
       <div>
         <h1 className='Harmony'>harmony</h1>
@@ -42,33 +41,6 @@ export default function App() {
         </div>
       </Router>
     </>
-=======
-    <Router>
-      <img src='http://www.pngall.com/wp-content/uploads/5/User-Profile-PNG-Image.png' className='profileIcon'></img>
-      <div>
-        <nav>
-          <Link to="/Notifications">Notifications</Link>
-          <Link to="/Rooms">Rooms</Link>
-          <Link to="/FriendsList">Friends List</Link>
-        </nav>
-
-        {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
-        <Switch>
-          <Route path="/Rooms">
-            <Rooms />
-          </Route>
-          <Route path="/FriendsList">
-            <FriendsList/>
-          </Route>
-          <Route path="/Notifications">
-            <Home />
-          </Route>
-        </Switch>
-      </div>
-    </Router>
-
->>>>>>> temp
   );
 }
 

@@ -3,7 +3,6 @@ import Room from './Room.jsx';
 import MainPage from './Homepage/MainPage.jsx';
 import Login from './login/LoginView.jsx';
 import Signup from './login/SignupView.jsx';
-import MainPage from './Homepage/MainPage.jsx';
 
 import firebase from 'firebase/app';
 import 'firebase/auth';
