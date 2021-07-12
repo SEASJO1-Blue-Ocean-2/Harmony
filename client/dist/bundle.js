@@ -22007,6 +22007,7 @@ var RoomEntry = function RoomEntry(_ref) {
   var room = _ref.room,
       click = _ref.click;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "room-entry",
     onClick: click
   }, room);
 };
@@ -22066,7 +22067,9 @@ var RoomsList = function RoomsList(props) {
     e.target.id === 'your-rooms' ? setView('your-rooms') : setView('suggested-rooms');
   };
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "main-page"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "toggle-room-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
     className: "toggle-room-button",
@@ -22090,7 +22093,7 @@ var RoomsList = function RoomsList(props) {
       room: room,
       click: handleRoomClick
     });
-  })));
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(CreateRoom, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Logout, null));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (RoomsList);

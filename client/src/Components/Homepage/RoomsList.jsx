@@ -17,17 +17,18 @@ const RoomsList = (props) => {
   }
 
   return (
-    <div>
+    <div className='main-page'>
+
       <div className='toggle-room-container'>
         <button
         className='toggle-room-button'
         id='your-rooms'
-        onClick={handleViewType}
+        onClick={ handleViewType }
         >Your Rooms</button>
         <button
         className='toggle-room-button'
         id='suggested-rooms'
-        onClick={handleViewType}
+        onClick={ handleViewType }
         >Room Suggestions</button>
       </div>
 
@@ -37,13 +38,15 @@ const RoomsList = (props) => {
           <RoomEntry
           key={i}
           room={room}
-          click={handleRoomClick}/>)
+          click={ handleRoomClick }/>)
         : suggestedRooms.map( (room, i) =>
           <RoomEntry
           key={i}
           room={room}
-          click={handleRoomClick}/>)}
+          click={ handleRoomClick }/>)}
       </div>
+      <CreateRoom />
+      <Logout />
     </div>
   )
 }

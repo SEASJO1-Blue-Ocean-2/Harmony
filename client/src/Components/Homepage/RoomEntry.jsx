@@ -3,8 +3,10 @@ import React, {useState, useEffect} from 'react';
 const RoomEntry = ({ room, click }) => {
   return (
     <div
-    onClick={click}
-    >{room}</div>
+    className='room-entry'
+    onClick={click}>
+    {room}
+    </div>
   )
 }
 
