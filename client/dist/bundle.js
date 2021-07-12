@@ -21839,8 +21839,8 @@ var App = function App(props) {
       user = _useAuthState2[0];
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Hello World", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_login_LoginView_jsx__WEBPACK_IMPORTED_MODULE_2__.default, {
-    auth: auth,
-    db: db
+    user: user,
+    auth: auth
   }));
 };
 
@@ -21976,7 +21976,9 @@ var Login = function Login(_ref) {
     auth.signOut();
   };
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, user && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+    onClick: signOut
+  }, "Sign Out"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "login-logo"
   }, "HARMONY LOGO PLACE HOLDER"), user ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Welcome Back") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
     className: "signUp container"
