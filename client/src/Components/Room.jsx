@@ -1,27 +1,55 @@
-import React, { setState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import firebase from 'firebase/app';
-import 'firebase/auth';
 import 'firebase/analytics';
 import 'firebase/database';
 
-import config from '../../../config.js';
-import { useAuthState } from 'react-firebase-hooks/auth';
 import { useList } from 'react-firebase-hooks/database';
 
-firebase.initializeApp(config);
-const auth = firebase.auth();
-const db = firebase.database();
-
 const Room = () => {
-  const [snapshots, loading, error] = useList(db.ref('messages'));
+  const [message, setMessage] = useState('');
+  const [roomName, setRoomname] = useState('test room');
+  const [dbRef, setDbRef] = useState(firebase.database().ref('/messages/' + roomName));
+  const [snapshots, loading, error] = useList(dbRef);
+
+
+  console.log(dbRef, snapshots, loading, error);
+
+
+  const sendMessage = (e) => {
+    e.preventDefault();
+  };
+
   return (<div>
-    {!loading && snapshots.length > 0 && (
+    <button onClick={() => {
+      var data = {
+        author: user.displayName,
+        uid: user.uid,
+        message: 'space test2'
+      };
+      var key = dbRef.push().key;
+      var path = roomName + '/' + key;
+      var updates = {};
+      updates[path] = data;
+      var res = dbRef.update(updates);
+    }}>Add Data</button>
+
+    {(
       <div>
         {snapshots.map(v => {
-          return <div key={v.key}>{JSON.stringify(v.val())}</div>
+          return <React.Fragment>
+            {v.key}
+            <ul>
+              {Object.keys(v.val()).map(val => <li>{val}: {v.val()[val]}</li>)}
+            </ul>
+          </React.Fragment>
         })}
       </div>
     )}
+
+    <form onSubmit={sendMessage}>
+      <input type='text' value={message} onChange={e => setMessage(e.target.value)} />
+      <input type='submit' />
+    </form>
   </div>);
 };
 

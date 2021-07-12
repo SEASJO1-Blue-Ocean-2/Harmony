@@ -21801,37 +21801,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _Room_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Room.jsx */ "./client/src/components/Room.jsx");
-
-
-
-var App = function App(props) {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Hello World", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Room_jsx__WEBPACK_IMPORTED_MODULE_1__.default, null));
-};
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (App);
-
-/***/ }),
-
-/***/ "./client/src/components/Room.jsx":
-/*!****************************************!*\
-  !*** ./client/src/components/Room.jsx ***!
-  \****************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! firebase/app */ "./node_modules/firebase/app/dist/index.esm.js");
-/* harmony import */ var firebase_auth__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! firebase/auth */ "./node_modules/firebase/auth/dist/index.esm.js");
-/* harmony import */ var firebase_analytics__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! firebase/analytics */ "./node_modules/firebase/analytics/dist/index.esm.js");
-/* harmony import */ var firebase_database__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! firebase/database */ "./node_modules/firebase/database/dist/index.esm.js");
-/* harmony import */ var _config_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../config.js */ "./config.js");
-/* harmony import */ var _config_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_config_js__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var react_firebase_hooks_auth__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-firebase-hooks/auth */ "./node_modules/react-firebase-hooks/auth/dist/index.esm.js");
-/* harmony import */ var react_firebase_hooks_database__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-firebase-hooks/database */ "./node_modules/react-firebase-hooks/database/dist/index.esm.js");
+/* harmony import */ var _login_LoginView_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./login/LoginView.jsx */ "./client/src/components/login/LoginView.jsx");
+/* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! firebase/app */ "./node_modules/firebase/app/dist/index.esm.js");
+/* harmony import */ var firebase_auth__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! firebase/auth */ "./node_modules/firebase/auth/dist/index.esm.js");
+/* harmony import */ var react_firebase_hooks_auth__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-firebase-hooks/auth */ "./node_modules/react-firebase-hooks/auth/dist/index.esm.js");
+/* harmony import */ var _config_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../config.js */ "./config.js");
+/* harmony import */ var _config_js__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_config_js__WEBPACK_IMPORTED_MODULE_6__);
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -21851,26 +21826,152 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+firebase_app__WEBPACK_IMPORTED_MODULE_3__.default.initializeApp((_config_js__WEBPACK_IMPORTED_MODULE_6___default()));
+var auth = firebase_app__WEBPACK_IMPORTED_MODULE_3__.default.auth();
+var db = firebase_app__WEBPACK_IMPORTED_MODULE_3__.default.database(); //    <Room />
 
-firebase_app__WEBPACK_IMPORTED_MODULE_1__.default.initializeApp((_config_js__WEBPACK_IMPORTED_MODULE_5___default()));
-var auth = firebase_app__WEBPACK_IMPORTED_MODULE_1__.default.auth();
-var db = firebase_app__WEBPACK_IMPORTED_MODULE_1__.default.database();
+var App = function App(props) {
+  var _useAuthState = (0,react_firebase_hooks_auth__WEBPACK_IMPORTED_MODULE_5__.useAuthState)(auth),
+      _useAuthState2 = _slicedToArray(_useAuthState, 1),
+      user = _useAuthState2[0];
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Hello World", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_login_LoginView_jsx__WEBPACK_IMPORTED_MODULE_2__.default, {
+    user: user
+  }));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (App);
+
+/***/ }),
+
+/***/ "./client/src/components/Room.jsx":
+/*!****************************************!*\
+  !*** ./client/src/components/Room.jsx ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! firebase/app */ "./node_modules/firebase/app/dist/index.esm.js");
+/* harmony import */ var firebase_analytics__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! firebase/analytics */ "./node_modules/firebase/analytics/dist/index.esm.js");
+/* harmony import */ var firebase_database__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! firebase/database */ "./node_modules/firebase/database/dist/index.esm.js");
+/* harmony import */ var react_firebase_hooks_database__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-firebase-hooks/database */ "./node_modules/react-firebase-hooks/database/dist/index.esm.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
 
 var Room = function Room() {
-  var _useList = (0,react_firebase_hooks_database__WEBPACK_IMPORTED_MODULE_7__.useList)(db.ref('messages')),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+      _useState2 = _slicedToArray(_useState, 2),
+      message = _useState2[0],
+      setMessage = _useState2[1];
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('test room'),
+      _useState4 = _slicedToArray(_useState3, 2),
+      roomName = _useState4[0],
+      setRoomname = _useState4[1];
+
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(firebase_app__WEBPACK_IMPORTED_MODULE_1__.default.database().ref('/messages/' + roomName)),
+      _useState6 = _slicedToArray(_useState5, 2),
+      dbRef = _useState6[0],
+      setDbRef = _useState6[1];
+
+  var _useList = (0,react_firebase_hooks_database__WEBPACK_IMPORTED_MODULE_4__.useList)(dbRef),
       _useList2 = _slicedToArray(_useList, 3),
       snapshots = _useList2[0],
       loading = _useList2[1],
       error = _useList2[2];
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, !loading && snapshots.length > 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, snapshots.map(function (v) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      key: v.key
-    }, JSON.stringify(v.val()));
+  console.log(dbRef, snapshots, loading, error);
+
+  var sendMessage = function sendMessage(e) {
+    e.preventDefault();
+  };
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+    onClick: function onClick() {
+      var data = {
+        author: user.displayName,
+        uid: user.uid,
+        message: 'space test2'
+      };
+      var key = dbRef.push().key;
+      var path = roomName + '/' + key;
+      var updates = {};
+      updates[path] = data;
+      var res = dbRef.update(updates);
+    }
+  }, "Add Data"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, snapshots.map(function (v) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, v.key, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, Object.keys(v.val()).map(function (val) {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, val, ": ", v.val()[val]);
+    })));
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
+    onSubmit: sendMessage
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+    type: "text",
+    value: message,
+    onChange: function onChange(e) {
+      return setMessage(e.target.value);
+    }
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+    type: "submit"
   })));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Room);
+
+/***/ }),
+
+/***/ "./client/src/components/login/LoginView.jsx":
+/*!***************************************************!*\
+  !*** ./client/src/components/login/LoginView.jsx ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! firebase/app */ "./node_modules/firebase/app/dist/index.esm.js");
+/* harmony import */ var firebase_auth__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! firebase/auth */ "./node_modules/firebase/auth/dist/index.esm.js");
+
+
+
+
+var Login = function Login(_ref) {
+  var user = _ref.user;
+
+  var signIn = function signIn() {
+    var provider = new firebase_app__WEBPACK_IMPORTED_MODULE_1__.default.auth.GoogleAuthProvider();
+    auth.signInWithPopup(provider);
+  };
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, !user && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+    onClick: signIn
+  }, "Sign In"));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Login);
 
 /***/ }),
 
