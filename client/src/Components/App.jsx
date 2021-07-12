@@ -1,11 +1,11 @@
 import React from 'react';
-import Room from './Room.jsx';
+import Room from './Room';
+import Profile from './profile/Profile';
 
-const App = (props) => {
-  return (<div>
-    Hello World
-    <Room />
-  </div>)
-};
+const App = (props) => (
+  <div>
+    <Profile />
+  </div>
+);
 
 export default App;
