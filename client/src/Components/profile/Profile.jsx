@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import css from './style.css';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import UpdateProfile from './UpdateProfile';
 import DisplayProfile from './DisplayProfile';
 

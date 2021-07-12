@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import css from './style.css';
 
-function UpdateProfile( { setProfileData }) {
+function UpdateProfile({ setProfileData }) {
   const [name, setName] = useState('');
   const [country, setCountry] = useState('');
   const [email, setEmail] = useState('');
@@ -60,5 +61,9 @@ function UpdateProfile( { setProfileData }) {
     </div>
   );
 }
+
+UpdateProfile.propTypes = {
+  setProfileData: PropTypes.func.isRequired,
+};
 
 export default UpdateProfile;

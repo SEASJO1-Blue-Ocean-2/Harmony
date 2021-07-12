@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import css from './style.css';
 
 function DisplayProfile({ profileData }) {
@@ -40,5 +41,15 @@ function DisplayProfile({ profileData }) {
     </div>
   );
 }
+
+DisplayProfile.propTypes = {
+  profileData: PropTypes.shape({
+    picture: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    country: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    bio: PropTypes.string.isRequired,
+  }).isRequired,
+};
 
 export default DisplayProfile;
