@@ -11,7 +11,7 @@ const Login = ({ user, auth }) => {
   }
 
   return (<div>
-    {user ? user.email : <button onClick={signIn}>Sign In</button>}
+    {user ? user.email : <button onClick={signIn}>Sign In With Google</button>}
   </div>)
 
 };
