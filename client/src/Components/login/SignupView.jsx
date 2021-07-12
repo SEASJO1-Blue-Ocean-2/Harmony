@@ -3,7 +3,9 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import { addData } from '../../util.js';
 
-const redirect = () => ();
+import './signup.css';
+
+//const redirect = () => ();
 
 const Signup = ({ auth }) => {
   //Assume we aren't logged in. Don't show this page if we have already authenticated.
@@ -31,7 +33,7 @@ const Signup = ({ auth }) => {
   }
   //
 
-  return (<div>
+  return (<div className='test'>
     {dbRef ?
       <form onSubmit={signUp}>
         <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
