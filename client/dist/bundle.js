@@ -21812,6 +21812,57 @@ var App = function App(props) {
 
 /***/ }),
 
+/***/ "./client/src/components/FriendsList/Friend.jsx":
+/*!******************************************************!*\
+  !*** ./client/src/components/FriendsList/Friend.jsx ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _inviteToRoom_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./inviteToRoom.jsx */ "./client/src/components/FriendsList/inviteToRoom.jsx");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+var Friend = function Friend(props) {
+  var friendId = props.friendId,
+      db = props.db;
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+      _useState2 = _slicedToArray(_useState, 2),
+      friendName = _useState2[0],
+      setFriendName = _useState2[1];
+
+  var tempId = 'atkefMQZOGe0YQvC5sLBJd3zurY2';
+  var friendNameRef = db.ref("users/".concat(tempId, "/username"));
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    friendNameRef.on('value', function (snapshot) {
+      setFriendName(JSON.stringify(snapshot.val()));
+    });
+  });
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, friendName), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_inviteToRoom_jsx__WEBPACK_IMPORTED_MODULE_1__.default, null));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Friend);
+
+/***/ }),
+
 /***/ "./client/src/components/FriendsList/FriendsList.jsx":
 /*!***********************************************************!*\
   !*** ./client/src/components/FriendsList/FriendsList.jsx ***!
@@ -21828,10 +21879,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var firebase_auth__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! firebase/auth */ "./node_modules/firebase/auth/dist/index.esm.js");
 /* harmony import */ var firebase_analytics__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! firebase/analytics */ "./node_modules/firebase/analytics/dist/index.esm.js");
 /* harmony import */ var firebase_database__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! firebase/database */ "./node_modules/firebase/database/dist/index.esm.js");
-/* harmony import */ var _config_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../config.js */ "./config.js");
-/* harmony import */ var _config_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_config_js__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var react_firebase_hooks_auth__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-firebase-hooks/auth */ "./node_modules/react-firebase-hooks/auth/dist/index.esm.js");
-/* harmony import */ var react_firebase_hooks_database__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-firebase-hooks/database */ "./node_modules/react-firebase-hooks/database/dist/index.esm.js");
+/* harmony import */ var _Friend_jsx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Friend.jsx */ "./client/src/components/FriendsList/Friend.jsx");
+/* harmony import */ var react_firebase_hooks_database__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-firebase-hooks/database */ "./node_modules/react-firebase-hooks/database/dist/index.esm.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -21850,7 +21899,6 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-
  // firebase.initializeApp(config);
 // const auth = firebase.auth();
 // const db = firebase.database();
@@ -21858,12 +21906,14 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 var FriendsList = function FriendsList(props) {
   var db = props.db;
 
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('VgJMO8SsGjS4RomQdFn1NeyQqzq2'),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('VgJMO8SsGjS4RomQdFn1NeyQqzq2'
+  /*this will be pulled from state on user auth*/
+  ),
       _useState2 = _slicedToArray(_useState, 2),
       userId = _useState2[0],
       setUserId = _useState2[1];
 
-  var _useList = (0,react_firebase_hooks_database__WEBPACK_IMPORTED_MODULE_7__.useList)(db.ref("users/uid/friends")),
+  var _useList = (0,react_firebase_hooks_database__WEBPACK_IMPORTED_MODULE_6__.useList)(db.ref("users/uid/friends")),
       _useList2 = _slicedToArray(_useList, 3),
       friendsList = _useList2[0],
       loading = _useList2[1],
@@ -21871,16 +21921,53 @@ var FriendsList = function FriendsList(props) {
 
   console.log('this is the friends list', friendsList);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, !loading && friendsList.length > 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, friendsList.map(function (friendId) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      key: friendId.key
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Friend, {
-      friendId: friendId,
-      db: db
-    }));
+    return (
+      /*#__PURE__*/
+      // <div key={friendId.key}>
+      react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Friend_jsx__WEBPACK_IMPORTED_MODULE_5__.default, {
+        friendId: friendId,
+        db: db,
+        key: friendId.key
+      }) // </div>
+
+    );
   })));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FriendsList);
+
+/***/ }),
+
+/***/ "./client/src/components/FriendsList/inviteToRoom.jsx":
+/*!************************************************************!*\
+  !*** ./client/src/components/FriendsList/inviteToRoom.jsx ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+
+var InviteToRoom = function InviteToRoom(props) {
+  var inviteToRoom = function inviteToRoom() {//something here with friends user id and room id
+  };
+
+  var handleInvite = function handleInvite(event) {
+    event.preventDefault();
+    inviteToRoom();
+  };
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+    type: "button",
+    onClick: handleInvite
+  }, "invite icon");
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (InviteToRoom);
 
 /***/ }),
 
