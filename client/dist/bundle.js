@@ -21802,11 +21802,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _Room_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Room.jsx */ "./client/src/components/Room.jsx");
 /* harmony import */ var _login_LoginView_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./login/LoginView.jsx */ "./client/src/components/login/LoginView.jsx");
-/* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! firebase/app */ "./node_modules/firebase/app/dist/index.esm.js");
-/* harmony import */ var firebase_auth__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! firebase/auth */ "./node_modules/firebase/auth/dist/index.esm.js");
-/* harmony import */ var react_firebase_hooks_auth__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-firebase-hooks/auth */ "./node_modules/react-firebase-hooks/auth/dist/index.esm.js");
-/* harmony import */ var _config_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../config.js */ "./config.js");
-/* harmony import */ var _config_js__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_config_js__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _login_SignupView_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./login/SignupView.jsx */ "./client/src/components/login/SignupView.jsx");
+/* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! firebase/app */ "./node_modules/firebase/app/dist/index.esm.js");
+/* harmony import */ var firebase_auth__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! firebase/auth */ "./node_modules/firebase/auth/dist/index.esm.js");
+/* harmony import */ var react_firebase_hooks_auth__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-firebase-hooks/auth */ "./node_modules/react-firebase-hooks/auth/dist/index.esm.js");
+/* harmony import */ var _config_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../config.js */ "./config.js");
+/* harmony import */ var _config_js__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_config_js__WEBPACK_IMPORTED_MODULE_7__);
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -21826,21 +21827,20 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-firebase_app__WEBPACK_IMPORTED_MODULE_3__.default.initializeApp((_config_js__WEBPACK_IMPORTED_MODULE_6___default()));
-var auth = firebase_app__WEBPACK_IMPORTED_MODULE_3__.default.auth();
-var db = firebase_app__WEBPACK_IMPORTED_MODULE_3__.default.database(); //
+
+firebase_app__WEBPACK_IMPORTED_MODULE_4__.default.initializeApp((_config_js__WEBPACK_IMPORTED_MODULE_7___default()));
+var auth = firebase_app__WEBPACK_IMPORTED_MODULE_4__.default.auth();
+var db = firebase_app__WEBPACK_IMPORTED_MODULE_4__.default.database(); //<Login user={user} auth={auth} />
+//<Room db={db} user={user}/>
 
 var App = function App(props) {
-  var _useAuthState = (0,react_firebase_hooks_auth__WEBPACK_IMPORTED_MODULE_5__.useAuthState)(auth),
+  var _useAuthState = (0,react_firebase_hooks_auth__WEBPACK_IMPORTED_MODULE_6__.useAuthState)(auth),
       _useAuthState2 = _slicedToArray(_useAuthState, 1),
       user = _useAuthState2[0];
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Hello World", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_login_LoginView_jsx__WEBPACK_IMPORTED_MODULE_2__.default, {
-    user: user,
-    auth: auth
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Room_jsx__WEBPACK_IMPORTED_MODULE_1__.default, {
-    db: db,
-    user: user
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Hello World", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_login_SignupView_jsx__WEBPACK_IMPORTED_MODULE_3__.default, {
+    auth: auth,
+    db: db
   }));
 };
 
@@ -21863,7 +21863,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! firebase/app */ "./node_modules/firebase/app/dist/index.esm.js");
 /* harmony import */ var firebase_analytics__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! firebase/analytics */ "./node_modules/firebase/analytics/dist/index.esm.js");
 /* harmony import */ var firebase_database__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! firebase/database */ "./node_modules/firebase/database/dist/index.esm.js");
-/* harmony import */ var react_firebase_hooks_database__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-firebase-hooks/database */ "./node_modules/react-firebase-hooks/database/dist/index.esm.js");
+/* harmony import */ var _util_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../util.js */ "./client/src/util.js");
+/* harmony import */ var _util_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_util_js__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var react_firebase_hooks_database__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-firebase-hooks/database */ "./node_modules/react-firebase-hooks/database/dist/index.esm.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -21875,6 +21877,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -21901,34 +21904,27 @@ var Room = function Room(_ref) {
       dbRef = _useState6[0],
       setDbRef = _useState6[1];
 
-  var _useList = (0,react_firebase_hooks_database__WEBPACK_IMPORTED_MODULE_4__.useList)(dbRef),
+  var _useList = (0,react_firebase_hooks_database__WEBPACK_IMPORTED_MODULE_5__.useList)(dbRef),
       _useList2 = _slicedToArray(_useList, 3),
       snapshots = _useList2[0],
       loading = _useList2[1],
       error = _useList2[2];
 
-  console.log(dbRef, snapshots, loading, error);
-
   var sendMessage = function sendMessage(e) {
     e.preventDefault();
+    var data = {
+      author: user.displayName,
+      uid: user.uid,
+      message: message
+    };
+    var res = (0,_util_js__WEBPACK_IMPORTED_MODULE_4__.addData)(data, dbRef); //res.then(d => console.log(d));
   };
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-    onClick: function onClick() {
-      var data = {
-        author: user.displayName,
-        uid: user.uid,
-        message: 'space test2'
-      };
-      var key = dbRef.push().key;
-      var path = roomName + '/' + key;
-      var updates = {};
-      updates[path] = data;
-      var res = dbRef.update(updates);
-    }
+    onClick: function onClick() {}
   }, "Add Data"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, snapshots.map(function (v) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, v.key, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, console.log(v.val()), Object.keys(v.val()).map(function (key) {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, key, ": ");
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, v.key, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, Object.keys(v.val()).map(function (key) {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, key, ": ", v.val()[key]);
     })));
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
     onSubmit: sendMessage
@@ -21986,6 +21982,40 @@ var Login = function Login(_ref) {
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Login);
+
+/***/ }),
+
+/***/ "./client/src/components/login/SignupView.jsx":
+/*!****************************************************!*\
+  !*** ./client/src/components/login/SignupView.jsx ***!
+  \****************************************************/
+/***/ (() => {
+
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: /Users/jacob/code/blueocean/client/src/components/login/SignupView.jsx: Unexpected token (6:24)\n\n\u001b[0m \u001b[90m 4 |\u001b[39m \u001b[36mimport\u001b[39m { addData } \u001b[36mfrom\u001b[39m \u001b[32m'../../util.js'\u001b[39m\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 5 |\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 6 |\u001b[39m \u001b[36mconst\u001b[39m redirect \u001b[33m=\u001b[39m () \u001b[33m=>\u001b[39m ()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m   |\u001b[39m                         \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 7 |\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 8 |\u001b[39m \u001b[36mconst\u001b[39m \u001b[33mSignup\u001b[39m \u001b[33m=\u001b[39m ({ auth }) \u001b[33m=>\u001b[39m {\u001b[0m\n\u001b[0m \u001b[90m 9 |\u001b[39m   \u001b[90m//Assume we aren't logged in. Don't show this page if we have already authenticated.\u001b[39m\u001b[0m\n    at Object._raise (/Users/jacob/code/blueocean/node_modules/@babel/parser/lib/index.js:816:17)\n    at Object.raiseWithData (/Users/jacob/code/blueocean/node_modules/@babel/parser/lib/index.js:809:17)\n    at Object.raise (/Users/jacob/code/blueocean/node_modules/@babel/parser/lib/index.js:770:17)\n    at Object.unexpected (/Users/jacob/code/blueocean/node_modules/@babel/parser/lib/index.js:9893:16)\n    at Object.parseParenAndDistinguishExpression (/Users/jacob/code/blueocean/node_modules/@babel/parser/lib/index.js:11548:12)\n    at Object.parseExprAtom (/Users/jacob/code/blueocean/node_modules/@babel/parser/lib/index.js:11201:23)\n    at Object.parseExprAtom (/Users/jacob/code/blueocean/node_modules/@babel/parser/lib/index.js:5241:20)\n    at Object.parseExprSubscripts (/Users/jacob/code/blueocean/node_modules/@babel/parser/lib/index.js:10881:23)\n    at Object.parseUpdate (/Users/jacob/code/blueocean/node_modules/@babel/parser/lib/index.js:10861:21)\n    at Object.parseMaybeUnary (/Users/jacob/code/blueocean/node_modules/@babel/parser/lib/index.js:10839:23)");
+
+/***/ }),
+
+/***/ "./client/src/util.js":
+/*!****************************!*\
+  !*** ./client/src/util.js ***!
+  \****************************/
+/***/ ((module) => {
+
+var addData = function addData(data, dbRef) {
+  var key = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
+  var path = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : '';
+  return function (key, path) {
+    var key = key || dbRef.push().key;
+    var path = '/' + key;
+    var updates = {};
+    updates[path] = data;
+    return dbRef.update(updates);
+  }(key, path);
+};
+
+module.exports = {
+  addData: addData
+};
 
 /***/ }),
 
