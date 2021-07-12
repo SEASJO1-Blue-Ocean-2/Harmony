@@ -5,7 +5,7 @@ import 'firebase/database';
 
 import { useList } from 'react-firebase-hooks/database';
 
-const Room = () => {
+const Room = ({ db, user }) => {
   const [message, setMessage] = useState('');
   const [roomName, setRoomname] = useState('test room');
   const [dbRef, setDbRef] = useState(firebase.database().ref('/messages/' + roomName));
@@ -39,7 +39,8 @@ const Room = () => {
           return <React.Fragment>
             {v.key}
             <ul>
-              {Object.keys(v.val()).map(val => <li>{val}: {v.val()[val]}</li>)}
+              {console.log(v.val())}
+              {Object.keys(v.val()).map(key => <li>{key}: </li>)}
             </ul>
           </React.Fragment>
         })}
