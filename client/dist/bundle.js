@@ -21990,8 +21990,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style.css */ "./client/src/Components/profile/style.css");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./style.css */ "./client/src/Components/profile/style.css");
+
 
 
 
@@ -22000,17 +22003,26 @@ function DisplayProfile(_ref) {
   var profileData = _ref.profileData;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
     src: profileData.picture,
-    className: _style_css__WEBPACK_IMPORTED_MODULE_1__.default.profilePic,
+    className: _style_css__WEBPACK_IMPORTED_MODULE_2__.default.profilePic,
     alt: ""
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: _style_css__WEBPACK_IMPORTED_MODULE_1__.default.text
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Name:", ' ', profileData.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Country:", ' ', profileData.country), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Email:", ' ', profileData.email)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Bio:", ' ', profileData.bio)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+    className: _style_css__WEBPACK_IMPORTED_MODULE_2__.default.text
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Name:", ' ', profileData.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Country:", ' ', profileData.country), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Email:", ' ', profileData.email)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Bio:", ' ', profileData.bio)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
     to: "/updateprofile"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
     type: "button"
   }, "Update Profile")));
 }
 
+DisplayProfile.propTypes = {
+  profileData: prop_types__WEBPACK_IMPORTED_MODULE_1___default().shape({
+    picture: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().string.isRequired),
+    name: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().string.isRequired),
+    country: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().string.isRequired),
+    email: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().string.isRequired),
+    bio: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().string.isRequired)
+  }).isRequired
+};
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (DisplayProfile);
 
 /***/ }),
@@ -22027,11 +22039,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
-/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style.css */ "./client/src/Components/profile/style.css");
-/* harmony import */ var _UpdateProfile__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./UpdateProfile */ "./client/src/Components/profile/UpdateProfile.jsx");
-/* harmony import */ var _DisplayProfile__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./DisplayProfile */ "./client/src/Components/profile/DisplayProfile.jsx");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! firebase/app */ "./node_modules/firebase/app/dist/index.esm.js");
+/* harmony import */ var react_firebase_hooks_database__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-firebase-hooks/database */ "./node_modules/react-firebase-hooks/database/dist/index.esm.js");
+/* harmony import */ var _UpdateProfile__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./UpdateProfile */ "./client/src/Components/profile/UpdateProfile.jsx");
+/* harmony import */ var _DisplayProfile__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./DisplayProfile */ "./client/src/Components/profile/DisplayProfile.jsx");
+/* harmony import */ var firebase_auth__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! firebase/auth */ "./node_modules/firebase/auth/dist/index.esm.js");
+/* harmony import */ var firebase_analytics__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! firebase/analytics */ "./node_modules/firebase/analytics/dist/index.esm.js");
+/* harmony import */ var firebase_database__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! firebase/database */ "./node_modules/firebase/database/dist/index.esm.js");
+/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../../config */ "./config.js");
+/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_config__WEBPACK_IMPORTED_MODULE_8__);
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -22050,37 +22068,58 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
+
+
+
+firebase_app__WEBPACK_IMPORTED_MODULE_1__.default.initializeApp((_config__WEBPACK_IMPORTED_MODULE_8___default()));
+var auth = firebase_app__WEBPACK_IMPORTED_MODULE_1__.default.auth();
+var db = firebase_app__WEBPACK_IMPORTED_MODULE_1__.default.database();
+
 function Profile() {
+  var _useList = (0,react_firebase_hooks_database__WEBPACK_IMPORTED_MODULE_2__.useList)(db.ref('users')),
+      _useList2 = _slicedToArray(_useList, 3),
+      snapshots = _useList2[0],
+      loading = _useList2[1],
+      error = _useList2[2];
+
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
-    bio: 'test',
-    country: 'usa',
-    email: 'jake@fake.com',
-    name: 'jacob',
+    bio: 'NA',
+    country: 'NA',
+    email: 'NA',
+    name: 'NA',
     picture: 'https://upload.wikimedia.org/wikipedia/commons/1/12/ThreeTimeAKCGoldWinnerPembrookeWelshCorgi.jpg'
   }),
       _useState2 = _slicedToArray(_useState, 2),
       profileData = _useState2[0],
       setProfileData = _useState2[1];
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.BrowserRouter, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Switch, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Route, {
+  function updateData() {}
+
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    /* if (!loading) {
+      setProfileData(JSON.parse(JSON.stringify(snapshots[0])));
+    } */
+  }, [snapshots]);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.BrowserRouter, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Switch, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
     path: "/",
     exact: true,
     render: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_DisplayProfile__WEBPACK_IMPORTED_MODULE_3__.default, {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_DisplayProfile__WEBPACK_IMPORTED_MODULE_4__.default, {
         profileData: profileData
       });
     }
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
     path: "/updateprofile",
     render: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_UpdateProfile__WEBPACK_IMPORTED_MODULE_2__.default, {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_UpdateProfile__WEBPACK_IMPORTED_MODULE_3__.default, {
         setProfileData: setProfileData
       });
     }
   }))));
 }
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Profile);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Profile); //  bio: 'test', country: 'usa', email: 'jake@fake.com', name: 'Alex', picture: 'https://upload.wikimedia.org/wikipedia/commons/1/12/ThreeTimeAKCGoldWinnerPembrookeWelshCorgi.jpg',
 
 /***/ }),
 
@@ -22096,8 +22135,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style.css */ "./client/src/Components/profile/style.css");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./style.css */ "./client/src/Components/profile/style.css");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -22109,6 +22150,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -22176,12 +22218,12 @@ function UpdateProfile(_ref) {
     id: "name",
     onChange: onChangeEmail
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Bio: "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("textarea", {
-    className: _style_css__WEBPACK_IMPORTED_MODULE_1__.default.bioUpdateText,
+    className: _style_css__WEBPACK_IMPORTED_MODULE_2__.default.bioUpdateText,
     row: "400",
     cols: "20",
     id: "bio",
     onChange: onChangeBio
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
     to: "/"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
     type: "button",
@@ -22189,6 +22231,9 @@ function UpdateProfile(_ref) {
   }, "Save Profile")));
 }
 
+UpdateProfile.propTypes = {
+  setProfileData: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().func.isRequired)
+};
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (UpdateProfile);
 
 /***/ }),
@@ -22200,14 +22245,14 @@ function UpdateProfile(_ref) {
 /***/ ((module) => {
 
 module.exports = {
-  apiKey: "AIzaSyCDks358rV2u8fxHzi3rdpVEh1Gl0_Hbmg",
-  authDomain: "harmony-bc903.firebaseapp.com",
-  databaseURL: "https://harmony-bc903-default-rtdb.firebaseio.com",
-  projectId: "harmony-bc903",
-  storageBucket: "harmony-bc903.appspot.com",
-  messagingSenderId: "461815169297",
-  appId: "1:461815169297:web:25e0c3e668891fde144cb0",
-  measurementId: "G-F4B4K2V0G7"
+  apiKey: 'AIzaSyCDks358rV2u8fxHzi3rdpVEh1Gl0_Hbmg',
+  authDomain: 'harmony-bc903.firebaseapp.com',
+  databaseURL: 'https://harmony-bc903-default-rtdb.firebaseio.com',
+  projectId: 'harmony-bc903',
+  storageBucket: 'harmony-bc903.appspot.com',
+  messagingSenderId: '461815169297',
+  appId: '1:461815169297:web:25e0c3e668891fde144cb0',
+  measurementId: 'G-F4B4K2V0G7'
 };
 
 /***/ }),
