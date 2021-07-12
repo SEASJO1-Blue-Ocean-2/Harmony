@@ -21925,7 +21925,7 @@ var App = function App(props) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ Main)
+/* harmony export */   "default": () => (/* binding */ MainPage)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _NavigationBar_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./NavigationBar.jsx */ "./client/src/components/Homepage/NavigationBar.jsx");
@@ -21934,7 +21934,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function Main() {
+function MainPage() {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_NavigationBar_jsx__WEBPACK_IMPORTED_MODULE_1__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_RoomsList_jsx__WEBPACK_IMPORTED_MODULE_2__.default, null));
 }
 
@@ -21989,6 +21989,32 @@ function FriendsList() {
 
 /***/ }),
 
+/***/ "./client/src/components/Homepage/RoomEntry.jsx":
+/*!******************************************************!*\
+  !*** ./client/src/components/Homepage/RoomEntry.jsx ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+
+var RoomEntry = function RoomEntry(_ref) {
+  var room = _ref.room,
+      click = _ref.click;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    onClick: click
+  }, room);
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (RoomEntry);
+
+/***/ }),
+
 /***/ "./client/src/components/Homepage/RoomsList.jsx":
 /*!******************************************************!*\
   !*** ./client/src/components/Homepage/RoomsList.jsx ***!
@@ -22001,6 +22027,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _RoomEntry_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./RoomEntry.jsx */ "./client/src/components/Homepage/RoomEntry.jsx");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -22012,6 +22039,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -22031,26 +22059,37 @@ var RoomsList = function RoomsList(props) {
       suggestedRooms = _useState6[0],
       setSuggestions = _useState6[1];
 
-  var handleViewType = function handleViewType() {
-    viewType === 'your-rooms' ? viewType === 'your-rooms' ? setView('suggestions') : null : viewType === 'suggestions' ? setView('your-rooms') : null;
+  var handleRoomClick = function handleRoomClick() {// joins the room not sure how to route this yet.
+  };
+
+  var handleViewType = function handleViewType(e) {
+    e.target.id === 'your-rooms' ? setView('your-rooms') : setView('suggested-rooms');
   };
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "toggle-room-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
     className: "toggle-room-button",
+    id: "your-rooms",
     onClick: handleViewType
   }, "Your Rooms"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
     className: "toggle-room-button",
+    id: "suggested-rooms",
     onClick: handleViewType
   }, "Room Suggestions")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "rooms-list"
   }, viewType === 'your-rooms' ? yourRooms.map(function (room, i) {
-    /*#__PURE__*/
-    react__WEBPACK_IMPORTED_MODULE_0__.createElement(RoomEntry, null);
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_RoomEntry_jsx__WEBPACK_IMPORTED_MODULE_1__.default, {
+      key: i,
+      room: room,
+      click: handleRoomClick
+    });
   }) : suggestedRooms.map(function (room, i) {
-    /*#__PURE__*/
-    react__WEBPACK_IMPORTED_MODULE_0__.createElement(RoomEntry, null);
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_RoomEntry_jsx__WEBPACK_IMPORTED_MODULE_1__.default, {
+      key: i,
+      room: room,
+      click: handleRoomClick
+    });
   })));
 };
 

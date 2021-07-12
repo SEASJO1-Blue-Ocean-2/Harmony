@@ -8,7 +8,7 @@ import {
 import NavigationBar from './NavigationBar.jsx';
 import RoomsList from './RoomsList.jsx';
 
-export default function Main() {
+export default function MainPage() {
   return (
     <>
       <NavigationBar />
