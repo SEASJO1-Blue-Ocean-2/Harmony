@@ -1,5 +1,11 @@
 node_modules
 client/dist/bundle.js.map
+<<<<<<< HEAD
 config.js
 bundle.js
 client/dist/bundle.js
+=======
+client/dist/bundle.js
+config.js
+bundle.js
+>>>>>>> temp
