@@ -1,3 +1,12 @@
-.message-icon {
+/* .message-icon {
   background-image: url('./messageicon.png');
+} */
+
+.incoming-outgoing-container {
+  text-align: center;
+  display: inline-flex;
+  position: absolute;
+  bottom: 0;
+  width: 80%;
+  margin: auto;
 }
