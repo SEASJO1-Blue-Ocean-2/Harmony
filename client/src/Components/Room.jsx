@@ -3,6 +3,7 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/analytics';
 import 'firebase/database';
+import FriendsList from './FriendsList/FriendsList.jsx'
 
 import config from '../../../config.js';
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -22,6 +23,7 @@ const Room = () => {
         })}
       </div>
     )}
+    <FriendsList db={db} />
   </div>);
 };
 
