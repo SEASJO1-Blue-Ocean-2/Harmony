@@ -2,3 +2,5 @@ node_modules
 client/dist/bundle.js.map
 config.js
 .eslintrc.js
+client/dist/bundle.js
+.gitignore
