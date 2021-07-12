@@ -20,7 +20,11 @@ const App = (props) => {
   return (<div>
     Hello World
 
-    <Signup auth={auth} db={db} />
+    {user
+    ? <Room db={db} user={user} />
+    : <div> <Signup auth={auth} db={db} /> <Login user={user} auth={auth}/> </div>
+    }
+
 
   </div>)
 };

@@ -3,9 +3,7 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import { addData } from '../../util.js';
 
-import './signup.css';
-
-//const redirect = () => ();
+//import './signup.css';
 
 const Signup = ({ auth }) => {
   //Assume we aren't logged in. Don't show this page if we have already authenticated.
@@ -29,7 +27,6 @@ const Signup = ({ auth }) => {
     }).catch(err => {
       console.log(err);
     });
-    redirect(home);
   }
   //
 
