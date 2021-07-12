@@ -35,7 +35,7 @@ const Signup = ({ auth }) => {
       <form onSubmit={signUp}>
         <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
         <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
-        <input type="text" value={pass} onChange={(e) => setPass(e.target.value)} />
+        <input type="password" value={pass} onChange={(e) => setPass(e.target.value)} />
         <input type="submit" />
       </form> : null}
 

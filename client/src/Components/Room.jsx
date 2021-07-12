@@ -5,8 +5,11 @@ import 'firebase/database';
 
 import { addData } from '../util.js';
 import { useList } from 'react-firebase-hooks/database';
+import { useAuthState } from 'react-firebase-hooks/auth';
 
-const Room = ({ db, user }) => {
+
+const Room = ({ db, auth }) => {
+  const [user] = useAuthState(auth);
   const [message, setMessage] = useState('');
   const [roomName, setRoomname] = useState('test room');
   const [dbRef, setDbRef] = useState(firebase.database().ref('/messages/' + roomName));
@@ -25,27 +28,23 @@ const Room = ({ db, user }) => {
   };
 
   return (<div>
-    <button onClick={() => {
-
-    }}>Add Data</button>
-
-    {(
-      <div>
-        {snapshots.map(v => {
-          return <React.Fragment>
-            {v.key}
-            <ul>
-              {Object.keys(v.val()).map(key => <li>{key}: {v.val()[key]}</li>)}
-            </ul>
-          </React.Fragment>
-        })}
-      </div>
-    )}
+    <div>
+      {snapshots.map(v => {
+        return <React.Fragment>
+          {v.key}
+          <ul>
+            {Object.keys(v.val()).map((key, idx) => <li key={idx}>{key}: {v.val()[key]}</li>)}
+          </ul>
+        </React.Fragment>
+      })}
+    </div>
 
     <form onSubmit={sendMessage}>
       <input type='text' value={message} onChange={e => setMessage(e.target.value)} />
       <input type='submit' />
     </form>
+
+    <button onClick={() => {auth.signOut()}}>Sign Out</button>
   </div>);
 };
 
