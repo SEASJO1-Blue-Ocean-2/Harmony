@@ -22,13 +22,11 @@ function Profile({ auth, db }) {
   }
 
   useEffect(() => {
-    setProfileData({
-      bio: 'NA',
-      country: 'NA',
-      email: user.email,
-      name: user.displayName,
-      picture: user.photoURL,
-    });
+    const userId = user.uid;
+    const temp = db.ref(`users/${userId}`).on('value', (snapshot) => {
+      console.log(snapshot.val());
+      setProfileData(snapshot.val());
+    })
   }, []);
 
   return (
