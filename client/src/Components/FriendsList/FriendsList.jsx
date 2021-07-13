@@ -8,18 +8,19 @@ import Friend from './Friend.jsx';
 import IncomingButton from './IncomingButton.jsx';
 import OutgoingButton from './OutgoingButton.jsx';
 
-
 const FriendsList = (props) => {
   const { db, user } = props;
   const [userId, setUserId] = useState(user.uid);
   const [friendsList, loading, error] = useList(db.ref(`friends/${userId}`));
-  console.log('this is the friends lsit', friendsList);
+  // console.log(typeof userId);
+  // console.log('this is the friends lsit', friendsList);
 
   useEffect(() => {
     // this will set state for user id with setUserId('whatever is passed from app on auth')
+    // setUserId(user.uid);
   });
   return (
-    <div>
+    <div data-test="friends-list">
       <h2 className="friends-list-title" className='currentPage'>Friends List</h2>
       <div className="friends-list-conatiner">
         {!loading && friendsList.length > 0 && (
