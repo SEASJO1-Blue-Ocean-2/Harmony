@@ -10,7 +10,8 @@ import Login from './login/LoginView';
 import 'firebase/auth';
 import 'firebase/database';
 import config from '../../../config';
-import Nav from './Nav';
+import NavigationBar from './Homepage/NavigationBar';
+import Signup from './login/SignupView';
 
 firebase.initializeApp(config);
 const auth = firebase.auth();
@@ -23,20 +24,31 @@ const App = (props) => {
   const [user] = useAuthState(auth);
   return (
 
-  <Router>
-    <div>
-      <Switch>
-        <Route path='/' exact
-        render={()=> <Login user={user} auth={auth}/>} />
-        <Route path='/home'
-        render={()=> <MainPage user={user} auth={auth} db={db} />} />
-        <Route path='/signUp'
-        render={()=> <Signup auth={auth} db={db} />} />
-      </Switch>
-    </div>
-  </Router>);
+    <Router>
+      <div>
+        <NavigationBar user={user} db={db} auth={auth} />
+        <Switch>
+          <Route
+            path="/"
+            exact
+            render={() => <Login user={user} auth={auth} />}
+          />
+          <Route
+            path="/home"
+            render={() => <MainPage user={user} auth={auth} db={db} />}
+          />
+          <Route
+            path="/signUp"
+            render={() => <Signup auth={auth} db={db} />}
+          />
+          <Route
+            path="/profile"
+            render={() => <Profile auth={auth} />}
+          />
+        </Switch>
+      </div>
+    </Router>
+  );
 };
 
-
 export default App;
-
