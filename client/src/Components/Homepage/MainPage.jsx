@@ -7,13 +7,9 @@ import {
 } from 'react-router-dom';
 import Nav from '../Nav';
 
-import RoomsList from './RoomsList';
 import Profile from '../profile/Profile';
-  Link
-} from "react-router-dom";
 
 import NavigationBar from './NavigationBar.jsx';
-import RoomsList from '../Rooms/RoomsList.jsx';
 
 const MainPage = (props) => {
   return (
