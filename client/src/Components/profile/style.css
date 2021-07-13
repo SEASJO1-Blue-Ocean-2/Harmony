@@ -1,0 +1,35 @@
+.profilePic {
+  width: 180px;
+  height: 200px;
+  vertical-align: top;
+  display: inline-block;
+}
+
+.profile {
+  align-items: center;
+
+}
+
+.text {
+  width: 150px;
+  float:right;
+  line-height: 2.5em;
+  margin-right:0px;
+  word-wrap: break-word;
+}
+
+.bio {
+  display: block;
+  margin-top: 10px;
+}
+
+.bioUpdateText {
+  height: 300px;
+  width: 180px;
+}
+
+.updateButton {
+  position: relative;
+  margin-left: 35%;
+  margin-top: 70%;
+}
