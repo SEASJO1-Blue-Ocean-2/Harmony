@@ -11,9 +11,9 @@ import NavigationBar from './NavigationBar.jsx';
 
 const MainPage = (props) => {
   return (
-    <>
+    <div>
       <NavigationBar user={props.user} db={props.db} />
-   </>
+   </div>
   );
 }
 

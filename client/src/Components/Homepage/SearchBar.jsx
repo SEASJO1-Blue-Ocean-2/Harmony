@@ -8,18 +8,26 @@ import {
 
 import RoomsList from '../Rooms/RoomsList.jsx';
 import FriendsList from '../FriendsList/FriendsList.jsx';
+import NotificationsList from '../Notifications/NotificationsList.jsx';
 
 class SearchBar extends React.Component {
   constructor(props) {
     super(props);
+
+    this.handleSearchBarChange = this.handleSearchBarChange.bind(this);
   }
 
+  handleSearchBarChange(event) {
+    var currentDropDown = document.getElementsByClassName('currentPage')[0].innerText;
+    console.log(currentDropDown);
+    console.log(event.target.value);
+  }
 
   render() {
     return (
       <>
         <div>
-        <input type='text' className='SearchBar' placeholder='Search'>
+        <input type='text' className='SearchBar' placeholder='Search' onChange={this.handleSearchBarChange}>
         </input>
         <Router>
           <div>
@@ -29,8 +37,6 @@ class SearchBar extends React.Component {
               <Link to="/FriendsList">Friends List</Link>
             </nav>
 
-            {/* A <Switch> looks through its children <Route>s and
-              renders the first one that matches the current URL. */}
             <Switch>
               <Route path="/Rooms">
                 <RoomsList />
@@ -39,7 +45,7 @@ class SearchBar extends React.Component {
                 <FriendsList db = {this.props.db} user = {this.props.user}/>
               </Route>
               <Route path="/Notifications">
-                <Notifications />
+                <NotificationsList />
               </Route>
             </Switch>
           </div>
@@ -50,17 +56,7 @@ class SearchBar extends React.Component {
   }
 }
 
-function Rooms() {
-  return <h2 className='currentPage'>Rooms</h2>;
-}
 
-function Friends() {
-  return <h2 className='currentPage'>Friends List</h2>;
-}
-
-function Notifications() {
-  return <h2 className='currentPage'>Notifications</h2>;
-}
 
 
 
