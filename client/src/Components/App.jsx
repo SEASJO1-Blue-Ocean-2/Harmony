@@ -8,6 +8,7 @@ import Login from './login/LoginView.jsx';
 import Signup from './login/SignupView.jsx';
 
 import firebase from 'firebase/app';
+import 'firebase/database';
 import 'firebase/auth';
 import 'firebase/database';
 import { useAuthState } from 'react-firebase-hooks/auth';
