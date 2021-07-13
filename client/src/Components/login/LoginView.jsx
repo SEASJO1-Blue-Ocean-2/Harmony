@@ -58,7 +58,7 @@ return (
           <button onClick={signInWithGoogle}>Sign In with Google</button>
         </div>
         <div>
-          <img src="./img/fb-logo.png" alt="Facebook logo" ></img>
+          <img src="./img/fb-logo.png"alt="Facebook logo" ></img>
           <button onClick={signInWithGoogle}>Sign In with Facebook</button>
         </div>
       </div>

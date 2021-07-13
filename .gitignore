@@ -2,8 +2,7 @@ node_modules
 client/dist/bundle.js.map
 .eslintrc.js
 client/dist/bundle.js
-config.js
-.DS_Store
+.gitignore
 bundle.js
 config.js
 .eslintrc.json
