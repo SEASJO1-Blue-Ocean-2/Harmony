@@ -5,10 +5,16 @@ import {
   Route,
   Link
 } from "react-router-dom";
+<<<<<<< HEAD
 
 import RoomsList from '../Rooms/RoomsList.jsx';
 import FriendsList from '../FriendsList/FriendsList.jsx';
 import NotificationsList from '../Notifications/NotificationsList.jsx';
+=======
+import Test from './test.jsx';
+import RoomsList from '../Rooms/RoomsList.jsx';
+
+>>>>>>> 60ee25c (merging before pull)
 
 class SearchBar extends React.Component {
   constructor(props) {
@@ -42,7 +48,12 @@ class SearchBar extends React.Component {
                 <RoomsList />
               </Route>
               <Route path="/FriendsList">
+<<<<<<< HEAD
                 <FriendsList db = {this.props.db} user = {this.props.user}/>
+=======
+                <FriendsList/>
+                {/* <FriendsList db ={db} user={user} /> */}
+>>>>>>> 60ee25c (merging before pull)
               </Route>
               <Route path="/Notifications">
                 <NotificationsList />

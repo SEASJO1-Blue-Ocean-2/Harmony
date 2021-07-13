@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import RoomEntry from './RoomEntry.jsx';
 import CreateRoom from './CreateRoom.jsx';
-import Logout from './Logout.jsx';
+import Logout from '../Homepage/Logout.jsx';
 
 const RoomsList = (props) => {
   const [viewType, setView] = useState('your-rooms');

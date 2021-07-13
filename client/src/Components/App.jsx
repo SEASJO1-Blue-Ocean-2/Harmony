@@ -25,7 +25,10 @@ const App = (props) => {
   const [user] = useAuthState(auth);
   return (<div>
     {/* <Login user={user} auth={auth} /> */}
+<<<<<<< HEAD
 
+=======
+>>>>>>> 60ee25c (merging before pull)
     {/* <Signup auth={auth} db={db} /> */}
 
     {/* <Room /> */}
