@@ -12,7 +12,8 @@ import OutgoingButton from './OutgoingButton.jsx';
 const FriendsList = (props) => {
   const { db, user } = props;
   const [userId, setUserId] = useState(user.uid);
-  const [friendsList, loading, error] = useList(db.ref(`users/${userId}/friends`));
+  const [friendsList, loading, error] = useList(db.ref(`friends/${userId}`));
+  console.log('this is the friends lsit', friendsList);
 
   useEffect(() => {
     // this will set state for user id with setUserId('whatever is passed from app on auth')
