@@ -14,7 +14,11 @@ Then create a dbRef (probably in a useEffect). the path should be from the root
 leaving the key parameter blank will generate a random one
 */
 
+<<<<<<< HEAD
 const addData = (data, dbRef, key = '') => {
+=======
+const addData = (data, dbRef, key = '', path = '') => {
+>>>>>>> a5a7769182d944aeec084558ab347002928319db
   var key = key || dbRef.push().key;
   var path = '/' + key;
   var updates = {};
@@ -23,3 +27,4 @@ const addData = (data, dbRef, key = '') => {
 };
 
 module.exports = {addData: addData};
+

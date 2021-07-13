@@ -30,7 +30,13 @@ const Login = ({ user, auth }) => {
   return (
   <div>
     {user && <button onClick={signOut}>Sign Out</button>}
+<<<<<<< HEAD
     {user ? <Redirect to="/home" />
+=======
+    <div className="login-logo">HARMONY LOGO PLACE HOLDER</div>
+    {user ? <Redirect to="/home" />
+
+>>>>>>> a5a7769182d944aeec084558ab347002928319db
     :
     <div>
       <div className="login-logo">HARMONY LOGO PLACE HOLDER</div>
