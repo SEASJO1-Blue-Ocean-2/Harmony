@@ -7,11 +7,12 @@ import 'firebase/database';
 import { addData } from '../util.js';
 import { useList } from 'react-firebase-hooks/database';
 
-const Room = ({ db, user, roomName }) => {
+const Room = ({ db, auth, roomName }) => {
+  const [user] = useAuthState(auth);
   const [message, setMessage] = useState('');
-  const [dbRef, setDbRef] = useState(firebase.database().ref('/messages/' + roomName));
+  const [dbRef, setDbRef] = useState(db.ref('/messages/' + roomName));
   const [snapshots, loading, error] = useList(dbRef);
-
+  console.log(roomName);
 
   const sendMessage = (e) => {
     e.preventDefault();
@@ -25,17 +26,13 @@ const Room = ({ db, user, roomName }) => {
   };
 
   return (<div>
-    <button onClick={() => {
-
-    }}>Add Data</button>
-
     {(
       <div>
         {snapshots.map(v => {
           return <React.Fragment>
             {v.key}
             <ul>
-              {Object.keys(v.val()).map(key => <li>{key}: {v.val()[key]}</li>)}
+              {<Message data={v.val()}>}
             </ul>
           </React.Fragment>
         })}
