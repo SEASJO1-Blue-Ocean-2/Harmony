@@ -1,0 +1,33 @@
+.row-default {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.column-default {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+#app {
+  height:100vh;
+  justify-content: space-evenly;
+}
+.user-input-wrapper {
+  padding-top: .5em;
+  padding-bottom: .5em;
+}
+#sign-up-in {
+  display: flex;
+  justify-content: space-around;
+}
+button {
+  width: 25vw;
+}
+input {
+  width: 75vw;
+}
+
+.profileIcon {
+  float: right;
+  height: 50px;
+}

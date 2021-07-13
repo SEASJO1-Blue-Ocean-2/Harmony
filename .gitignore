@@ -1,7 +1,13 @@
 node_modules
 client/dist/bundle.js.map
+<<<<<<< HEAD
 config.js
 .eslintrc.js
 client/dist/bundle.js
 .gitignore
 bundle.js
+=======
+client/dist/bundle.js
+config.js
+bundle.js
+>>>>>>> a2a44eba9ab0e21b951eb45e5fae2b795e2b09eb
