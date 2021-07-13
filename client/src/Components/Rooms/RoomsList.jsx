@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import RoomEntry from './RoomEntry.jsx';
 import CreateRoom from './CreateRoom.jsx';
-import Logout from '../Homepage/Logout.jsx';
+import Logout from './Logout.jsx';
 
 const RoomsList = (props) => {
   const [viewType, setView] = useState('your-rooms');
@@ -48,7 +48,7 @@ const RoomsList = (props) => {
           click={ handleRoomClick }/>)}
       </div>
       <CreateRoom />
-      <Logout />
+      <Logout auth={props.auth}/>
     </div>
   )
 }

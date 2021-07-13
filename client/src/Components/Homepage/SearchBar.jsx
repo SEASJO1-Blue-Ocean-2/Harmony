@@ -6,11 +6,8 @@ import {
   Link
 } from "react-router-dom";
 
-
-import RoomsList from '../Rooms/RoomsList.jsx';
 import FriendsList from '../FriendsList/FriendsList.jsx';
 import NotificationsList from '../Notifications/NotificationsList.jsx';
-import Test from './test.jsx';
 import RoomsList from '../Rooms/RoomsList.jsx';
 
 
@@ -40,7 +37,7 @@ class SearchBar extends React.Component {
             </nav>
             <Switch>
               <Route path="/Rooms">
-                <RoomsList />
+                <RoomsList auth={this.props.auth}/>
               </Route>
               <Route path="/FriendsList">
                 <FriendsList db = {this.props.db} user = {this.props.user}/>
