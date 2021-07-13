@@ -9,6 +9,7 @@ import Nav from '../Nav';
 import Profile from '../profile/Profile';
 import NavigationBar from './NavigationBar.jsx';
 import RoomsList from '../Rooms/RoomsList.jsx';
+import SearchBar from './SearchBar';
 
 const MainPage = (props) => {
   return (
