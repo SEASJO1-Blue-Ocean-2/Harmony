@@ -23,8 +23,6 @@ class SearchBar extends React.Component {
 
   handleSearchBarChange(event) {
     var currentDropDown = document.getElementsByClassName('currentPage')[0].innerText;
-    console.log(currentDropDown);
-    console.log(event.target.value);
   }
 
   render() {
@@ -40,7 +38,6 @@ class SearchBar extends React.Component {
               <Link to="/Rooms">Rooms</Link>
               <Link to="/FriendsList">Friends List</Link>
             </nav>
-
             <Switch>
               <Route path="/Rooms">
                 <RoomsList />
