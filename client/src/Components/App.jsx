@@ -7,10 +7,11 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import Profile from './profile/Profile';
 import MainPage from './Homepage/MainPage';
 import Login from './login/LoginView';
+import Signup from './login/SignupView';
 import 'firebase/auth';
 import 'firebase/database';
 import config from '../../../config';
-import Nav from './Nav';
+import NavigationBar from './Homepage/NavigationBar';
 
 firebase.initializeApp(config);
 const auth = firebase.auth();
@@ -25,6 +26,7 @@ const App = (props) => {
 
     <Router>
       <div>
+<<<<<<< HEAD
         <Switch>
           <Route path='/' exact
             render={() => <Login user={user} auth={auth} />} />
@@ -36,8 +38,31 @@ const App = (props) => {
         </Switch>
       </div>
     </Router>);
+=======
+        <NavigationBar user={user} db={db} auth={auth} />
+        <Switch>
+          <Route
+            path="/"
+            exact
+            render={() => <Login user={user} auth={auth} />}
+          />
+          <Route
+            path="/home"
+            render={() => <MainPage user={user} auth={auth} db={db} />}
+          />
+          <Route
+            path="/signUp"
+            render={() => <Signup auth={auth} db={db} />}
+          />
+          <Route
+            path="/profile"
+            render={() => <Profile auth={auth} />}
+          />
+        </Switch>
+      </div>
+    </Router>
+  );
+>>>>>>> db5cc1f5457e9551287887da9b1024dd716f7aba
 };
 
-
 export default App;
-
