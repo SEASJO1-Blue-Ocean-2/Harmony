@@ -5,53 +5,30 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import SearchBar from './SearchBar.jsx';
+import MainPage from './MainPage.jsx';
 
-export default function App() {
-  return (
-    <>
-      <div>
-        <h1 className='Harmony'>harmony</h1>
-        <img src='http://www.pngall.com/wp-content/uploads/5/User-Profile-PNG-Image.png' className='profileIcon'></img>
-      </div>
-      <div className='SearchBar'>Search
-      <img className='MagnifyingGlass' src='https://www.freeiconspng.com/thumbs/magnifying-glass-icon/magnifying-glass-icon-13.png'></img>
-      </div>
-      <Router>
+class NavigationBar extends React.Component {
+  constructor(props) {
+    super(props);
+  }
 
+  render() {
+    return (
+      <>
         <div>
-          <nav className='mainPageOptions'>
-            <Link to="/Notifications">Notifications</Link>
-            <Link to="/Rooms">Rooms</Link>
-            <Link to="/FriendsList">Friends List</Link>
-          </nav>
+          <Link to='/' exact='true'>
+            <input type='image' src='http://cdn.onlinewebfonts.com/svg/img_153287.png' className='homePageIcon'></input>
+          </Link>
 
-          {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
-          <Switch>
-            <Route path="/Rooms">
-              <Rooms />
-            </Route>
-            <Route path="/FriendsList">
-              <FriendsList />
-            </Route>
-            <Route path="/Notifications">
-              <Home />
-            </Route>
-          </Switch>
+          <h1 className='Harmony'>harmony</h1>
+          <img src='http://www.pngall.com/wp-content/uploads/5/User-Profile-PNG-Image.png' className='profileIcon'></img>
+          <SearchBar db={this.props.db} user={this.props.user} />
         </div>
-      </Router>
-    </>
-  );
+      </>
+    );
+  }
 }
 
-function Home() {
-  return <h2>Home</h2>;
-}
+export default NavigationBar;
 
-function Rooms() {
-  return <h2>Rooms</h2>;
-}
-
-function FriendsList() {
-  return <h2>Friends List</h2>;
-}

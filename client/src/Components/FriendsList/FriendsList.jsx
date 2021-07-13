@@ -21,7 +21,7 @@ const FriendsList = (props) => {
   })
   return (
     <div>
-      <h1 className="friends-list-title">Friends List</h1>
+      <h2 className="friends-list-title" className='currentPage'>Friends List</h2>
       <div className="friends-list-conatiner">
         {!loading && friendsList.length > 0 && (
           <div>
