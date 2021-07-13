@@ -1,38 +1,50 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
-import { Link } from "react-router-dom";
+import {
+  BrowserRouter as Router, Switch, Route,
+} from 'react-router-dom';
+import firebase from 'firebase/app';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import Profile from './profile/Profile';
 
-import Room from './Room.jsx';
-import MainPage from './Homepage/MainPage.jsx';
-import Login from './login/LoginView.jsx';
-import Signup from './login/SignupView.jsx';
+import MainPage from './Homepage/MainPage';
+import Login from './login/LoginView';
 
+<<<<<<< HEAD
+=======
 import firebase from 'firebase/app';
 import 'firebase/database';
+>>>>>>> 1361340e2db559f640a451429ded2f71e79444da
 import 'firebase/auth';
 import 'firebase/database';
-import { useAuthState } from 'react-firebase-hooks/auth';
-import config from '../../../config.js';
+
+import config from '../../../config';
+import Nav from './Nav';
 
 firebase.initializeApp(config);
 const auth = firebase.auth();
 const db = firebase.database();
 
+// <Login user={user} auth={auth} />
+// <Room db={db} user={user} />
+
 const App = (props) => {
   const [user] = useAuthState(auth);
   return (
-  <Router>
-    <div>
-      <Switch>
-        <Route path='/' exact
-        render={()=> <Login user={user} auth={auth}/>} />
-        <Route path='/home'
-        render={()=> <MainPage user={user} />} />
-        <Route path='/signUp'
-        render={()=> <Signup auth={auth} db={db} />} />
-      </Switch>
-    </div>
-  </Router>);
-};
+
+    <Router>
+      <div>
+        <Nav />
+        <Switch>
+          <Route path="/" exact render={() => <Login user={user} auth={auth} />} />
+          <Route
+            path="/home"
+            render={() => <MainPage user={user} />} />
+          <Route path="/profile" render={() => <Profile auth={auth} />} />
+          <Route path='/signUp'
+            render={()=> <Signup auth={auth} db={db} />} />
+        </Switch>
+      </div>
+    </Router>
+  );
 
 export default App;

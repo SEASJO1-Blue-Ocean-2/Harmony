@@ -17,10 +17,9 @@ const FriendsList = (props) => {
   const {db} = props;
   const [userId, setUserId] = useState('VgJMO8SsGjS4RomQdFn1NeyQqzq2'/*this will be pulled from state on user auth*/)
   const [friendsList, loading, error] = useList(db.ref(`users/uid/friends`));
-  console.log('this is the friends list', friendsList);
   return (
     <div>
-      <h1 className="friends-list-title">Friends List</h1>
+      <h2 className="friends-list-title" className='currentPage'>Friends List</h2>
       <div className="friends-list-conatiner">
         {!loading && friendsList.length > 0 && (
           <div>

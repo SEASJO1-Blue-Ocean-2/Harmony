@@ -28,12 +28,6 @@ const Login = ({ user, auth }) => {
   };
 
   return (
-  <div>
-    {user && <button onClick={signOut}>Sign Out</button>}
-    <div className="login-logo">HARMONY LOGO PLACE HOLDER</div>
-    {user ? <Redirect to="/home" />
-
-    :
     <div>
       <div className="login-logo">HARMONY LOGO PLACE HOLDER</div>
       <form className="signUp container">
@@ -67,6 +61,8 @@ const Login = ({ user, auth }) => {
 
   </div>)
 
+    </div>
+  );
 };
 
 export default Login;

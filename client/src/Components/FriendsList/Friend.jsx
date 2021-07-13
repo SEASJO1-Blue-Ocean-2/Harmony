@@ -6,9 +6,6 @@ const Friend = (props) => {
   const { friendId, db } = props;
   const [friendName, setFriendName] = useState('');
   const tempId = 'A2PyioigFaYkKpPFqUcgNN5Gwkp1';
-
-  console.log('this is the friend ID', friendId);
-
   const friendNameRef = db.ref(`users/${friendId}/username`);
 
   useEffect(() => {
