@@ -1,13 +1,5 @@
 node_modules
-<<<<<<< HEAD
-client/dist/bundle.js
-client/dist/bundle.js
-config.js
-bundle.js
-.eslintrc.json
-=======
 client/dist/bundle.js.map
 client/dist/bundle.js
 config.js
 bundle.js
->>>>>>> 60ee25c (merging before pull)
