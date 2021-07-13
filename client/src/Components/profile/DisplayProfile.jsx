@@ -27,7 +27,7 @@ function DisplayProfile({ profileData }) {
         </span>
       </div>
       <br />
-      <div>
+      <div className={css.bio}>
         <span>
           Bio:
           {' '}
@@ -35,9 +35,8 @@ function DisplayProfile({ profileData }) {
         </span>
       </div>
       <Link to="/updateprofile">
-        <button type="button">Update Profile</button>
+        <button type="button" className={css.updateButton}>Update Profile</button>
       </Link>
-
     </div>
   );
 }

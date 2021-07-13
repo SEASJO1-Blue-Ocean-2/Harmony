@@ -14,15 +14,22 @@
   width: 150px;
   float:right;
   line-height: 2.5em;
-  margin:5px;
+  margin-right:0px;
   word-wrap: break-word;
 }
 
 .bio {
   display: block;
+  margin-top: 10px;
 }
 
 .bioUpdateText {
   height: 300px;
   width: 180px;
+}
+
+.updateButton {
+  position: relative;
+  margin-left: 35%;
+  margin-top: 70%;
 }

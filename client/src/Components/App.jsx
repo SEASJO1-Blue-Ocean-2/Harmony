@@ -1,54 +1,45 @@
 import React from 'react';
-<<<<<<< HEAD
-import Room from './Room';
+import {
+  BrowserRouter as Router, Switch, Route,
+} from 'react-router-dom';
+import firebase from 'firebase/app';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import Profile from './profile/Profile';
 
-const App = (props) => (
-  <div>
-    <Profile />
-  </div>
-);
-=======
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
-import { Link } from "react-router-dom";
+import MainPage from './Homepage/MainPage';
+import Login from './login/LoginView';
 
-import Room from './Room.jsx';
-import MainPage from './Homepage/MainPage.jsx';
-import Login from './login/LoginView.jsx';
-import Signup from './login/SignupView.jsx';
-
-import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/database';
-import { useAuthState } from 'react-firebase-hooks/auth';
-import config from '../../../config.js';
+
+import config from '../../../config';
+import Nav from './Nav';
 
 firebase.initializeApp(config);
 const auth = firebase.auth();
 const db = firebase.database();
 
-//<Login user={user} auth={auth} />
-//<Room db={db} user={user}/>
-
+// <Login user={user} auth={auth} />
+// <Room db={db} user={user}/>
 
 const App = (props) => {
   const [user] = useAuthState(auth);
-  return (<div>
-    Hello World
-    <Login user={user} auth={auth} />
+  return (
 
-    {/* <Signup auth={auth} db={db} /> */}
-
-    {/* <Room /> */}
     <Router>
       <div>
+        <Nav />
         <Switch>
-          <Route path='/' exact
-          render={()=> <MainPage user={user} />} />
+          <Route path="/" exact render={() => <Login user={user} auth={auth} />} />
+          <Route
+            path="/home"
+            render={() => <MainPage user={user} />}
+          />
+          <Route path="/profile" render={() => <Profile auth={auth} />} />
         </Switch>
       </div>
     </Router>
-  </div>)
+  );
 };
 
 export default App;

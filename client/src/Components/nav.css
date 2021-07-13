@@ -1,0 +1,30 @@
+.home {
+  height: 70px;
+  width: 70px;
+  padding-right: 10px;
+}
+
+.profile {
+  height: 70px;
+  width: 90px;
+}
+
+.title {
+  vertical-align: middle;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.nav {
+  display:flex;
+  /* justify-content: space-around; */
+  align-items: center;
+  min-height: 10vh;
+  color: black;
+  font-style: italic;
+  font-size: 45px;
+  text-shadow: 1px 1px 10px grey;
+  margin: 0px;
+  margin-bottom: 1rem;
+  padding: 10px;
+}

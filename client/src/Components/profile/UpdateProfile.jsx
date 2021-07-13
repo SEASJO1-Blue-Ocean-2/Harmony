@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import css from './style.css';
 
-function UpdateProfile({ setProfileData }) {
+function UpdateProfile({ updateData }) {
   const [name, setName] = useState('');
   const [country, setCountry] = useState('');
   const [email, setEmail] = useState('');
@@ -26,7 +26,7 @@ function UpdateProfile({ setProfileData }) {
   }
 
   function onClick() {
-    setProfileData({
+    updateData({
       name,
       country,
       email,
@@ -55,7 +55,7 @@ function UpdateProfile({ setProfileData }) {
       <br />
       <textarea className={css.bioUpdateText} row="400" cols="20" id="bio" onChange={onChangeBio} />
       <br />
-      <Link to="/">
+      <Link to="/profile">
         <button type="button" onClick={onClick}>Save Profile</button>
       </Link>
     </div>
@@ -63,7 +63,7 @@ function UpdateProfile({ setProfileData }) {
 }
 
 UpdateProfile.propTypes = {
-  setProfileData: PropTypes.func.isRequired,
+  updateData: PropTypes.func.isRequired,
 };
 
 export default UpdateProfile;
