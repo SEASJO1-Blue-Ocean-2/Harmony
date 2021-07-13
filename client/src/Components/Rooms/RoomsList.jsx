@@ -3,13 +3,16 @@ import RoomEntry from './RoomEntry.jsx';
 import CreateRoom from './CreateRoom.jsx';
 import Logout from './Logout.jsx';
 
-const RoomsList = (props) => {
+const RoomsList = ({ user, auth, db }) => {
   const [viewType, setView] = useState('your-rooms');
   const [yourRooms, setRooms] = useState(['list', 'of', 'rooms']);
   const [suggestedRooms, setSuggestions] = useState(['list', 'of', 'suggestions']);
 
   const handleRoomClick = () => {
     // joins the room not sure how to route this yet.
+    console.log('auth is here: ', auth)
+    console.log('db is here: ', db)
+    console.log('user is here: ', user)
   }
 
   const handleViewType = (e) => {
