@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@testing-library/jest-dom": "^5.14.1",
     "css-loader": "^5.2.7",
     "express": "^4.17.1",
     "firebase": "^8.7.1",

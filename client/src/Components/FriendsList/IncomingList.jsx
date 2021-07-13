@@ -1,11 +1,13 @@
 import React from 'react';
+import IncomingRequest from './IncomingRequest.jsx';
 
 const IncomingList = (props) => {
   const temp = '';
   return (
-    <dvi>
-      this is the list of incoming requests
-    </dvi>
+    <div>
+      {/* this would map over list of pending requests */}
+      <IncomingRequest />
+    </div>
   );
 };
 
