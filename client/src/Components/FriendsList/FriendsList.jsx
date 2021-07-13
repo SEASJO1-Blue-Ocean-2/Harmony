@@ -15,7 +15,7 @@ import { useList } from 'react-firebase-hooks/database';
 
 const FriendsList = (props) => {
   const {db} = props;
-  const [userId, setUserId] = useState('VgJMO8SsGjS4RomQdFn1NeyQqzq2'/*this will be pulled from state on user auth*/)
+  const [userId, setUserId] = useState('VgJMO8SsGjS4RomQdFn1NeyQqzq2'/*this will be pulled from state on user auth*/);
   const [friendsList, loading, error] = useList(db.ref(`users/uid/friends`));
   return (
     <div>
