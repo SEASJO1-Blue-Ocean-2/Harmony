@@ -5,14 +5,16 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import NavigationBar from './NavigationBar.jsx';
-import RoomsList from './RoomsList.jsx';
 
-export default function MainPage() {
+import NavigationBar from './NavigationBar.jsx';
+
+
+const MainPage = (props) => {
   return (
     <>
-      <NavigationBar />
-      <RoomsList />
+      <NavigationBar user={props.user} db={props.db} />
    </>
   );
 }
+
+export default MainPage;

@@ -24,8 +24,7 @@ const db = firebase.database();
 const App = (props) => {
   const [user] = useAuthState(auth);
   return (<div>
-    Hello World
-    <Login user={user} auth={auth} />
+    {/* <Login user={user} auth={auth} /> */}
 
     {/* <Signup auth={auth} db={db} /> */}
 
@@ -34,7 +33,7 @@ const App = (props) => {
       <div>
         <Switch>
           <Route path='/' exact
-          render={()=> <MainPage user={user} />} />
+          render={()=> <MainPage user={user} db={db} />} />
         </Switch>
       </div>
     </Router>

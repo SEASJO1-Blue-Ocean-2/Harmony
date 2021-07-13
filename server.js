@@ -6,7 +6,9 @@ const PORT = 3000;
 app.use("/", express.static('./client/dist/'));
 
 
-// app.get("/users")
+app.get("/Notifications", (req, res)=> {
+  res.send(200);
+})
 
 
 // app.get("/users")

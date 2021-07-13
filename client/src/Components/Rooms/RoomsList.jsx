@@ -20,7 +20,7 @@ const RoomsList = (props) => {
 
   return (
     <div className='main-page'>
-
+      <h2 className='currentPage'>Rooms List</h2>
       <div className='toggle-room-container'>
         <button
         className='toggle-room-button'
