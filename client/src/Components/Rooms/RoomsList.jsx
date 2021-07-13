@@ -1,19 +1,41 @@
 import React, { useState, useEffect } from 'react';
+import { useList } from 'react-firebase-hooks/database';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+
 import RoomEntry from './RoomEntry.jsx';
 import CreateRoom from './CreateRoom.jsx';
 import Logout from './Logout.jsx';
 
-const RoomsList = ({ user, auth, db }) => {
+
+const RoomsList = ({ auth, db }) => {
+  const [user, setUser] = useState(auth.currentUser.uid);
   const [viewType, setView] = useState('your-rooms');
-  const [yourRooms, setRooms] = useState(['list', 'of', 'rooms']);
+  const [dbRef, setDbRef] = useState(db.ref('/rooms/'));
+  const [snapshots, loading, error] = useList(dbRef);
+  const [yourRooms, setRooms] = useState([]);
   const [suggestedRooms, setSuggestions] = useState(['list', 'of', 'suggestions']);
 
-  const handleRoomClick = () => {
-    // joins the room not sure how to route this yet.
-    console.log('auth is here: ', auth)
-    console.log('db is here: ', db)
-    console.log('user is here: ', user)
+  const test = () => {
+    let allRooms = snapshots.forEach(
+      v => {
+        let room = v.val()
+        for (let key in room.users) {
+          if (key === user) {
+            yourRooms.push(room)
+            setRooms([...yourRooms])
+          }
+        }
+      })
   }
+
+  useEffect(() => {
+
+  }, [snapshots])
 
   const handleViewType = (e) => {
     e.target.id === 'your-rooms'
@@ -36,23 +58,31 @@ const RoomsList = ({ user, auth, db }) => {
         onClick={ handleViewType }
         >Room Suggestions</button>
       </div>
-
-      <div className='rooms-list'>
-        {viewType === 'your-rooms'
-        ? yourRooms.map( (room, i) =>
-          <RoomEntry
-          key={i}
-          room={room}
-          click={ handleRoomClick }/>)
-        : suggestedRooms.map( (room, i) =>
-          <RoomEntry
-          key={i}
-          room={room}
-          click={ handleRoomClick }/>)}
-      </div>
+        <div className='rooms-list'>
+          {viewType === 'your-rooms'
+          ? yourRooms.map( (room, i) => {
+            return (<Link to={`/room/${room.roomid}`} key={i}>
+              <RoomEntry
+              key={i}
+              room={room}/>
+            </Link>)
+            })
+          : suggestedRooms.map( (room, i) =>{
+            return (<Link to={`/room/${room.roomid}`} key={i}>
+              <RoomEntry
+              key={i}
+              room={room}/>
+            </Link>)
+            })}
+        </div>
       <CreateRoom />
+<<<<<<< HEAD
       <Logout auth={props.auth}/>
 
+=======
+      <Logout auth={auth}/>
+      <button onClick={test}>Test here</button>
+>>>>>>> a2722f2 (Roomslist now lists a link to each of the rooms a user is apart of)
     </div>
   )
 }

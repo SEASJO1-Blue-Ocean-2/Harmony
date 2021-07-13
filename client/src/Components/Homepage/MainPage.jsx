@@ -15,6 +15,7 @@ const MainPage = ({ user, auth, db }) => {
     <>
       <NavigationBar user={user} db={db} auth={auth} />
       <RoomsList user={user} db={db} auth={auth} />
+      {/* <RoomsList user={user} db={db} auth={auth} /> */}
       {/* <Profile /> */}
    </>
   );
