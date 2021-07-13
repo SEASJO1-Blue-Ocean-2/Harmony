@@ -1,0 +1,21 @@
+.mainpage {
+  border: 3px solid blue;
+}
+
+.toggleRoomContainer {
+  display: flex;
+  justify-content: center;
+  width: 90vw;
+  /* border: 3px solid blue; */
+}
+
+.toggleRoomButton {
+  width: 50vw
+}
+
+.roomsList {
+  border: 3px solid red;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

@@ -1,3 +1,4 @@
+import css from './RoomsListStyles.css'
 import React, { useState, useEffect } from 'react';
 import { useList } from 'react-firebase-hooks/database';
 import {
@@ -20,7 +21,7 @@ const RoomsList = ({ auth, db }) => {
   const [yourRooms, setRooms] = useState([]);
   const [suggestedRooms, setSuggestions] = useState(['list', 'of', 'suggestions']);
 
-  const test = () => {
+  const renderRooms = () => {
     let allRooms = snapshots.forEach(
       v => {
         let room = v.val()
@@ -34,8 +35,8 @@ const RoomsList = ({ auth, db }) => {
   }
 
   useEffect(() => {
-
-  }, [snapshots])
+    renderRooms();
+  }, [])
 
   const handleViewType = (e) => {
     e.target.id === 'your-rooms'
@@ -44,21 +45,21 @@ const RoomsList = ({ auth, db }) => {
   }
 
   return (
-    <div className='main-page'>
+    <div className={css.mainpage}>
       <h2 className='currentPage'>Rooms List</h2>
-      <div className='toggle-room-container'>
+      <div className={css.toggleRoomContainer}>
         <button
-        className='toggle-room-button'
+        className={css.toggleRoomButton}
         id='your-rooms'
         onClick={ handleViewType }
         >Your Rooms</button>
         <button
-        className='toggle-room-button'
+        className={css.toggleRoomButton}
         id='suggested-rooms'
         onClick={ handleViewType }
         >Room Suggestions</button>
       </div>
-        <div className='rooms-list'>
+        <div className={css.roomsList}>
           {viewType === 'your-rooms'
           ? yourRooms.map( (room, i) => {
             return (<Link to={`/room/${room.roomid}`} key={i}>
@@ -76,13 +77,11 @@ const RoomsList = ({ auth, db }) => {
             })}
         </div>
       <CreateRoom />
-<<<<<<< HEAD
-      <Logout auth={props.auth}/>
-
-=======
       <Logout auth={auth}/>
+
       <button onClick={test}>Test here</button>
->>>>>>> a2722f2 (Roomslist now lists a link to each of the rooms a user is apart of)
+
+      <button onClick={renderRooms}>Render Rooms Here</button>
     </div>
   )
 }
