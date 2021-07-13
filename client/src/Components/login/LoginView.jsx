@@ -57,11 +57,6 @@ const Login = ({ user, auth }) => {
         </div>
       </div>
     </div>
-    }
-
-  </div>)
-
-    </div>
   );
 };
 

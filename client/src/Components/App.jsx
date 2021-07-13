@@ -4,9 +4,9 @@ import {
 } from 'react-router-dom';
 import firebase from 'firebase/app';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import Profile from './profile/Profile';
-import MainPage from './Homepage/MainPage';
-import Login from './login/LoginView';
+import Profile from './profile/Profile.jsx';
+import MainPage from './Homepage/MainPage.jsx';
+import Login from './login/LoginView.jsx';
 import 'firebase/auth';
 import 'firebase/database';
 import config from '../../../config';
