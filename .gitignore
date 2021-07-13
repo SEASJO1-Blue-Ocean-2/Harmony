@@ -2,6 +2,7 @@ node_modules
 client/dist/bundle.js.map
 client/dist/bundle.js
 config.js
+.DS_Store
 bundle.js
 .eslintrc.json
 .DS_Store
