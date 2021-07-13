@@ -6,23 +6,19 @@ import {
   Link,
 } from 'react-router-dom';
 import Nav from '../Nav';
-
-import RoomsList from './RoomsList';
 import Profile from '../profile/Profile';
-  Link
-} from "react-router-dom";
 
 import NavigationBar from './NavigationBar.jsx';
 import RoomsList from '../Rooms/RoomsList.jsx';
 
-const MainPage = (props) => {
+const MainPage = ({ user, auth, db }) => {
   return (
     <>
     <div>
-      <NavigationBar user={props.user} db={props.db} auth={props.auth} />
+      <NavigationBar user={user} db={db} auth={auth} />
    </div>
     <>
-      <RoomsList />
+      <RoomsList user={user} db={db} auth={auth} />
       {/* <Profile /> */}
     </>
       <NavigationBar />
