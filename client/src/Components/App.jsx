@@ -17,30 +17,21 @@ firebase.initializeApp(config);
 const auth = firebase.auth();
 const db = firebase.database();
 
-//<Login user={user} auth={auth} />
-//<Room db={db} user={user}/>
-
-
 const App = (props) => {
   const [user] = useAuthState(auth);
-  return (<div>
-    {/* <Login user={user} auth={auth} /> */}
-<<<<<<< HEAD
-
-=======
->>>>>>> 60ee25c (merging before pull)
-    {/* <Signup auth={auth} db={db} /> */}
-
-    {/* <Room /> */}
-    <Router>
-      <div>
-        <Switch>
-          <Route path='/' exact
-          render={()=> <MainPage user={user} db={db} />} />
-        </Switch>
-      </div>
-    </Router>
-  </div>)
+  return (
+  <Router>
+    <div>
+      <Switch>
+        <Route path='/' exact
+        render={()=> <Login user={user} auth={auth}/>} />
+        <Route path='/home'
+        render={()=> <MainPage user={user} />} />
+        <Route path='/signUp'
+        render={()=> <Signup auth={auth} db={db} />} />
+      </Switch>
+    </div>
+  </Router>);
 };
 
 export default App;
