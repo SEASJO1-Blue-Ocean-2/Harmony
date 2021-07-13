@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import firebase from 'firebase/app';
-import { useList } from 'react-firebase-hooks/database';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import PropTypes from "prop-types";
 import UpdateProfile from './UpdateProfile';
@@ -9,13 +7,8 @@ import DisplayProfile from './DisplayProfile';
 import 'firebase/auth';
 import 'firebase/analytics';
 import 'firebase/database';
-import config from '../../../../config';
 
-/* firebase.initializeApp(config);
-const auth = firebase.auth();
-const db = firebase.database(); */
-
-function Profile({ auth }) {
+function Profile({ auth, db }) {
   /* const [snapshots, loading, error] = useList(db.ref('users')); */
   const [user] = useAuthState(auth);
 
@@ -25,15 +18,10 @@ function Profile({ auth }) {
 
   function updateData(data) {
     setProfileData(data);
+    db.ref(`users/${user.uid}`).update(data);
   }
 
   useEffect(() => {
-    /* if (!loading) {
-      setProfileData(JSON.parse(JSON.stringify(snapshots[0])));
-    } */
-    console.log(typeof auth);
-    console.log(auth);
-    console.log(user);
     setProfileData({
       bio: 'NA',
       country: 'NA',
