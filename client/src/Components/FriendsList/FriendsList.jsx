@@ -10,10 +10,12 @@ import OutgoingButton from './OutgoingButton.jsx';
 
 
 const FriendsList = (props) => {
-  const { db } = props;
-  const [userId, setUserId] = useState('VgJMO8SsGjS4RomQdFn1NeyQqzq2'/* this will be pulled from state on user auth */);
+  const { db, user } = props;
+  // console.log('this is the db', db);
+  const [userId, setUserId] = useState(user.uid/* this will be pulled from state on user auth */);
+  // console.log('this si the userid', userId);
   // userid will go in place of uid in db.ref
-  const [friendsList, loading, error] = useList(db.ref(`users/uid/friends`));
+  const [friendsList, loading, error] = useList(db.ref(`users/${userId}/friends`));
   // console.log('this is the friends list', friendsList);
 
   useEffect(() => {

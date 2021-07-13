@@ -22109,17 +22109,19 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 var FriendsList = function FriendsList(props) {
-  var db = props.db;
+  var db = props.db,
+      user = props.user; // console.log('this is the db', db);
 
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('VgJMO8SsGjS4RomQdFn1NeyQqzq2'
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(user.uid
   /* this will be pulled from state on user auth */
   ),
       _useState2 = _slicedToArray(_useState, 2),
       userId = _useState2[0],
-      setUserId = _useState2[1]; // userid will go in place of uid in db.ref
+      setUserId = _useState2[1]; // console.log('this si the userid', userId);
+  // userid will go in place of uid in db.ref
 
 
-  var _useList = (0,react_firebase_hooks_database__WEBPACK_IMPORTED_MODULE_2__.useList)(db.ref("users/uid/friends")),
+  var _useList = (0,react_firebase_hooks_database__WEBPACK_IMPORTED_MODULE_2__.useList)(db.ref("users/".concat(userId, "/friends"))),
       _useList2 = _slicedToArray(_useList, 3),
       friendsList = _useList2[0],
       loading = _useList2[1],
@@ -22434,7 +22436,7 @@ var SearchBar = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_FriendsList_FriendsList_jsx__WEBPACK_IMPORTED_MODULE_1__.default, {
         db: this.props.db,
         user: this.props.user
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_FriendsList_FriendsList_jsx__WEBPACK_IMPORTED_MODULE_1__.default, null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Route, {
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Route, {
         path: "/Notifications"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Notifications_NotificationsList_jsx__WEBPACK_IMPORTED_MODULE_2__.default, null)))))));
     }
@@ -22710,7 +22712,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! firebase/app */ "./node_modules/firebase/app/dist/index.esm.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var firebase_auth__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! firebase/auth */ "./node_modules/firebase/auth/dist/index.esm.js");
 /* harmony import */ var _login_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./login.css */ "./client/src/Components/login/login.css");
 /* harmony import */ var _util_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../util.js */ "./client/src/util.js");
@@ -22763,7 +22766,13 @@ var Login = function Login(_ref) {
     auth.signOut();
   };
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, user && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+    onClick: signOut
+  }, "Sign Out"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "login-logo"
+  }, "HARMONY LOGO PLACE HOLDER"), user ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Redirect, {
+    to: "/home"
+  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "login-logo"
   }, "HARMONY LOGO PLACE HOLDER"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
     className: "signUp container"
@@ -22774,9 +22783,9 @@ var Login = function Login(_ref) {
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Password:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
     type: "password",
     name: "password",
-    minlength: "8",
+    minLength: "8",
     required: true
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Link, {
     to: "/signUp"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", null, "Sign Up")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", null, "Sign In"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "other-signUp"
@@ -22790,7 +22799,7 @@ var Login = function Login(_ref) {
     alt: "Facebook logo"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
     onClick: signInWithGoogle
-  }, "Sign In with Facebook"))));
+  }, "Sign In with Facebook")))));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Login);

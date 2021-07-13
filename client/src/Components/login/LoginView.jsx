@@ -27,7 +27,13 @@ const Login = ({ user, auth }) => {
     auth.signOut();
   };
 
-  return (
+return (
+  <div>
+    {user && <button onClick={signOut}>Sign Out</button>}
+    <div className="login-logo">HARMONY LOGO PLACE HOLDER</div>
+    {user ? <Redirect to="/home" />
+
+    :
     <div>
       <div className="login-logo">HARMONY LOGO PLACE HOLDER</div>
       <form className="signUp container">
@@ -37,7 +43,7 @@ const Login = ({ user, auth }) => {
         </label>
         <label>
           Password:
-          <input type="password" name="password" minlength="8" required/>
+          <input type="password" name="password" minLength="8" required/>
         </label>
         <div>
           <Link to="/signUp">
@@ -57,7 +63,9 @@ const Login = ({ user, auth }) => {
         </div>
       </div>
     </div>
-  );
+    }
+
+  </div>);
 };
 
 export default Login;
