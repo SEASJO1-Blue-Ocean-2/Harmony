@@ -14,7 +14,6 @@ import SearchBar from './SearchBar';
 const MainPage = (props) => (
   <div>
     <SearchBar db={props.db} user={props.user} auth={props.auth} />
-    <RoomsList auth={props.auth} />
   </div>
 
 );

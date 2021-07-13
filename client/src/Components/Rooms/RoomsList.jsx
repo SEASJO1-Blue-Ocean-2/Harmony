@@ -49,6 +49,7 @@ const RoomsList = (props) => {
       </div>
       <CreateRoom />
       <Logout auth={props.auth}/>
+
     </div>
   )
 }
