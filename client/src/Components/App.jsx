@@ -50,6 +50,5 @@ const App = (props) => {
     </Router>
   </div>)
 };
->>>>>>> a2a44eba9ab0e21b951eb45e5fae2b795e2b09eb
 
 export default App;
