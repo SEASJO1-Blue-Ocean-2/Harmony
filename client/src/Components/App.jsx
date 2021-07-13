@@ -11,6 +11,8 @@ import 'firebase/auth';
 import 'firebase/database';
 import config from '../../../config';
 import Nav from './Nav';
+import Signup from './login/SignupView';
+
 
 firebase.initializeApp(config);
 const auth = firebase.auth();

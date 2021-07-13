@@ -14,15 +14,9 @@ import RoomsList from '../Rooms/RoomsList.jsx';
 const MainPage = ({ user, auth, db }) => {
   return (
     <>
-    <div>
       <NavigationBar user={user} db={db} auth={auth} />
-   </div>
-    <>
-      <RoomsList user={user} db={db} auth={auth} />
+      {/* <RoomsList user={user} db={db} auth={auth} /> */}
       {/* <Profile /> */}
-    </>
-      <NavigationBar />
-      {/* <RoomsList /> */}
    </>
   );
 }
