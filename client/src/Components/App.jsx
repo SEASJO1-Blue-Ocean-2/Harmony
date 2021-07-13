@@ -23,18 +23,19 @@ const App = (props) => {
   const [user] = useAuthState(auth);
   return (
 
-  <Router>
-    <div>
-      <Switch>
-        <Route path='/' exact
-        render={()=> <Login user={user} auth={auth}/>} />
-        <Route path='/home'
-        render={()=> <MainPage user={user} auth={auth} db={db} />} />
-        <Route path='/signUp'
-        render={()=> <Signup auth={auth} db={db} />} />
-      </Switch>
-    </div>
-  </Router>);
+    <Router>
+      <div>
+        <Switch>
+          <Route path='/' exact
+            render={() => <Login user={user} auth={auth} />} />
+          <Route path='/home'
+            render={() => <MainPage user={user} auth={auth} db={db} />} />
+          <Route path='/signUp'
+            render={() => <Signup auth={auth} db={db} />} />
+          <Route path='/room/:roomId' render={match => <Room auth={auth} db={db} roomId={match}/>} />
+        </Switch>
+      </div>
+    </Router>);
 };
 
 
