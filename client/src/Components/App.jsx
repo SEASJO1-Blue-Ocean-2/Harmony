@@ -7,6 +7,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import Profile from './profile/Profile';
 import MainPage from './Homepage/MainPage';
 import Login from './login/LoginView';
+import Signup from './login/SignupView';
 import 'firebase/auth';
 import 'firebase/database';
 import config from '../../../config';

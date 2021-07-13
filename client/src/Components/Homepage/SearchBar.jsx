@@ -41,7 +41,6 @@ class SearchBar extends React.Component {
               </Route>
               <Route path="/FriendsList">
                 <FriendsList db = {this.props.db} user = {this.props.user}/>
-                <FriendsList/>
               </Route>
               <Route path="/Notifications">
                 <NotificationsList />
