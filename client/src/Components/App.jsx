@@ -38,7 +38,7 @@ const App = (props) => {
         </Switch>
       </div>
     </Router>
-  </div>)
+  </div>);
 };
 
 export default App;

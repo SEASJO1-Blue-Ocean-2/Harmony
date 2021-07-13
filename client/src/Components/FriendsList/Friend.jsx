@@ -5,9 +5,9 @@ import DirectMessageButton from './DirectMessageButton.jsx';
 const Friend = (props) => {
   const { friendId, db } = props;
   const [friendName, setFriendName] = useState('');
-  const tempId = 'A2PyioigFaYkKpPFqUcgNN5Gwkp1';
+  const tempId = 'A2PyioigFaYkKpPFqUcgNN5Gwkp1';/* this was a temp userId for friendId */
 
-  console.log('this is the friend ID', friendId);
+  // console.log('this is the friend ID', friendId);
 
   const friendNameRef = db.ref(`users/${friendId}/username`);
 
@@ -19,7 +19,7 @@ const Friend = (props) => {
 
   return (
     <div className="friend-container">
-      <div>{friendName}</div>
+      <div className="friend-name">{friendName}</div>
       <DirectMessageButton />
       <InviteToRoom />
     </div>
