@@ -2,7 +2,12 @@ node_modules
 client/dist/bundle.js.map
 .eslintrc.js
 client/dist/bundle.js
+<<<<<<< HEAD
 .gitignore
+=======
+config.js
+.DS_Store
+>>>>>>> 1361340e2db559f640a451429ded2f71e79444da
 bundle.js
 config.js
 .eslintrc.json

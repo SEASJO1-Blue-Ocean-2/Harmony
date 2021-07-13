@@ -9,6 +9,11 @@ import Profile from './profile/Profile';
 import MainPage from './Homepage/MainPage';
 import Login from './login/LoginView';
 
+<<<<<<< HEAD
+=======
+import firebase from 'firebase/app';
+import 'firebase/database';
+>>>>>>> 1361340e2db559f640a451429ded2f71e79444da
 import 'firebase/auth';
 import 'firebase/database';
 
