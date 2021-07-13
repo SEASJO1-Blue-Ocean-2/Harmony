@@ -48,7 +48,7 @@ const RoomsList = (props) => {
           click={ handleRoomClick }/>)}
       </div>
       <CreateRoom />
-      <Logout />
+      <Logout auth={props.auth}/>
     </div>
   )
 }

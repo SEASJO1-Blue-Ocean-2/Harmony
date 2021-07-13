@@ -27,7 +27,7 @@ const App = (props) => {
         <Route path='/' exact
         render={()=> <Login user={user} auth={auth}/>} />
         <Route path='/home'
-        render={()=> <MainPage user={user} />} />
+        render={()=> <MainPage user={user} auth={auth} db={db} />} />
         <Route path='/signUp'
         render={()=> <Signup auth={auth} db={db} />} />
       </Switch>

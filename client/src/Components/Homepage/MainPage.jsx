@@ -14,7 +14,7 @@ const MainPage = (props) => {
   return (
     <>
     <div>
-      <NavigationBar user={props.user} db={props.db} />
+      <NavigationBar user={props.user} db={props.db} auth={props.auth} />
    </div>
 
       {/* <RoomsList /> */}
