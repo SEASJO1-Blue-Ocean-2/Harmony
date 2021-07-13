@@ -28,6 +28,58 @@ input {
 }
 
 .profileIcon {
-  float: right;
+  position: absolute;
+  top: 15px;
+  right: 0px;
   height: 50px;
+}
+
+.homePageIcon {
+
+  position: absolute;
+  top: 15px;
+  left: 5px;
+  height: 50px;
+  width: 50px;
+}
+
+.body {
+  font-family: sans-serif;
+}
+
+.Harmony {
+  text-align: center;
+  font-family: sans-serif;
+}
+
+.mainPageOptions {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  text-align: center;
+}
+
+.SearchBar {
+  border: 2px solid black;
+  border-radius: 5px;
+  width: 75%;
+  text-align: center;
+  margin-left: 40px;
+  margin-bottom: 20px;
+}
+
+img.MagnifyingGlass {
+  width: 15px;
+  float: right;
+}
+
+.currentPage{
+  text-align: center;
+  font-family: sans-serif;
+}
+
+.notification {
+  text-align: center;
+  margin: 10px;
+  border: 1px solid black;
+  font-family: sans-serif;
 }

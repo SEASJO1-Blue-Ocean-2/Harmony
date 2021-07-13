@@ -33,13 +33,13 @@ const App = (props) => {
           <Route path="/" exact render={() => <Login user={user} auth={auth} />} />
           <Route
             path="/home"
-            render={() => <MainPage user={user} />}
-          />
+            render={() => <MainPage user={user} />} />
           <Route path="/profile" render={() => <Profile auth={auth} />} />
+          <Route path='/signUp'
+            render={()=> <Signup auth={auth} db={db} />} />
         </Switch>
       </div>
     </Router>
   );
-};
 
 export default App;
