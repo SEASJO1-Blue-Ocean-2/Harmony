@@ -20,16 +20,6 @@ const db = firebase.database();
 
 const App = (props) => {
   const [user] = useAuthState(auth);
-<<<<<<< HEAD
-  return (<div>
-    {user
-    ? <Room db={db} auth={auth} />
-    : <div> <Signup auth={auth} db={db} /> <Login auth={auth}/> </div>
-    }
-
-
-  </div>)
-=======
   return (
   <Router>
     <div>
@@ -43,7 +33,6 @@ const App = (props) => {
       </Switch>
     </div>
   </Router>);
->>>>>>> a5a7769182d944aeec084558ab347002928319db
 };
 
 export default App;
