@@ -32,6 +32,7 @@ const RoomsList = ({ auth, db }) => {
           }
         }
       })
+    snapshots.forEach(v=>console.log(v.val().roomname))
   }
 
   useEffect(() => {

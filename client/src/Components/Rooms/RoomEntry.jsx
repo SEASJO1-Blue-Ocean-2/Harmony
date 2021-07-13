@@ -1,9 +1,10 @@
+import css from './RoomEntryStyles.css'
 import React, {useState, useEffect} from 'react';
 
 const RoomEntry = ({ room, click }) => {
   return (
     <div
-    className='room-entry'>
+    className={css.roomEntry}>
     {room.roomname}
     </div>
   )
