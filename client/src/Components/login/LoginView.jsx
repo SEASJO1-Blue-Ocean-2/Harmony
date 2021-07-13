@@ -43,7 +43,7 @@ const Login = ({ user, auth }) => {
         </label>
         <label>
           Password:
-          <input type="password" name="password" minlength="8" required/>
+          <input type="password" name="password" minLength="8" required/>
         </label>
         <div>
           <Link to="/signUp">
