@@ -26,19 +26,6 @@ const App = (props) => {
 
     <Router>
       <div>
-<<<<<<< HEAD
-        <Switch>
-          <Route path='/' exact
-            render={() => <Login user={user} auth={auth} />} />
-          <Route path='/home'
-            render={() => <MainPage user={user} auth={auth} db={db} />} />
-          <Route path='/signUp'
-            render={() => <Signup auth={auth} db={db} />} />
-          <Route path='/room/:roomId' render={match => <Room auth={auth} db={db} roomId={match}/>} />
-        </Switch>
-      </div>
-    </Router>);
-=======
         <NavigationBar user={user} db={db} auth={auth} />
         <Switch>
           <Route
@@ -62,7 +49,6 @@ const App = (props) => {
       </div>
     </Router>
   );
->>>>>>> db5cc1f5457e9551287887da9b1024dd716f7aba
 };
 
 export default App;
