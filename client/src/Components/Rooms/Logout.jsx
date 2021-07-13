@@ -9,13 +9,11 @@ const Logout = (props) => {
     // <Redirect to="/signUp" />
   };
 
-
   return (
     <Link to="/">
       <button className='logout' onClick ={signOut}>Logout</button>
     </Link>
-
-  )
+  );
 }
 
 export default Logout;

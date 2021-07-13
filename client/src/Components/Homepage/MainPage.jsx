@@ -11,7 +11,6 @@ import NavigationBar from './NavigationBar.jsx';
 import RoomsList from '../Rooms/RoomsList.jsx';
 import SearchBar from './SearchBar';
 
-<<<<<<< HEAD
 const MainPage = (props) => (
   <div>
     <SearchBar db={props.db} user={props.user} auth={props.auth} />
@@ -19,16 +18,5 @@ const MainPage = (props) => (
   </div>
 
 );
-=======
-const MainPage = (props) => {
-  return (
-    <>
-    <div>
-      <NavigationBar user={props.user} db={props.db} auth={props.auth} />
-   </div>
-   </>
-  );
-}
->>>>>>> cf3ce4c6b8bc3833e00d8d4925f2d900e2320472
 
 export default MainPage;
