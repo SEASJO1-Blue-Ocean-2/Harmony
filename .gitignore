@@ -8,3 +8,4 @@ config.js
 .eslintrc.json
 .DS_Store
 __snapshots__
+.prettierrc
