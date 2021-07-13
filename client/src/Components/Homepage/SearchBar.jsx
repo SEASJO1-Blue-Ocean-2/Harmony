@@ -6,11 +6,8 @@ import {
   Link
 } from "react-router-dom";
 
-
-import RoomsList from '../Rooms/RoomsList.jsx';
 import FriendsList from '../FriendsList/FriendsList.jsx';
 import NotificationsList from '../Notifications/NotificationsList.jsx';
-import Test from './test.jsx';
 import RoomsList from '../Rooms/RoomsList.jsx';
 
 

@@ -12,11 +12,11 @@ import RoomsList from '../Rooms/RoomsList.jsx';
 
 const MainPage = (props) => {
   return (
+    <>
     <div>
       <NavigationBar user={props.user} db={props.db} />
    </div>
-    <>
-      <NavigationBar />
+
       {/* <RoomsList /> */}
    </>
   );
