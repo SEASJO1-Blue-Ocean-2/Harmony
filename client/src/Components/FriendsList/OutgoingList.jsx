@@ -1,10 +1,12 @@
 import React from 'react';
+import OutgoingRequest from './OutgoingRequest.jsx';
 
 const OutgoingList = (props) => {
   const temp = '';
   return (
     <div>
-      this is the list of outgoing requests
+      {/* this will map over friend requests still pending */}
+      <OutgoingRequest />
     </div>
   );
 };
