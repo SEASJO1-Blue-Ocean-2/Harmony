@@ -8,6 +8,7 @@ import {
 } from 'react-router-dom';
 import Nav from '../Nav';
 import Profile from '../profile/Profile';
+<<<<<<< HEAD
 import NavigationBar from './NavigationBar.jsx';
 import RoomsList from '../Rooms/RoomsList.jsx';
 import SearchBar from './SearchBar';
@@ -29,3 +30,20 @@ class MainPage extends React.Component {
   }
 };
 export default MainPage;
+=======
+
+import NavigationBar from './NavigationBar.jsx';
+import RoomsList from '../Rooms/RoomsList.jsx';
+
+const MainPage = ({ user, auth, db }) => {
+  return (
+    <>
+      <NavigationBar user={user} db={db} auth={auth} />
+      {/* <RoomsList user={user} db={db} auth={auth} /> */}
+      {/* <Profile /> */}
+   </>
+  );
+}
+
+export default MainPage;
+>>>>>>> a2722f222e8100429137ccb4602c845e3d7b81ef

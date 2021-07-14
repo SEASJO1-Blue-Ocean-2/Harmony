@@ -46,4 +46,8 @@ const Room = ({ db, auth, roomName }) => {
 };
 
 
+<<<<<<< HEAD
 export default Room;
+=======
+export default Room
+>>>>>>> a2722f222e8100429137ccb4602c845e3d7b81ef

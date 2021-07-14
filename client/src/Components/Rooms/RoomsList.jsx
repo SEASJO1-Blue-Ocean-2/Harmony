@@ -21,7 +21,6 @@ const RoomsList = ({ auth, db }) => {
   const [suggestedRooms, setSuggestions] = useState(['list', 'of', 'suggestions']);
 
   const renderRooms = () => {
-    console.log(user)
     snapshots.forEach(
       v => {
         let room = v.val()
@@ -61,7 +60,11 @@ const RoomsList = ({ auth, db }) => {
         onClick={ handleViewType }
         >Room Suggestions</button>
       </div>
+<<<<<<< HEAD
         <div className={css.roomsList}>
+=======
+        <div className='rooms-list'>
+>>>>>>> a2722f222e8100429137ccb4602c845e3d7b81ef
           {viewType === 'your-rooms'
           ? yourRooms.map( (room, i) => {
             return (<Link to={`/room/${room.roomid}`} key={i}>
@@ -80,6 +83,10 @@ const RoomsList = ({ auth, db }) => {
         </div>
       <CreateRoom />
       <Logout auth={auth}/>
+<<<<<<< HEAD
+=======
+      <button onClick={test}>Test here</button>
+>>>>>>> a2722f222e8100429137ccb4602c845e3d7b81ef
     </div>
   )
 }
