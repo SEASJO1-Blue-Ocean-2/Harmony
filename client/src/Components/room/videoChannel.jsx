@@ -1,12 +1,12 @@
 
 import React, { useState, useEffect } from 'react';
 import Peer from 'peerjs';
-import openSocket from 'socket.io-client';
-const socket = openSocket('http://localhost:3000');
+import { io } from "socket.io-client";
+const socket = io();
 const myPeer = new Peer(undefined, {
-  host: '/',
-  port: '3001',
+  host: '/', port: '3001'
 });
+const peers = {};
 
 const VideoChannel = ({user}) => {
 
@@ -40,6 +40,13 @@ const VideoChannel = ({user}) => {
           });
         });
 
+        socket.on('user-disconnected', userId => {
+          if (peers[userId]) {
+            console.log('closing', peers[userId]);
+            peers[userId].close();
+          }
+        });
+
 
       });
 
@@ -49,23 +56,27 @@ const VideoChannel = ({user}) => {
   }, []);
 
   const addVideoStream = (video, stream) => {
+    console.log('adding a video stream')
     const videoGrid = document.getElementById('video-grid');
     video.srcObject = stream;
     video.addEventListener('loadedmetadata', () => {
       video.play();
-      videoGrid.append(video);
     });
+    videoGrid.append(video);
   };
 
   const connectToNewUser = (userId, stream) => {
-    const call = myPeer.call(userId, stream);
+    let call = myPeer.call(userId, stream);
     let userVideo = document.createElement('video');
+    userVideo.muted = true;
     call.on('stream', (userVideoStream) => {
       addVideoStream(userVideo, userVideoStream);
     });
     call.on('close', () => {
       userVideo.remove();
+      peers[userId] = null;
     });
+    peers[userId] = call;
   };
 
   const handleStopVideo = (e) => {

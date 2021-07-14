@@ -4,6 +4,7 @@ const PORT = 3000;
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
 const {v4: uuidV4} = require('uuid');
+const rooms = {};
 
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/./client/dist');
@@ -13,10 +14,6 @@ app.use(express.urlencoded({
   extended: false
 }));
 app.use(express.json());
-
-// app.get('/', function (req, res) {
-//   res.render('index');
-//  });
 
 app.get('/', (req, res)=>{
   res.redirect(`/${uuidV4()}`);
@@ -31,6 +28,12 @@ io.on('connection', socket => {
     console.log(roomId, userId);
     socket.join(roomId);
     socket.to(roomId).emit('user-connected', userId);
+    if (rooms[roomId]) {
+      io.to(socketId).emit('current-room', rooms[roomId]);
+    }
+    socket.on('disconnect', () => {
+      socket.broadcast.to(roomId).emit('user-disconnected', userId);
+    });
   });
 });
 
