@@ -46,4 +46,4 @@ const Room = ({ db, auth, roomName }) => {
 };
 
 
-export default Room
+export default Room;

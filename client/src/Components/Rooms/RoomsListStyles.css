@@ -1,12 +1,13 @@
+/* Colors! discord purple - #7289DA #D2E7D6 */
 .mainpage {
-  border: 3px solid blue;
+  border: 3px solid #7289DA;
 }
 
 .toggleRoomContainer {
+  background: #7289DA;
   display: flex;
   justify-content: center;
   width: 90vw;
-  /* border: 3px solid blue; */
 }
 
 .toggleRoomButton {

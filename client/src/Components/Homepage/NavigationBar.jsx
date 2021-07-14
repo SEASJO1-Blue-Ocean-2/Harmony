@@ -26,7 +26,7 @@ class NavigationBar extends React.Component {
             <img src='http://www.pngall.com/wp-content/uploads/5/User-Profile-PNG-Image.png' className='profileIcon'></img>
           </Link>
 
-          <SearchBar db={this.props.db} user={this.props.user} auth={this.props.auth} />
+
         </div>
       </>
     );

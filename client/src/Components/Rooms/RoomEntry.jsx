@@ -2,10 +2,24 @@ import css from './RoomEntryStyles.css'
 import React, {useState, useEffect} from 'react';
 
 const RoomEntry = ({ room, click }) => {
+  const [userCount, setCount] = useState(0);
+
+  useEffect( () => {
+    countUsers(room.users)
+  }, []);
+
+  const countUsers = (users) => {
+    let count = 0;
+    for (let key in users) {
+      count++;
+    }
+    setCount(count);
+  }
+
   return (
     <div
     className={css.roomEntry}>
-    {room.roomname}
+    {room.roomname} - # of Users: {userCount}
     </div>
   )
 }

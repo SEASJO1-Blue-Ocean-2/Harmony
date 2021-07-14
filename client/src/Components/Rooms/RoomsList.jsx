@@ -25,19 +25,20 @@ const RoomsList = ({ auth, db }) => {
     let allRooms = snapshots.forEach(
       v => {
         let room = v.val()
-        for (let key in room.users) {
-          if (key === user) {
-            yourRooms.push(room)
-            setRooms([...yourRooms])
+        for (let uid in room.users) {
+          if (uid === user) {
+            room.roomid = v.key;
+            yourRooms.push(room);
+            setRooms([...yourRooms]);
+            break;
           }
         }
-      })
-    snapshots.forEach(v=>console.log(v.val().roomname))
+      });
   }
 
   useEffect(() => {
     renderRooms();
-  }, [])
+  }, [snapshots])
 
   const handleViewType = (e) => {
     e.target.id === 'your-rooms'
@@ -79,10 +80,6 @@ const RoomsList = ({ auth, db }) => {
         </div>
       <CreateRoom />
       <Logout auth={auth}/>
-
-      <button onClick={test}>Test here</button>
-
-      <button onClick={renderRooms}>Render Rooms Here</button>
     </div>
   )
 }

@@ -27,14 +27,29 @@ const App = (props) => {
 
     <Router>
       <div>
+        <NavigationBar user={user} db={db} auth={auth} />
         <Switch>
-          <Route path='/' exact
-            render={() => <Login user={user} auth={auth} />} />
-          <Route path='/home'
-            render={() => <MainPage user={user} auth={auth} db={db} />} />
-          <Route path='/signUp'
-            render={() => <Signup auth={auth} db={db} />} />
-          <Route path='/room/:roomId' render={match => <Room auth={auth} db={db} roomId={match}/>} />
+          <Route
+            path="/"
+            exact
+            render={() => <Login user={user} auth={auth} />}
+          />
+          <Route
+            path="/home"
+            render={() => <MainPage user={user} auth={auth} db={db} />}
+          />
+          <Route
+            path="/signUp"
+            render={() => <Signup auth={auth} db={db} />}
+          />
+          <Route
+            path="/profile"
+            render={() => <Profile auth={auth} />}
+          />
+          <Route
+          path='/room/:roomId'
+          render={match => <Room auth={auth} db={db} roomId={match}/>}
+          />
         </Switch>
       </div>
     </Router>);
