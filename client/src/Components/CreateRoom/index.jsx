@@ -10,6 +10,8 @@ const { v4: uuidV4 } = require('uuid');
 
 function CreateRoom({ db, user }) {
   const [isPublic, setIsPublic] = useState(false);
+  const [newName, setNewName] = useState('');
+  const [usersWithAccess, setUsersWithAccess] = useState([user.uid]);
   const friends = [
     {
       name: 'Alex',
@@ -29,19 +31,16 @@ function CreateRoom({ db, user }) {
   ];
 
   function createRoomHandler() {
-    const roomName = 'room test';
+    // TODO: this function needs to add room ID to users/user.uid ref
     const newRoomId = uuidV4();
-    const userId = user.uid;
     db.ref(`rooms/${newRoomId}`).set({
-      room_name: roomName,
+      room_name: newName,
       channels: [
         'General',
       ],
       default_channel: 0,
       public: isPublic,
-      users: [
-        userId,
-      ],
+      users: usersWithAccess,
     });
     return null;
   }
@@ -59,9 +58,17 @@ function CreateRoom({ db, user }) {
     }
   }
 
+  function nameHandler(event) {
+    setNewName(event.target.value);
+    // set room name here in state
+    // should have a debouncer
+  }
+
   return (
     <div data-testid="create-room">
-      <RoomName />
+      <RoomName
+        nameHandler={nameHandler}
+      />
       <PublicPrivate
         publicPrivateHandler={publicPrivateHandler}
       />
