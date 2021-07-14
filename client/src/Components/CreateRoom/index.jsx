@@ -70,7 +70,7 @@ function CreateRoom({ db, user }) {
 
   function addFriendHandler(friend) {
     usersWithAccess[friend.uid] = friend.displayName;
-    console.log(usersWithAccess)
+    
   }
 
   function publicPrivateHandler(event) {
