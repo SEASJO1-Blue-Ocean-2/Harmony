@@ -26,6 +26,7 @@ const db = firebase.database();
 // <Login user={user} auth={auth} />
 // <Room db={db} user={user} />
 
+
 const App = (props) => {
   const [user] = useAuthState(auth);
   return (
@@ -49,7 +50,7 @@ const App = (props) => {
           />
           <Route
             path="/profile"
-            render={() => <Profile auth={auth} />}
+            render={() => <Profile auth={auth} db={db} />}
           />
           <Route path="/Rooms">
             <RoomsList auth={auth} db={db} />

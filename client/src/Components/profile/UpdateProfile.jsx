@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import css from './style.css';
 
-function UpdateProfile({ updateData }) {
+function UpdateProfile({ updateData, profilePic }) {
   const [name, setName] = useState('');
   const [country, setCountry] = useState('');
   const [email, setEmail] = useState('');
@@ -31,7 +31,7 @@ function UpdateProfile({ updateData }) {
       country,
       email,
       bio,
-      picture: 'http://www.pngall.com/wp-content/uploads/5/User-Profile-PNG-Image.png',
+      picture: profilePic,
     });
   }
 
@@ -64,6 +64,7 @@ function UpdateProfile({ updateData }) {
 
 UpdateProfile.propTypes = {
   updateData: PropTypes.func.isRequired,
+  profilePic: PropTypes.string.isRequired,
 };
 
 export default UpdateProfile;
