@@ -7,6 +7,7 @@ import 'firebase/database';
 import Friend from './Friend.jsx';
 import IncomingButton from './IncomingButton.jsx';
 import OutgoingButton from './OutgoingButton.jsx';
+import css from './friendStyles.css';
 
 
 const FriendsList = (props) => {
@@ -32,7 +33,7 @@ const FriendsList = (props) => {
           </div>
         )}
       </div>
-      <div className="incoming-outgoing-container">
+      <div className={css.incomingOutgoingContainer}>
         <IncomingButton />
         <OutgoingButton />
       </div>
