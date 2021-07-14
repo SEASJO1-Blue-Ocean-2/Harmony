@@ -1,0 +1,14 @@
+#testFriend {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin: 10px;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: lightgray;
+}
+
+
+.friend-name{
+  color: red;
+}

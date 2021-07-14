@@ -30,10 +30,8 @@ const Friend = (props) => {
   console.log('this is the friend info', friendInfo);
 
   return (
-    <div className={css.friendContainer}>
-      <Link to="/FriendProfile">
-        <div className="friend-name">{friendInfo.username}</div>
-      </Link>
+      <div id={css.friendContainer} className='friend-container'>
+      <div className="friend-name">{friendName}</div>
       <DirectMessageButton />
       <InviteToRoom />
     </div>

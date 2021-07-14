@@ -5,7 +5,7 @@
 import React from 'react';
 import { render, screen, cleanup } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import CreateRoom from '../CreateRoom';
+import CreateRoom from '../';
 
 // TODO: test components indivdually
 // jest.mock('./header/Header', () => {
