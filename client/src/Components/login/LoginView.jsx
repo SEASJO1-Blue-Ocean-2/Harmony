@@ -18,7 +18,6 @@ const Login = ({ user, auth }) => {
     const provider = new firebase.auth.GoogleAuthProvider();
     auth.signInWithPopup(provider)
       .then((results) => {
-        console.log(results.user);
         addData({ username: results.user.displayName, email: results.user.email, picture: results.user.photoURL}, dbRef, results.user.uid);
       });
   }

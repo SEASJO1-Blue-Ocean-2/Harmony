@@ -2,16 +2,18 @@ import React, { useState, useEffect } from 'react';
 import './RoomStyles.css';
 
 
-export const TextMenu = ({}) => {
-
+export const TextMenu = ({ channels, channelId, setChannel }) => {
   return (<div className='text-menu'>
-    text menu
+    {Object.entries(channels).map(e => {
+      return <div onClick={() => setChannel(e[0])}>{e[1]}</div>;
+    })}
   </div>);
 };
 
-export const VoiceMenu = ({}) => {
-
-  return (<div className='voice-menu'>
-    voice menu
+export const VoiceMenu = ({ channels, channelId, setChannel }) => {
+  return (<div className='text-menu'>
+    {Object.entries(channels).map(e => {
+      return <div onClick={() => setChannel(e[0])}>{e[1]}</div>;
+    })}
   </div>);
 };
