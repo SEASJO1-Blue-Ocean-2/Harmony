@@ -5,19 +5,14 @@ import {
   Route,
   Link
 } from "react-router-dom";
-
 import FriendsList from '../FriendsList/FriendsList.jsx';
 import NotificationsList from '../Notifications/NotificationsList.jsx';
 import RoomsList from '../Rooms/RoomsList.jsx';
-
-
-
 class SearchBar extends React.Component {
   constructor(props) {
     super(props);
     this.handleSubmitButton = this.handleSubmitButton.bind(this);
   }
-
   handleSubmitButton(event) {
     var currentDropDown = document.getElementsByClassName('currentPage')[0].innerText;
     var searchBarText = document.getElementById('searchBarText').value;
@@ -32,7 +27,6 @@ class SearchBar extends React.Component {
       }
     }
   }
-
   render() {
     return (
       <>
@@ -42,7 +36,6 @@ class SearchBar extends React.Component {
             </input>
             <button className='searchButton' onClick={this.handleSubmitButton}>Go!</button>
           </div>
-
           <Router>
             <div>
               <nav className='mainPageOptions'>
@@ -68,10 +61,4 @@ class SearchBar extends React.Component {
     );
   }
 }
-
-
-
-
-
 export default SearchBar;
-
