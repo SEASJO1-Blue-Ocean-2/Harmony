@@ -5,14 +5,19 @@ import {
   Route,
   Link
 } from "react-router-dom";
+
 import FriendsList from '../FriendsList/FriendsList.jsx';
 import NotificationsList from '../Notifications/NotificationsList.jsx';
 import RoomsList from '../Rooms/RoomsList.jsx';
+
+
+
 class SearchBar extends React.Component {
   constructor(props) {
     super(props);
     this.handleSubmitButton = this.handleSubmitButton.bind(this);
   }
+
   handleSubmitButton(event) {
     var currentDropDown = document.getElementsByClassName('currentPage')[0].innerText;
     var searchBarText = document.getElementById('searchBarText').value;
@@ -27,6 +32,12 @@ class SearchBar extends React.Component {
       }
     }
   }
+
+  resetSearchText() {
+    var currentSearchText = document.getElementById('searchBarText');
+    currentSearchText.value = '';
+  }
+
   render() {
     return (
       <>
@@ -36,19 +47,20 @@ class SearchBar extends React.Component {
             </input>
             <button className='searchButton' onClick={this.handleSubmitButton}>Go!</button>
           </div>
+
           <Router>
             <div>
               <nav className='mainPageOptions'>
-                <Link to="/Notifications">Notifications</Link>
-                <Link to="/Rooms">Rooms</Link>
-                <Link to="/FriendsList">Friends List</Link>
+                <Link to="/Notifications" onClick ={this.resetSearchText}>Notifications</Link>
+                <Link to="/Rooms" onClick ={this.resetSearchText}>Rooms</Link>
+                <Link to="/FriendsList" onClick ={this.resetSearchText}>Friends List</Link>
               </nav>
               <Switch>
                 <Route path="/Rooms">
-                  <RoomsList auth={this.props.auth} db={this.props.db} user={this.props.user} />
+                  <RoomsList auth={this.props.auth} user={this.props.user} db={this.props.db} />
                 </Route>
                 <Route path="/FriendsList">
-                  <FriendsList db={this.props.db} user={this.props.user} />
+                  <FriendsList db={this.props.db} user={this.props.user}/>
                 </Route>
                 <Route path="/Notifications">
                   <NotificationsList />
@@ -61,4 +73,10 @@ class SearchBar extends React.Component {
     );
   }
 }
+
+
+
+
+
 export default SearchBar;
+
