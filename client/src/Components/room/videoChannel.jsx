@@ -24,7 +24,6 @@ const VideoChannel = ({user}) => {
         video: true,
       })
       .then((stream) => {
-        setMyVideoStream(stream);
         addVideoStream(myVideo, stream);
 
         socket.on('user-connected', (userId) => {
@@ -40,18 +39,16 @@ const VideoChannel = ({user}) => {
         });
       });
 
-        socket.on('user-disconnected', userId => {
-          if (peers[userId]) {
-            console.log('closing', peers[userId]);
-            peers[userId].close();
-          }
-        });
-
-
-      });
+    socket.on('user-disconnected', userId => {
+      if (peers[userId]) {
+        console.log('closing', peers[userId]);
+        peers[userId].close();
+      }
+    });
 
     myPeer.on('open', (id) => {
       socket.emit('join-room', roomId, id, user);
+    });
   }, []);
 
   const addVideoStream = (video, stream) => {
