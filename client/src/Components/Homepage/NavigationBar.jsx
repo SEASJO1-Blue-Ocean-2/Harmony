@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import SearchBar from './SearchBar.jsx';
 import MainPage from './MainPage.jsx';
-
+import Logout from './Logout.jsx'
 class NavigationBar extends React.Component {
   constructor(props) {
     super(props);
@@ -27,6 +27,7 @@ class NavigationBar extends React.Component {
           </Link>
 
           {/* <SearchBar db={this.props.db} user={this.props.user} auth={this.props.auth} /> */}
+          <Logout auth={this.props.auth} />
         </div>
       </>
     );

@@ -3,26 +3,32 @@
   flex-direction: row;
   justify-content: center;
 }
+
 .column-default {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
+
 #app {
-  height:100vh;
+  height: 100vh;
   justify-content: space-evenly;
 }
+
 .user-input-wrapper {
   padding-top: .5em;
   padding-bottom: .5em;
 }
+
 #sign-up-in {
   display: flex;
   justify-content: space-around;
 }
+
 button {
   width: 25vw;
 }
+
 input {
   width: 75vw;
 }
@@ -72,7 +78,7 @@ img.MagnifyingGlass {
   float: right;
 }
 
-.currentPage{
+.currentPage {
   text-align: center;
   font-family: sans-serif;
 }
@@ -86,4 +92,22 @@ img.MagnifyingGlass {
 
 .other-signUp img {
   width: 8vw;
+}
+
+.logout {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.searchButton {
+  height: 25px;
+}
+
+.search {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+};
+.friend-name{
+  color: red;
 }

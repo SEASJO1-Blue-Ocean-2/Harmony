@@ -8,6 +8,7 @@ import Friend from './Friend.jsx';
 import IncomingButton from './IncomingButton.jsx';
 import OutgoingButton from './OutgoingButton.jsx';
 
+
 const FriendsList = (props) => {
   const { db, user } = props;
   const [userId, setUserId] = useState(user.uid);
