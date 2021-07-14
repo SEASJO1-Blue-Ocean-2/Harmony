@@ -32,6 +32,8 @@ function CreateRoom({ db, user }) {
 
   function createRoomHandler() {
     // TODO: this function needs to add room ID to users/user.uid ref
+    // usersWithAccess.push('friend-uid-here');
+    // is pushing directly to a state a bad idea?
     const newRoomId = uuidV4();
     db.ref(`rooms/${newRoomId}`).set({
       room_name: newName,
