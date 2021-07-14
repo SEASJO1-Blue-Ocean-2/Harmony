@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 
-const CreateRoom = (props) => {
+const CreateRoomButton = (props) => {
   return (
     <Link to="/create">
       <button className='create-a-room'>Create a Room</button>
@@ -9,4 +9,4 @@ const CreateRoom = (props) => {
   )
 }
 
-export default CreateRoom;
+export default CreateRoomButton;
