@@ -45,7 +45,7 @@ class SearchBar extends React.Component {
               </nav>
               <Switch>
                 <Route path="/Rooms">
-                  <RoomsList auth={this.props.auth} />
+                  <RoomsList auth={this.props.auth} db={this.props.db} />
                 </Route>
                 <Route path="/FriendsList">
                   <FriendsList db={this.props.db} user={this.props.user} />
