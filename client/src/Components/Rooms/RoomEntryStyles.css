@@ -6,10 +6,13 @@ light grey - #C4C4C4*/
 background-color: #7289DA;
 text-decoration: none;
 color: black;
-width: 90vw;
+width: 85vw;
+height: 5vh;
 margin-top: .5vh;
 margin-bottom: .5vh;
+border-radius: 25%;
 display: flex;
 justify-content: center;
+align-items: center;
 }
 
