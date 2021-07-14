@@ -1,8 +1,11 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 
 const CreateRoom = (props) => {
   return (
-    <button className='create-a-room'>Create a Room</button>
+    <Link to="/create">
+      <button className='create-a-room'>Create a Room</button>
+    </Link>
   )
 }
 

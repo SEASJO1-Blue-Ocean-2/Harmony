@@ -12,6 +12,7 @@ import 'firebase/auth';
 import 'firebase/database';
 import config from '../../../config';
 import NavigationBar from './Homepage/NavigationBar';
+import CreateRoom from './CreateRoom';
 
 firebase.initializeApp(config);
 const auth = firebase.auth();
@@ -45,6 +46,10 @@ const App = (props) => {
           <Route
             path="/profile"
             render={() => <Profile auth={auth} />}
+          />
+          <Route
+            path="/create"
+            render={() => <CreateRoom auth={auth} db={db} />}
           />
         </Switch>
       </div>
