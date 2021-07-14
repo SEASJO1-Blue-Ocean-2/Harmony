@@ -11,7 +11,7 @@ const Friend = (props) => {
 
   useEffect(() => {
     friendNameRef.on('value', (snapshot) => {
-      setFriendName(JSON.stringify(snapshot.val()));
+      setFriendName(snapshot.val());
     });
   });
 
