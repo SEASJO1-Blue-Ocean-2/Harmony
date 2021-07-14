@@ -46,7 +46,6 @@ function CreateRoom() {
 
   return (
     <div data-testid="create-room">
-      <Header />
       <RoomName />
       <PublicPrivate
         publicPrivateHandler={publicPrivateHandler}
