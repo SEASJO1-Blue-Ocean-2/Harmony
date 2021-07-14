@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import InviteToRoom from './InviteToRoom.jsx';
 import DirectMessageButton from './DirectMessageButton.jsx';
+import css from './friendStyles.css';
 
 const Friend = (props) => {
   const { friendId, db } = props;
@@ -15,7 +16,7 @@ const Friend = (props) => {
   });
 
   return (
-    <div className="friend-container">
+    <div className={css.friendContainer}>
       <div className="friend-name">{friendName}</div>
       <DirectMessageButton />
       <InviteToRoom />

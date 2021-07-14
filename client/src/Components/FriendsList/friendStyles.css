@@ -2,11 +2,20 @@
   background-image: url('./messageicon.png');
 } */
 
-.incoming-outgoing-container {
+.incomingOutgoingContainer {
   text-align: center;
   display: inline-flex;
   position: absolute;
   bottom: 0;
   width: 80%;
   margin: auto;
+}
+
+.friendContainer {
+  display: inline-flex;
+  margin: 10px;
+  border: black 1px solid;
+  background: lightgrey;
+  border-radius: 10px;
+  width: 90%;
 }
