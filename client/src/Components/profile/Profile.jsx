@@ -22,25 +22,11 @@ function Profile({ auth, db }) {
   }
 
   useEffect(() => {
-<<<<<<< HEAD
     const userId = user.uid;
-    const temp = db.ref(`users/${userId}`).on('value', (snapshot) => {
+    db.ref(`users/${userId}`).on('value', (snapshot) => {
       console.log(snapshot.val());
       setProfileData(snapshot.val());
-    })
-=======
-    /* if (!loading) {
-      setProfileData(JSON.parse(JSON.stringify(snapshots[0])));
-    } */
-
-    setProfileData({
-      bio: 'NA',
-      country: 'NA',
-      email: user.email,
-      name: user.displayName,
-      picture: user.photoURL,
     });
->>>>>>> ccdf10408832ca2956e98d86daae4688066bd073
   }, []);
 
   return (
@@ -48,7 +34,7 @@ function Profile({ auth, db }) {
       <div>
         <Switch>
           <Route path="/profile" exact render={() => <DisplayProfile profileData={profileData} />} />
-          <Route path="/updateprofile" render={() => <UpdateProfile updateData={updateData} />} />
+          <Route path="/updateprofile" render={() => <UpdateProfile updateData={updateData} profilePic={profileData.picture} />} />
         </Switch>
       </div>
     </Router>
