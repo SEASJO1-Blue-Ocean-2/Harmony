@@ -12,6 +12,7 @@ function CreateRoom({ db, user }) {
   const [isPublic, setIsPublic] = useState(false);
   const [newName, setNewName] = useState('');
   const [usersWithAccess, setUsersWithAccess] = useState([user.uid]);
+  const [createClicked, setCreateClicked] = useState(false);
   const friends = [
     {
       name: 'Alex',
@@ -34,6 +35,10 @@ function CreateRoom({ db, user }) {
   ];
 
   function createRoomHandler() {
+    if (createClicked) {
+      // already clicked with this name, maybe give user some info
+      return null;
+    }
     const newRoomId = uuidV4();
     db.ref(`rooms/${newRoomId}`).set({
       room_name: newName,
@@ -44,15 +49,16 @@ function CreateRoom({ db, user }) {
       public: isPublic,
       users: usersWithAccess,
     });
-    addRoomIdToUserRecordInDb();
+    usersWithAccess.forEach((uid) => addRoomIdToUserRecordInDb(uid));
     redirectToNewRoom(newRoomId);
+    setCreateClicked(true);
   }
 
-  function addRoomIdToUserRecordInDb() {
+  function addRoomIdToUserRecordInDb(uid) {
     // TODO: this function needs to add room ID to users/user.uid ref
   }
 
-  function redirectToNewRoom(roomUid) {
+  function redirectToNewRoom(roomId) {
     // TODO: redirect to room
     // possibly use same function that opens room in room module
   }
@@ -72,6 +78,8 @@ function CreateRoom({ db, user }) {
 
   function nameHandler(event) {
     setNewName(event.target.value);
+    // if name changes, let user sumbit again
+    setCreateClicked(false);
     // set room name here in state
     // should have a debouncer
   }
