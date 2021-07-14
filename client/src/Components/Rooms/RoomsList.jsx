@@ -2,14 +2,18 @@ import React, { useState, useEffect } from 'react';
 import RoomEntry from './RoomEntry.jsx';
 import CreateRoom from './CreateRoom.jsx';
 import Logout from './Logout.jsx';
+import { Redirect } from "react-router-dom";
+
 
 const RoomsList = (props) => {
   const [viewType, setView] = useState('your-rooms');
   const [yourRooms, setRooms] = useState(['list', 'of', 'rooms']);
   const [suggestedRooms, setSuggestions] = useState(['list', 'of', 'suggestions']);
+  const [destId, setDest] = useState(null);
 
-  const handleRoomClick = () => {
+  const handleRoomClick = (e) => {
     // joins the room not sure how to route this yet.
+    setDest(1)
   }
 
   const handleViewType = (e) => {
@@ -20,6 +24,7 @@ const RoomsList = (props) => {
 
   return (
     <div className='main-page'>
+      {destId && <Redirect to={"/room/" + destId}/> }
       <h2 className='currentPage'>Rooms List</h2>
       <div className='toggle-room-container'>
         <button

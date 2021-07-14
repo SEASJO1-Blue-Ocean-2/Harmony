@@ -4,6 +4,7 @@ import {
 } from 'react-router-dom';
 import firebase from 'firebase/app';
 import { useAuthState } from 'react-firebase-hooks/auth';
+
 import Profile from './profile/Profile';
 import MainPage from './Homepage/MainPage';
 import Login from './login/LoginView';
@@ -12,6 +13,11 @@ import 'firebase/auth';
 import 'firebase/database';
 import config from '../../../config';
 import NavigationBar from './Homepage/NavigationBar';
+import RoomsList from './Rooms/RoomsList';
+import FriendsList from './FriendsList/FriendsList';
+import NotificationsList from './Notifications/NotificationsList';
+import Room from './room/Room';
+
 
 firebase.initializeApp(config);
 const auth = firebase.auth();
@@ -44,6 +50,19 @@ const App = (props) => {
           <Route
             path="/profile"
             render={() => <Profile auth={auth} />}
+          />
+          <Route path="/Rooms">
+            <RoomsList auth={auth} db={db} />
+          </Route>
+          <Route path="/FriendsList">
+            <FriendsList db={db} user={user} />
+          </Route>
+          <Route path="/Notifications">
+            <NotificationsList />
+          </Route>
+          <Route
+            path="/room/:roomId"
+            render={match => <Room db={db} auth={auth} roomId={match.match.params.roomId} />}
           />
         </Switch>
       </div>

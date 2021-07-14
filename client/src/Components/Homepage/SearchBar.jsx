@@ -26,28 +26,15 @@ class SearchBar extends React.Component {
     return (
       <>
         <div>
-        <input type='text' className='SearchBar' placeholder='Search' onChange={this.handleSearchBarChange}>
-        </input>
-        <Router>
-          <div>
-            <nav className='mainPageOptions'>
-              <Link to="/Notifications">Notifications</Link>
-              <Link to="/Rooms">Rooms</Link>
-              <Link to="/FriendsList">Friends List</Link>
-            </nav>
-            <Switch>
-              <Route path="/Rooms">
-                <RoomsList auth={this.props.auth}/>
-              </Route>
-              <Route path="/FriendsList">
-                <FriendsList db = {this.props.db} user = {this.props.user}/>
-              </Route>
-              <Route path="/Notifications">
-                <NotificationsList />
-              </Route>
-            </Switch>
-          </div>
-        </Router>
+          <input type='text' className='SearchBar' placeholder='Search' onChange={this.handleSearchBarChange}>
+          </input>
+            <div>
+              <nav className='mainPageOptions'>
+                <Link to="/Notifications">Notifications</Link>
+                <Link to="/Rooms">Rooms</Link>
+                <Link to="/FriendsList">Friends List</Link>
+              </nav>
+            </div>
         </div>
       </>
     );
