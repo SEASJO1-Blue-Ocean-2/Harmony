@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import { PropTypes } from 'prop-types';
-import Header from './header/Header';
 import RoomName from './roomName/RoomName';
 import PublicPrivate from './publicPrivate/PublicPrivate';
 import AddFriends from './addFriends/AddFriends';
 import InviteUrl from './inviteUrl/InviteUrl';
 import CreateButton from './createButton/CreateButton';
 
-function CreateRoom() {
+function CreateRoom({ db, auth }) {
   const [isPublic, setIsPublic] = useState(false);
   const friends = [
     {
@@ -65,5 +64,6 @@ function CreateRoom() {
 export default CreateRoom;
 
 CreateRoom.propTypes = {
-
+  db: PropTypes.object.isRequired,
+  auth: PropTypes.object.isRequired,
 };
