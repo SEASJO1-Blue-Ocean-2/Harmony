@@ -1,6 +1,11 @@
-/* Colors! discord purple - #7289DA #D2E7D6 */
+/* Colors!
+discord purple - #7289DA
+pastel green - #D2E7D6 */
 .mainpage {
   border: 3px solid #7289DA;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .toggleRoomContainer {
@@ -8,6 +13,8 @@
   display: flex;
   justify-content: center;
   width: 90vw;
+  margin-top: 1vh;
+  margin-bottom: 1vh
 }
 
 .toggleRoomButton {
@@ -15,8 +22,12 @@
 }
 
 .roomsList {
-  border: 3px solid red;
+  height: 60vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.roomsList a {
+  text-decoration: none;
 }

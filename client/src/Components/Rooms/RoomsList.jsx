@@ -12,7 +12,6 @@ import RoomEntry from './RoomEntry.jsx';
 import CreateRoom from './CreateRoom.jsx';
 import Logout from './Logout.jsx';
 
-
 const RoomsList = ({ auth, db }) => {
   const [user, setUser] = useState(auth.currentUser.uid);
   const [viewType, setView] = useState('your-rooms');
@@ -22,7 +21,8 @@ const RoomsList = ({ auth, db }) => {
   const [suggestedRooms, setSuggestions] = useState(['list', 'of', 'suggestions']);
 
   const renderRooms = () => {
-    let allRooms = snapshots.forEach(
+    console.log(user)
+    snapshots.forEach(
       v => {
         let room = v.val()
         for (let uid in room.users) {

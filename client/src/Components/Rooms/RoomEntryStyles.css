@@ -1,3 +1,15 @@
+/* Colors!
+discord purple - #7289DA
+pastel green - #D2E7D6
+light grey - #C4C4C4*/
 .roomEntry {
-
+background-color: #7289DA;
+text-decoration: none;
+color: black;
+width: 90vw;
+margin-top: .5vh;
+margin-bottom: .5vh;
+display: flex;
+justify-content: center;
 }
+

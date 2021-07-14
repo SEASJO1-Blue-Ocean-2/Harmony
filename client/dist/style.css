@@ -87,3 +87,13 @@ img.MagnifyingGlass {
 .other-signUp img {
   width: 8vw;
 }
+
+.logout, .create-a-room{
+  width: 90vw;
+  margin-top: .5vh;
+  margin-bottom: .5vh;
+}
+
+.logout {
+  background: red
+}
