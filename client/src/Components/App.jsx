@@ -13,6 +13,7 @@ import 'firebase/database';
 import config from '../../../config';
 import NavigationBar from './Homepage/NavigationBar';
 import Room from './room/Room'
+import CreateRoom from './CreateRoom/CreateRoom.jsx'
 
 firebase.initializeApp(config);
 const auth = firebase.auth();
@@ -24,11 +25,7 @@ const db = firebase.database();
 
 const App = (props) => {
   const [user] = useAuthState(auth);
-  useEffect(()=> {
-    console.log(user)
-  }, [user])
   return (
-
     <Router>
       <div>
         <NavigationBar user={user} db={db} auth={auth} />

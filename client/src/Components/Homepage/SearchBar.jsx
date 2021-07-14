@@ -8,7 +8,7 @@ import {
 
 import FriendsList from '../FriendsList/FriendsList.jsx';
 import NotificationsList from '../Notifications/NotificationsList.jsx';
-import RoomsList from '../Rooms/RoomsList.jsx';
+import RoomsRoutes from '../Rooms/RoomsRoutes.jsx';
 
 
 class SearchBar extends React.Component {
@@ -32,12 +32,12 @@ class SearchBar extends React.Component {
           <div>
             <nav className='mainPageOptions'>
               <Link to="/Notifications">Notifications</Link>
-              <Link to="/Rooms">Rooms</Link>
+              <Link to="/rooms">Rooms</Link>
               <Link to="/FriendsList">Friends List</Link>
             </nav>
             <Switch>
-              <Route path="/Rooms">
-                <RoomsList auth={this.props.auth} db={this.props.db}/>
+              <Route path="/rooms">
+                <RoomsRoutes auth={this.props.auth} db={this.props.db}/>
               </Route>
               <Route path="/FriendsList">
                 <FriendsList db = {this.props.db} user = {this.props.user}/>

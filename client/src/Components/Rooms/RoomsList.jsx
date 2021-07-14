@@ -7,9 +7,11 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import Room from '../room/Room.jsx'
+
+import Room from '../room/Room.jsx';
 import RoomEntry from './RoomEntry.jsx';
-import CreateRoom from './CreateRoom.jsx';
+import CreateRoomButton from './CreateRoomButton.jsx';
+
 import Logout from './Logout.jsx';
 
 const RoomsList = ({ auth, db }) => {
@@ -41,60 +43,47 @@ const RoomsList = ({ auth, db }) => {
 
   const handleViewType = (e) => {
     e.target.id === 'your-rooms'
-    ? setView('your-rooms')
-    : setView('suggested-rooms')
+      ? setView('your-rooms')
+      : setView('suggested-rooms')
   }
 
   return (
-    <Router>
     <div className={css.mainpage}>
       <h2 className='currentPage'>Rooms List</h2>
       <div className={css.toggleRoomContainer}>
         <button
-        className={css.toggleRoomButton}
-        id='your-rooms'
-        onClick={ handleViewType }
+          className={css.toggleRoomButton}
+          id='your-rooms'
+          onClick={handleViewType}
         >Your Rooms</button>
         <button
-        className={css.toggleRoomButton}
-        id='suggested-rooms'
-        onClick={ handleViewType }
+          className={css.toggleRoomButton}
+          id='suggested-rooms'
+          onClick={handleViewType}
         >Room Suggestions</button>
       </div>
-        <div className={css.roomsList}>
-          {viewType === 'your-rooms'
-          ? yourRooms.map( (room, i) => {
+
+      <div className={css.roomsList}>
+        {viewType === 'your-rooms'
+          ? yourRooms.map((room, i) => {
             return (<Link to={`/room/${room.roomid}`} key={i}>
               <RoomEntry
-              key={i}
-              room={room}/>
+                key={i}
+                room={room} />
             </Link>)
-            })
-          : suggestedRooms.map( (room, i) =>{
+          })
+          : suggestedRooms.map((room, i) => {
             return (<Link to={`/room/${room.roomid}`} key={i}>
               <RoomEntry
-              key={i}
-              room={room}/>
+                key={i}
+                room={room} />
             </Link>)
-            })}
-        </div>
-      <CreateRoom />
-      <Logout auth={auth}/>
-
-
-        <Switch>
-          {viewType === 'your-rooms'
-            ? yourRooms.map( (room, i) => {
-              return <Route path={`/room/:${room.roomid}`} render={match => <Room auth={auth} db={db} roomId={match}/>} />})
-            : suggestedRooms.map( (room, i) => {
-              return <Route path={`/room/:${room.roomid}`} render={match => <Room auth={auth} db={db} roomId={match}/>} />})
-            }
-
-        </Switch>
-
-
+          })}
       </div>
-    </Router>
+
+      <CreateRoomButton />
+      <Logout auth={auth} />
+    </div>
   )
 }
 
