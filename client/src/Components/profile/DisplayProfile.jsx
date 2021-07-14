@@ -11,7 +11,7 @@ function DisplayProfile({ profileData }) {
         <span>
           Name:
           {' '}
-          {profileData.name}
+          {profileData.username}
         </span>
         <br />
         <span>
