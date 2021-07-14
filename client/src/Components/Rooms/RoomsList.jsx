@@ -7,7 +7,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
-
+import Room from '../room/Room.jsx'
 import RoomEntry from './RoomEntry.jsx';
 import CreateRoom from './CreateRoom.jsx';
 import Logout from './Logout.jsx';
@@ -46,6 +46,7 @@ const RoomsList = ({ auth, db }) => {
   }
 
   return (
+    <Router>
     <div className={css.mainpage}>
       <h2 className='currentPage'>Rooms List</h2>
       <div className={css.toggleRoomContainer}>
@@ -79,7 +80,21 @@ const RoomsList = ({ auth, db }) => {
         </div>
       <CreateRoom />
       <Logout auth={auth}/>
-    </div>
+
+
+        <Switch>
+          {viewType === 'your-rooms'
+            ? yourRooms.map( (room, i) => {
+              return <Route path={`/room/:${room.roomid}`} render={match => <Room auth={auth} db={db} roomId={match}/>} />})
+            : suggestedRooms.map( (room, i) => {
+              return <Route path={`/room/:${room.roomid}`} render={match => <Room auth={auth} db={db} roomId={match}/>} />})
+            }
+
+        </Switch>
+
+
+      </div>
+    </Router>
   )
 }
 

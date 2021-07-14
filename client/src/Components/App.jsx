@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {
   BrowserRouter as Router, Switch, Route,
 } from 'react-router-dom';
@@ -24,6 +24,9 @@ const db = firebase.database();
 
 const App = (props) => {
   const [user] = useAuthState(auth);
+  useEffect(()=> {
+    console.log(user)
+  }, [user])
   return (
 
     <Router>
@@ -48,8 +51,8 @@ const App = (props) => {
             render={() => <Profile auth={auth} />}
           />
           <Route
-          path='/room/:roomId'
-          render={match => <Room auth={auth} db={db} roomId={match}/>}
+            path={`/room/:roomid`}
+            render={match => <Room auth={auth} db={db} roomId={match}/>}
           />
         </Switch>
       </div>
