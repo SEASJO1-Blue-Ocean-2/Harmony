@@ -13,8 +13,6 @@ const FriendProfile = (props) => {
     });
   }, [friendId]);
 
-  console.log('this is the friend id', friendId);
-
   return (
     <div>
     <img src={profileData.picture} className={css.profilePic} alt="" />
