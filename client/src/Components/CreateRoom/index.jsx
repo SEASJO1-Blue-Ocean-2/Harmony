@@ -11,23 +11,23 @@ const { v4: uuidV4 } = require('uuid');
 function CreateRoom({ db, user }) {
   const [isPublic, setIsPublic] = useState(false);
   const [newName, setNewName] = useState('');
-  const [usersWithAccess, setUsersWithAccess] = useState([user.uid]);
+  const [usersWithAccess, setUsersWithAccess] = useState({[user.uid]: user.displayName});
   const [createClicked, setCreateClicked] = useState(false);
   const friends = [
     {
-      name: 'Alex',
+      displayName: 'Alex',
       id: 0,
       online: true,
       uid: 'fake_uid_1'
     },
     {
-      name: 'Alex2',
+      displayName: 'Alex2',
       id: 1,
       online: true,
       uid: 'fake_uid_2'
     },
     {
-      name: 'Alex3',
+      displayName: 'Alex3',
       id: 2,
       online: false,
       uid: 'fake_uid_3'
@@ -45,17 +45,22 @@ function CreateRoom({ db, user }) {
       channels: [
         'General',
       ],
+      voice_channels: [
+        'Voice',
+      ],
       default_channel: 0,
       public: isPublic,
       users: usersWithAccess,
     });
-    usersWithAccess.forEach((uid) => addRoomIdToUserRecordInDb(uid));
+    const uidList = Object.keys(usersWithAccess)
+    uidList.forEach((uid) => addRoomIdToUserRecordInDb(uid, newRoomId));
     redirectToNewRoom(newRoomId);
     setCreateClicked(true);
   }
 
-  function addRoomIdToUserRecordInDb(uid) {
+  function addRoomIdToUserRecordInDb(uid, roomId) {
     // TODO: this function needs to add room ID to users/user.uid ref
+    db.ref(`users/${uid}/rooms/${roomId}`).set(newName);
   }
 
   function redirectToNewRoom(roomId) {
@@ -63,8 +68,9 @@ function CreateRoom({ db, user }) {
     // possibly use same function that opens room in room module
   }
 
-  function addFriendHandler(uid) {
-    usersWithAccess.push(uid);
+  function addFriendHandler(friend) {
+    usersWithAccess[friend.uid] = friend.displayName;
+    console.log(usersWithAccess)
   }
 
   function publicPrivateHandler(event) {
@@ -83,7 +89,6 @@ function CreateRoom({ db, user }) {
     // set room name here in state
     // should have a debouncer
   }
-
   return (
     <div data-testid="create-room">
       <RoomName
