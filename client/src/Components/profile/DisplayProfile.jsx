@@ -44,7 +44,7 @@ function DisplayProfile({ profileData }) {
 DisplayProfile.propTypes = {
   profileData: PropTypes.shape({
     picture: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
+    username: PropTypes.string.isRequired,
     country: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
     bio: PropTypes.string.isRequired,

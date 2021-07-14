@@ -11,15 +11,6 @@
   margin: auto;
 }
 
-.friendContainer {
-  display: inline-flex;
-  margin: 10px;
-  border: black 1px solid;
-  background: lightgrey;
-  border-radius: 10px;
-  width: 90%;
-}
-
 #friendContainer {
   display: inline-flex;
   margin: 10px;
