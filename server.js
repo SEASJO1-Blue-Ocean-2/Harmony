@@ -24,7 +24,7 @@ app.get('/:roomId', (req, res)=>{
 });
 
 io.on('connection', socket => {
-  socket.on('join-room', (roomId, userId, userName) => {
+  socket.on('join-room', (roomId, userId, socketId) => {
     console.log(roomId, userId);
     socket.join(roomId);
     socket.to(roomId).emit('user-connected', userId);
@@ -37,6 +37,4 @@ io.on('connection', socket => {
   });
 });
 
-server.listen(PORT, function() {
-  console.log(`Server listening at http://localhost:${PORT}`);
-});
+server.listen(3000);

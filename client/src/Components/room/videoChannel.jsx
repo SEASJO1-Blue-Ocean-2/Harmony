@@ -8,7 +8,7 @@ const myPeer = new Peer(undefined, {
 });
 const peers = {};
 
-const VideoChannel = ({user}) => {
+const VideoChannel = ({user, count ,setCount}) => {
 
   const [myVideoStream, setMyVideoStream] = useState(null);
   const [joined, setJoined] = useState(false);
@@ -27,14 +27,16 @@ const VideoChannel = ({user}) => {
         addVideoStream(myVideo, stream);
 
         socket.on('user-connected', (userId) => {
+          console.log('connect to user')
           connectToNewUser(userId, stream);
         });
 
         myPeer.on('call', call => {
+          console.log('test2')
           call.answer(stream);
-          const video = document.createElement('video');
+          let video1 = document.createElement('video');
           call.on('stream', userVideoStream => {
-            addVideoStream(video, userVideoStream);
+            addVideoStream(video1, userVideoStream);
           });
         });
       });
@@ -63,6 +65,7 @@ const VideoChannel = ({user}) => {
 
   const connectToNewUser = (userId, stream) => {
     let call = myPeer.call(userId, stream);
+    console.log('call');
     let userVideo = document.createElement('video');
     userVideo.muted = true;
     call.on('stream', (userVideoStream) => {

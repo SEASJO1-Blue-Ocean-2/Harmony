@@ -1,5 +1,6 @@
 {
   "name": "blueocean",
+  "proxy": "http://localhost:3001/",
   "version": "1.0.0",
   "description": "initial readme",
   "main": "index.js",

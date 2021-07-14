@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   BrowserRouter as Router, Switch, Route,
 } from 'react-router-dom';
@@ -21,9 +21,10 @@ const db = firebase.database();
 
 const App = (props) => {
   const [user] = useAuthState(auth);
+  const [ count , setCount] = useState(0)
   return (
     <div>
-      <VideoChannel user={user}/>
+      <VideoChannel user={user} count={count} setCount={setCount}/>
     </div>
     // <Router>
     //   <div>
