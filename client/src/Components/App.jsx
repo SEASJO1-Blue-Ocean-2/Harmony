@@ -23,7 +23,7 @@ const App = (props) => {
   const [user] = useAuthState(auth);
   return (
     <div>
-      <VideoChannel />
+      <VideoChannel user={user}/>
     </div>
     // <Router>
     //   <div>
