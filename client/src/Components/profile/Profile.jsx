@@ -18,14 +18,18 @@ function Profile({ auth, db }) {
 
   function updateData(data) {
     setProfileData(data);
-    db.ref(`users/${user.uid}`).update(data);
+    db.ref(`userData/${user.uid}`).update(data);
   }
 
   useEffect(() => {
     const userId = user.uid;
+    let userData = {};
     db.ref(`users/${userId}`).on('value', (snapshot) => {
-      console.log(snapshot.val());
-      setProfileData(snapshot.val());
+      userData = snapshot.val();
+      db.ref(`userData/${userId}`).on('value', (addtionalData) => {
+        userData = { ...userData, ...addtionalData.val() };
+        setProfileData(userData);
+      });
     });
   }, []);
 
