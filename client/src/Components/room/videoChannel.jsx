@@ -31,14 +31,14 @@ const VideoChannel = ({user}) => {
           connectToNewUser(userId, stream);
         });
 
-        myPeer.on('call', (call) => {
-          setJoined(!joined);
+        myPeer.on('call', call => {
           call.answer(stream);
-          let video = document.createElement('video');
-          call.on('stream', (userVideoStream) => {
+          const video = document.createElement('video');
+          call.on('stream', userVideoStream => {
             addVideoStream(video, userVideoStream);
           });
         });
+      });
 
         socket.on('user-disconnected', userId => {
           if (peers[userId]) {
@@ -52,7 +52,6 @@ const VideoChannel = ({user}) => {
 
     myPeer.on('open', (id) => {
       socket.emit('join-room', roomId, id, user);
-    });
   }, []);
 
   const addVideoStream = (video, stream) => {
