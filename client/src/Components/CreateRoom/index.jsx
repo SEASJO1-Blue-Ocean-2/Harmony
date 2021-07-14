@@ -6,6 +6,8 @@ import AddFriends from './addFriends/AddFriends';
 import InviteUrl from './inviteUrl/InviteUrl';
 import CreateButton from './createButton/CreateButton';
 
+const { v4: uuidV4 } = require('uuid');
+
 function CreateRoom({ db, auth }) {
   const [isPublic, setIsPublic] = useState(false);
   const friends = [
@@ -27,6 +29,7 @@ function CreateRoom({ db, auth }) {
   ];
 
   function createRoomHandler() {
+    const newRoomId = uuidV4();
     return null;
   }
 
