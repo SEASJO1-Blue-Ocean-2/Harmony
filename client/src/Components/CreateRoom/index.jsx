@@ -17,23 +17,23 @@ function CreateRoom({ db, user }) {
       name: 'Alex',
       id: 0,
       online: true,
+      uid: 'fake_uid_1'
     },
     {
       name: 'Alex2',
       id: 1,
       online: true,
+      uid: 'fake_uid_2'
     },
     {
       name: 'Alex3',
       id: 2,
       online: false,
+      uid: 'fake_uid_3'
     },
   ];
 
   function createRoomHandler() {
-    // TODO: this function needs to add room ID to users/user.uid ref
-    // usersWithAccess.push('friend-uid-here');
-    // is pushing directly to a state a bad idea?
     const newRoomId = uuidV4();
     db.ref(`rooms/${newRoomId}`).set({
       room_name: newName,
@@ -44,11 +44,21 @@ function CreateRoom({ db, user }) {
       public: isPublic,
       users: usersWithAccess,
     });
-    return null;
+    addRoomIdToUserRecordInDb();
+    redirectToNewRoom(newRoomId);
   }
 
-  function addFriendHandler() {
-    return null;
+  function addRoomIdToUserRecordInDb() {
+    // TODO: this function needs to add room ID to users/user.uid ref
+  }
+
+  function redirectToNewRoom(roomUid) {
+    // TODO: redirect to room
+    // possibly use same function that opens room in room module
+  }
+
+  function addFriendHandler(uid) {
+    usersWithAccess.push(uid);
   }
 
   function publicPrivateHandler(event) {
