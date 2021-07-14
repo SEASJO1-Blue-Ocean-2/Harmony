@@ -33,6 +33,11 @@ class SearchBar extends React.Component {
     }
   }
 
+  resetSearchText() {
+    var currentSearchText = document.getElementById('searchBarText');
+    currentSearchText.value = '';
+  }
+
   render() {
     return (
       <>
@@ -46,16 +51,16 @@ class SearchBar extends React.Component {
           <Router>
             <div>
               <nav className='mainPageOptions'>
-                <Link to="/Notifications">Notifications</Link>
-                <Link to="/Rooms">Rooms</Link>
-                <Link to="/FriendsList">Friends List</Link>
+                <Link to="/Notifications" onClick ={this.resetSearchText}>Notifications</Link>
+                <Link to="/Rooms" onClick ={this.resetSearchText}>Rooms</Link>
+                <Link to="/FriendsList" onClick ={this.resetSearchText}>Friends List</Link>
               </nav>
               <Switch>
                 <Route path="/Rooms">
                   <RoomsList auth={this.props.auth} />
                 </Route>
                 <Route path="/FriendsList">
-                  <FriendsList db={this.props.db} user={this.props.user} />
+                  <FriendsList db={this.props.db} user={this.props.user}/>
                 </Route>
                 <Route path="/Notifications">
                   <NotificationsList />

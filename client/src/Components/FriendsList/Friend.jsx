@@ -16,7 +16,7 @@ const Friend = (props) => {
   });
 
   return (
-    <div className={css.friendContainer}>
+      <div id={css.friendContainer} className='friend-container'>
       <div className="friend-name">{friendName}</div>
       <DirectMessageButton />
       <InviteToRoom />

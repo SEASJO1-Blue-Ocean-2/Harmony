@@ -10,7 +10,7 @@ const Logout = (props) => {
 
   return (
     <Link to="/">
-      <button className='logout' onClick ={signOut}>Logout</button>
+      <button className='logout' onClick ={signOut} id='logoutButton'>Logout</button>
     </Link>
   );
 }
