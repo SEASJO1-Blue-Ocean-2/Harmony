@@ -1,9 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import css from '../profile/style.css';
 
 const FriendProfile = (props) => {
-  const { profileData } = props;
+  const { friendId, db, setShowFriendsList } = props;
+  const [profileData, setProfileData] = useState({});
+  const friendRef = db.ref(`users/${friendId}`);
+
+  useEffect(() => {
+    friendRef.on('value', (v) => {
+      setProfileData(v.val());
+    });
+  }, [friendId]);
+
+  console.log('this is the friend id', friendId);
+
   return (
     <div>
     <img src={profileData.picture} className={css.profilePic} alt="" />
@@ -11,7 +22,7 @@ const FriendProfile = (props) => {
       <span>
         Name:
         {' '}
-        {profileData.name}
+        {profileData.username}
       </span>
       <br />
       <span>
@@ -35,8 +46,10 @@ const FriendProfile = (props) => {
       </span>
     </div>
     <Link to="/FriendsList">
-      <button type="button" className={css.updateButton}>Back</button>
+      <button type="button" className={css.updateButton} onClick={() => setShowFriendsList(true)}>Back</button>
     </Link>
   </div>
   );
 };
+
+export default FriendProfile;

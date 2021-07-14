@@ -4,7 +4,7 @@ import DirectMessageButton from './DirectMessageButton.jsx';
 import css from './friendStyles.css';
 
 const Friend = (props) => {
-  const { friendId, db } = props;
+  const { friendId, db, showFriendProfile } = props;
   const [friendName, setFriendName] = useState('');
   const [friendInfo, setFriendInfo] = useState({});
   const tempId = 'A2PyioigFaYkKpPFqUcgNN5Gwkp1';
@@ -27,11 +27,11 @@ const Friend = (props) => {
       setFriendInfo(v.val());
     });
   }, [friendId]);
-  console.log('this is the friend info', friendInfo);
+  // console.log('this is the friend info', friendInfo);
 
   return (
       <div id={css.friendContainer} className='friend-container'>
-      <div className="friend-name">{friendName}</div>
+      <div className="friend-name" onClick={() => showFriendProfile(friendId)}>{friendName}</div>
       <DirectMessageButton />
       <InviteToRoom />
     </div>
