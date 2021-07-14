@@ -64,7 +64,7 @@ const RoomsList = (props) => {
         />
         <Route
           path="/create"
-          render={() => <CreateRoom auth={props.auth} db={props.db} />}
+          render={() => <CreateRoom user={props.user} db={props.db} />}
         />
       </Switch>
     </Router>

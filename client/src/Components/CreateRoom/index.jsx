@@ -8,7 +8,7 @@ import CreateButton from './createButton/CreateButton';
 
 const { v4: uuidV4 } = require('uuid');
 
-function CreateRoom({ db, auth }) {
+function CreateRoom({ db, user }) {
   const [isPublic, setIsPublic] = useState(false);
   const friends = [
     {
@@ -29,7 +29,20 @@ function CreateRoom({ db, auth }) {
   ];
 
   function createRoomHandler() {
+    const roomName = 'room test';
     const newRoomId = uuidV4();
+    const userId = user.uid;
+    db.ref(`rooms/${newRoomId}`).set({
+      room_name: roomName,
+      channels: [
+        'General',
+      ],
+      default_channel: 0,
+      public: isPublic,
+      users: [
+        userId,
+      ],
+    });
     return null;
   }
 
@@ -68,5 +81,5 @@ export default CreateRoom;
 
 CreateRoom.propTypes = {
   db: PropTypes.object.isRequired,
-  auth: PropTypes.object.isRequired,
+  user: PropTypes.object.isRequired,
 };
