@@ -3,7 +3,7 @@ import firebase from 'firebase/app';
 import 'firebase/analytics';
 import 'firebase/database';
 
-import { addData } from '../util.js';
+import { addData } from '../../util.js';
 import { useList } from 'react-firebase-hooks/database';
 
 const Room = ({ db, auth, roomName }) => {
@@ -29,10 +29,10 @@ const Room = ({ db, auth, roomName }) => {
       <div>
         {snapshots.map(v => {
           return <React.Fragment>
-            {v.key}
-            <ul>
-              {<Message data={v.val()}>}
-            </ul>
+            {/* {v.key} */}
+            {/* <ul>
+              <Message data={v.val()}>
+            </ul> */}
           </React.Fragment>
         })}
       </div>
@@ -46,8 +46,4 @@ const Room = ({ db, auth, roomName }) => {
 };
 
 
-<<<<<<< HEAD
 export default Room;
-=======
-export default Room
->>>>>>> a2722f222e8100429137ccb4602c845e3d7b81ef
