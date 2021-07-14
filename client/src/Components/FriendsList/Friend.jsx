@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import InviteToRoom from './InviteToRoom.jsx';
 import DirectMessageButton from './DirectMessageButton.jsx';
+import './style.css';
+
 
 const Friend = (props) => {
   const { friendId, db } = props;
@@ -10,12 +12,12 @@ const Friend = (props) => {
 
   useEffect(() => {
     friendNameRef.on('value', (snapshot) => {
-      setFriendName(JSON.stringify(snapshot.val()));
+      setFriendName(snapshot.val());
     });
   });
 
   return (
-    <div className="friend-container">
+    <div className="friend-container" id='testFriend'>
       <div className="friend-name">{friendName}</div>
       <DirectMessageButton />
       <InviteToRoom />

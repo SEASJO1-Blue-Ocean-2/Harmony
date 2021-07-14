@@ -10,12 +10,25 @@ import Profile from '../profile/Profile';
 import NavigationBar from './NavigationBar.jsx';
 import RoomsList from '../Rooms/RoomsList.jsx';
 import SearchBar from './SearchBar';
+import firebase from 'firebase/app';
+import { useList } from 'react-firebase-hooks/database';
+import 'firebase/auth';
+import 'firebase/analytics';
+import 'firebase/database';
 
-const MainPage = (props) => (
-  <div>
-    <SearchBar db={props.db} user={props.user} auth={props.auth} />
-  </div>
+class MainPage extends React.Component {
+  constructor(props) {
+    super(props);
+  }
 
-);
+  render () {
+    return (
+      <div>
+      <SearchBar db={this.props.db} user={this.props.user} auth={this.props.auth} />
+    </div>
+    );
+  }
+
+};
 
 export default MainPage;
