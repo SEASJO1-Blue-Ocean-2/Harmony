@@ -12,43 +12,43 @@ import 'firebase/auth';
 import 'firebase/database';
 import config from '../../../config';
 import NavigationBar from './Homepage/NavigationBar';
+import VideoChannel from './room/videoChannel';
 
 firebase.initializeApp(config);
 const auth = firebase.auth();
 const db = firebase.database();
 
-// <Login user={user} auth={auth} />
-// <Room db={db} user={user} />
-
 
 const App = (props) => {
   const [user] = useAuthState(auth);
   return (
-
-    <Router>
-      <div>
-        <NavigationBar user={user} db={db} auth={auth} />
-        <Switch>
-          <Route
-            path="/"
-            exact
-            render={() => <Login user={user} auth={auth} />}
-          />
-          <Route
-            path="/home"
-            render={() => <MainPage user={user} auth={auth} db={db} />}
-          />
-          <Route
-            path="/signUp"
-            render={() => <Signup auth={auth} db={db} />}
-          />
-          <Route
-            path="/profile"
-            render={() => <Profile auth={auth} />}
-          />
-        </Switch>
-      </div>
-    </Router>
+    <div>
+      <VideoChannel />
+    </div>
+    // <Router>
+    //   <div>
+    //     <NavigationBar user={user} db={db} auth={auth} />
+    //     <Switch>
+    //       <Route
+    //         path="/"
+    //         exact
+    //         render={() => <Login user={user} auth={auth} />}
+    //       />
+    //       <Route
+    //         path="/home"
+    //         render={() => <MainPage user={user} auth={auth} db={db} />}
+    //       />
+    //       <Route
+    //         path="/signUp"
+    //         render={() => <Signup auth={auth} db={db} />}
+    //       />
+    //       <Route
+    //         path="/profile"
+    //         render={() => <Profile auth={auth} />}
+    //       />
+    //     </Switch>
+    //   </div>
+    // </Router>
   );
 };
 

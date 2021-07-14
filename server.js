@@ -3,6 +3,7 @@ const app = express();
 const PORT = 3000;
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
+const {v4: uuidV4} = require('uuid');
 
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/./client/dist');
@@ -13,12 +14,26 @@ app.use(express.urlencoded({
 }));
 app.use(express.json());
 
-app.get('/', function (req, res) {
-  // NEW CODE
-  res.render('index');
- })
+// app.get('/', function (req, res) {
+//   res.render('index');
+//  });
 
+app.get('/', (req, res)=>{
+  res.redirect(`/${uuidV4()}`);
+});
 
+app.get('/:roomId', (req, res)=>{
+  res.render('index', { roomId: req.params.roomId });
+});
+
+io.on('connection', socket => {
+  console.log('test')
+  socket.on('join-room', (roomId, userId, userName) => {
+    console.log(roomId, userId);
+    socket.join(roomId);
+    socket.to(roomId).emit('user-connected', userId);
+  });
+});
 
 server.listen(PORT, function() {
   console.log(`Server listening at http://localhost:${PORT}`);
