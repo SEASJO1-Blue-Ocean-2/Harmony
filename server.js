@@ -5,6 +5,9 @@ const PORT = 3000;
 
 
 app.use('/', express.static('./client/dist'));
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, '/client', '/dist', '/index.html'));
+});
 
 app.listen(PORT, function() {
   console.log(`Server listening at http://localhost:${PORT}`);

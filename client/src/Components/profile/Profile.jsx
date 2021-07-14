@@ -31,9 +31,6 @@ function Profile({ auth }) {
     /* if (!loading) {
       setProfileData(JSON.parse(JSON.stringify(snapshots[0])));
     } */
-    console.log(typeof auth);
-    console.log(auth);
-    console.log(user);
     setProfileData({
       bio: 'NA',
       country: 'NA',

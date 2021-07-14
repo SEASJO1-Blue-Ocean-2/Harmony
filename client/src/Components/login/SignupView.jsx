@@ -21,9 +21,9 @@ const Signup = ({ auth }) => {
 
   const signUp = (e) => {
     e.preventDefault();
-    console.log(username, email, pass);
     auth.createUserWithEmailAndPassword(email, pass).then(uc => {
       var data = {
+        email: email,
         username: username
       };
       addData(data, dbRef, uc.user.uid);
@@ -31,7 +31,6 @@ const Signup = ({ auth }) => {
       console.log(err);
     });
   }
-  //
 
   return (
     <div className='test'>

@@ -5,7 +5,6 @@ import { Link, Redirect } from "react-router-dom";
 const Logout = (props) => {
 
   const signOut = () => {
-    console.log(props.auth);
     props.auth.signOut();
     // <Redirect to="/signUp" />
   };

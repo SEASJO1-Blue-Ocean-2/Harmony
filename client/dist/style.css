@@ -87,3 +87,11 @@ img.MagnifyingGlass {
 .other-signUp img {
   width: 8vw;
 }
+
+.sent-message {
+  background-color: lightblue;
+}
+
+.received-message {
+  background-color: tan;
+}

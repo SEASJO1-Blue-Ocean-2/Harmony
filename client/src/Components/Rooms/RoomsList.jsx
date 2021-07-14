@@ -13,7 +13,7 @@ const RoomsList = (props) => {
 
   const handleRoomClick = (e) => {
     // joins the room not sure how to route this yet.
-    setDest(1)
+    setDest('r1')
   }
 
   const handleViewType = (e) => {
@@ -21,7 +21,6 @@ const RoomsList = (props) => {
     ? setView('your-rooms')
     : setView('suggested-rooms')
   }
-
   return (
     <div className='main-page'>
       {destId && <Redirect to={"/room/" + destId}/> }
@@ -52,7 +51,7 @@ const RoomsList = (props) => {
           room={room}
           click={ handleRoomClick }/>)}
       </div>
-      <CreateRoom />
+      <CreateRoom name={'Room ' + Math.floor(Math.random() * 1000)} db={props.db}/>
       <Logout auth={props.auth}/>
 
     </div>
