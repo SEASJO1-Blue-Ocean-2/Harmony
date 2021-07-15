@@ -73,9 +73,9 @@ const Room = ({ db, auth, roomId }) => {
       {textChannelId && <MessageView channelId={textChannelId} db={db} uid={user.uid} />}
     </div>
 
-    <form onSubmit={sendMessage}>
-      <input type='text' value={message} onChange={e => setMessage(e.target.value)} />
-      <input type='submit' />
+    <form onSubmit={sendMessage} className='submitMessageInRoom'>
+      <input type='text' value={message} onChange={e => setMessage(e.target.value)} className='setMessageSubmit' />
+      <input type='submit' className='submitMessageButton' />
     </form>
   </div >);
 };

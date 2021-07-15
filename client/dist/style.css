@@ -250,6 +250,8 @@ button.voiceChannels {
 
 .message {
   text-align: left;
+  margin-top: 15px;
+
 }
 
 .author {
@@ -258,4 +260,33 @@ button.voiceChannels {
 
 .date {
   float:right;
+}
+
+form.submitMessageInRoom {
+  text-align: center;
+  margin-top: 50px;
+}
+
+input[type="submit"] {
+  border: 3px solid #7289da;
+  border-radius: 20px;
+  color: #7289da;
+  margin-top: 20px;
+}
+
+input.setMessageSubmit {
+  border: 2px solid #7289da;
+}
+
+.roomName {
+  float: left;
+}
+
+.userCount {
+  float: right;
+}
+
+button#suggested-rooms {
+  float: right;
+  margin-left: 20px;
 }
