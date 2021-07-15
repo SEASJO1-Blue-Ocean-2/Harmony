@@ -100,17 +100,23 @@ img.MagnifyingGlass {
   width: 8vw;
 }
 
-.create-a-room{
+.create-a-room {
   width: 90vw;
   margin-top: .5vh;
   margin-bottom: .5vh;
 }
 
+button.videoChannels {
+  float: right;
+}
+
+.channels {
+  margin-top: 10px;
+}
 .logout {
   margin-top: .5vh;
   margin-bottom: .5vh;
   position: absolute;
-  bottom: 2%;
   margin: 0 auto;
   right: 40%;
 }
@@ -122,7 +128,9 @@ img.MagnifyingGlass {
 .search {
   display: grid;
   grid-template-columns: 2fr 1fr;
-};
+}
+
+;
 
 #harmonyLogo {
   position: absolute;
@@ -133,7 +141,8 @@ img.MagnifyingGlass {
   margin: -100px 0 0 -150px;
 }
 
-.inviteIcon, .directMessageButton {
+.inviteIcon,
+.directMessageButton {
   margin-left: 30px;
 
 }
@@ -142,7 +151,7 @@ img.directMessageButton {
   margin-top: 7px;
 }
 
-.unreadNotifications{
+.unreadNotifications {
   display: grid;
   grid-template-columns: 1fr 1fr;
   text-align: center;
@@ -153,15 +162,16 @@ img.directMessageButton {
   color: black;
   background-color: #7289da;
 }
+
 .other-signUp img {
   width: 8vw;
 }
 
-.signUpForm{
+.signUpForm {
   text-align: center;
 }
 
-.signUpContainer{
+.signUpContainer {
   text-align: center;
 }
 
@@ -215,13 +225,13 @@ button {
   text-align: center;
 }
 
-#create-room-roomname{
+#create-room-roomname {
   text-align: center;
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
-#create-room{
-  text-align:center;
+#create-room {
+  text-align: center;
 }
 
 .showChannels {
@@ -243,23 +253,37 @@ button.voiceChannels {
   text-align: center;
 }
 
+.messageContainer {
+  overflow: scroll;
+  max-height: 400px;
+}
+
 .text-menu {
   text-align: center;
-  font-size: x-large;
+  font-size: large;
+}
+
+.mediaMessage {
+  text-align: right;
 }
 
 .message {
   text-align: left;
   margin-top: 15px;
-
 }
+
+form.submitMessage {
+  text-align: center;
+  margin-top: 20px;
+}
+
 
 .author {
   float: left;
 }
 
 .date {
-  float:right;
+  float: right;
 }
 
 form.submitMessageInRoom {
@@ -271,7 +295,12 @@ input[type="submit"] {
   border: 3px solid #7289da;
   border-radius: 20px;
   color: #7289da;
-  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-top: 5px;
+}
+
+.fileInput {
+  text-align: center;
 }
 
 input.setMessageSubmit {
@@ -289,4 +318,73 @@ input.setMessageSubmit {
 button#suggested-rooms {
   float: right;
   margin-left: 20px;
+.sent-message {
+  background-color: lightblue;
+}
+
+.received-message {
+  background-color: tan;
+}
+/* video css */
+
+.main {
+  overflow: hidden;
+  height: 80vh;
+}
+.main__left {
+flex: 0.7;
+display: flex;
+flex-direction: column;
+}
+.videos__group {
+flex-grow: 1;
+display: flex;
+justify-content: center;
+align-items: center;
+padding: 1rem;
+background-color: #eeee;
+height: 66vh;
+}
+video {
+height: 30vw;
+border-radius: 1rem;
+margin: 0.5rem;
+width: 40vw;
+object-fit: cover;
+transform: rotateY(180deg);
+-webkit-transform: rotateY(180deg);
+-moz-transform: rotateY(180deg);
+}
+.options {
+padding: 1rem;
+display: flex;
+background-color: #eee;
+}
+.options__left {
+display: flex;
+}
+.options__right {
+margin-left: auto;
+}
+.options__button {
+display: flex;
+justify-content: center;
+align-items: center;
+background-color: rgb(182, 182, 182);
+height: 50px;
+border-radius: 5px;
+color: blue;
+font-size: 1.2rem;
+width: 50px;
+margin: 0 0.5rem;
+}
+
+#video-grid {
+display: flex;
+justify-content: center;
+flex-wrap: wrap;
+}
+
+.background__red {
+  background-color: white;
 }

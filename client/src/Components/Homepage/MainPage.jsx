@@ -14,9 +14,7 @@ const MainPage = ({ db, user, auth }) => {
     }
   };
   const [friendsList, loading, error] = useList(friendsRef());
-
   return (
-
     <div>
       <SearchBar db={db} user={user} auth={auth} friendsList={friendsList} />
       <div id='test'>

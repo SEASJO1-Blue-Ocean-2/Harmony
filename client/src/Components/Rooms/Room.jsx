@@ -11,6 +11,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import Message from './Message';
 import SendMediaButton from './SendMediaButton.jsx';
 import { TextMenu, VoiceMenu } from './Menus';
+import VideoChannel from './videoChannel'
 
 import './RoomStyles.css';
 
@@ -74,33 +75,36 @@ const Room = ({ db, auth, roomId }) => {
     }
   };
 
-  return (<div>
-    {<div className='showChannels'><button onClick={() => setMenu(1)} className='textChannels'>Show Text Channels</button> <button onClick={() => setMenu(2)} className='voiceChannels'>Show Voice Channels</button></div>}
-    {menu === 1 && textChannels && <TextMenu channels={textChannels} channelId={textChannelId} setChannel={setTextChannel} />}
-    {menu === 2 && voiceChannels && <VoiceMenu channels={voiceChannels} channelId={voiceChannelId} setChannel={setVoiceChannel} />}
+  return (<div className='channels'>
+    {<div><button onClick={() => setMenu(1)} className='textChannels'>Show Text Channels</button> <button onClick={() => setMenu(2)} className='videoChannels'>Show Video Channels</button> </div>}
+    {menu === 2 && voiceChannels && <VideoChannel roomId={roomId}/>}
+    {menu === 1 && textChannels &&
     <div>
-      {textChannelId && <MessageView channelId={textChannelId} db={db} uid={user.uid} />}
-    </div>
+      <TextMenu channels={textChannels} channelId={textChannelId} setChannel={setTextChannel}/>
+      <div>
+        {textChannelId && <MessageView channelId={textChannelId} db={db} uid={user.uid} />}
+      </div>
 
-    <form onSubmit={sendMessage} className='submitMessageInRoom'>
-      <input type='text' value={message} onChange={e => setMessage(e.target.value)} className='setMessageSubmit' />
-      <input type='submit' className='submitMessageButton' />
-    </form>
-    <SendMediaButton
-      setCurrentUrl={setCurrentUrl}
-      sendMessage={sendMessage}
-      setFileUploaded={setFileUploaded}
-      fileUploaded={fileUploaded}
-      showMediaInput={showMediaInput}
-      setShowMediaInput={setShowMediaInput}
-    />
-  </div >);
+      <SendMediaButton
+        setCurrentUrl={setCurrentUrl}
+        sendMessage={sendMessage}
+        setFileUploaded={setFileUploaded}
+        fileUploaded={fileUploaded}
+        showMediaInput={showMediaInput}
+        setShowMediaInput={setShowMediaInput}
+      />
+      <form onSubmit={sendMessage}  className='submitMessage'>
+        <input type='text' value={message} onChange={e => setMessage(e.target.value)} />
+        <input type='submit' />
+      </form>
+    </div >}
+  </div>);
 };
 
 const MessageView = ({ channelId, db, uid }) => {
   const [messages, load, err] = useList(db.ref('/messages/' + channelId));
   return (
-    <div className="messageContainer">
+    <div className='messageContainer'>
       {!load && messages.map(message => {
         return <Message key={message.key} data={message.val()} uid={uid} />
       })}
