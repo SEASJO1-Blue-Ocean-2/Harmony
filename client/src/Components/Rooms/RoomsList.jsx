@@ -13,8 +13,6 @@ import RoomEntry from './RoomEntry.jsx';
 import CreateRoomButton from './CreateRoomButton.jsx';
 import Logout from './Logout.jsx';
 
-
-
 const RoomsList = ({ auth, db }) => {
   const [user, setUser] = useState(auth.currentUser.uid);
   const [viewType, setView] = useState('your-rooms');
