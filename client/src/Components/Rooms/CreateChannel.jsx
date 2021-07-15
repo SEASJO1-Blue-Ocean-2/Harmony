@@ -36,29 +36,36 @@ function CreateChannel({ forTest, db , roomId, voice }) {
         type="button"
         onClick={() => showCreate()}
       >
-        Create Channel
+        {
+          create ?
+            'Cancel'
+          :
+            'Create Channel'
+        }
       </button>
-      {create ?
-        <div className="row-default">
-          <span>
-            Name:
-          </span>
-          <span>
-            <input
-              type="text"
-              onChange={updateNewChanName}
-            />
-          </span>
-          <span>
-            <button
-              type="button"
-              onClick={createHandler}
-            >
-              Create
-            </button>
-          </span>
-        </div>
-      : null}
+      {
+        create ?
+          <div className="row-default">
+            <span>
+              Name:
+            </span>
+            <span>
+              <input
+                type="text"
+                onChange={updateNewChanName}
+              />
+            </span>
+            <span>
+              <button
+                type="button"
+                onClick={createHandler}
+              >
+                Create
+              </button>
+            </span>
+          </div>
+        : null
+      }
     </div>
   );
 }

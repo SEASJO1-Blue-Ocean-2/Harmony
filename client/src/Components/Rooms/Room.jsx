@@ -71,15 +71,43 @@ const Room = ({ db, auth, roomId }) => {
     }
   };
 
+  function menuToggle(type) {
+    // type is 'text' or 'voice'
+    // 0 is closed
+    // 1 is open text channels
+    // 2 is open voice channels
+    // menu
+    if (type === 'text' && menu !== 1) {
+      // open text menu
+      setMenu(1);
+    } else if (type === 'voice' && menu !== 2) {
+      // open voice channels
+      setMenu(2);
+    } else {
+      // close channel list
+      setMenu(0);
+    }
+  }
+
   return (
     <div>
       {
         <div className="showChannels">
-          <button onClick={() => setMenu(1)} className="textChannels">
-            Show Text Channels
+          <button onClick={() => menuToggle('text')} className="textChannels">
+            {
+              menu === 1 ?
+                'Hide Text Channels'
+              :
+                'Show Text Channels'
+            }
           </button>{' '}
-          <button onClick={() => setMenu(2)} className="voiceChannels">
-            Show Voice Channels
+          <button onClick={() => menuToggle('voice')} className="voiceChannels">
+            {
+              menu === 2 ?
+                'Hide Voice Channels'
+              :
+                'Show Voice Channels'
+            }
           </button>
         </div>
       }
