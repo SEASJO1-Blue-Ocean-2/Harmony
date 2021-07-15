@@ -9,9 +9,7 @@ import {
 import FriendsList from '../FriendsList/FriendsList.jsx';
 import NotificationsList from '../Notifications/NotificationsList.jsx';
 import RoomsRoutes from '../Rooms/RoomsRoutes.jsx';
-import Logout from './Logout.jsx'
-
-
+import Logout from './Logout.jsx';
 
 class SearchBar extends React.Component {
   constructor(props) {
@@ -58,7 +56,12 @@ class SearchBar extends React.Component {
               </nav>
               <Switch>
                 <Route path="/rooms">
-                  <RoomsRoutes auth={this.props.auth} user={this.props.user} db={this.props.db} />
+                  <RoomsRoutes
+                    auth={this.props.auth}
+                    user={this.props.user}
+                    db={this.props.db}
+                    friendsList={this.props.friendsList}
+                  />
                 </Route>
                 <Route path="/FriendsList">
                   <FriendsList db={this.props.db} user={this.props.user} friendsList={this.props.friendsList}/>
@@ -77,9 +80,4 @@ class SearchBar extends React.Component {
   }
 }
 
-
-
-
-
 export default SearchBar;
-

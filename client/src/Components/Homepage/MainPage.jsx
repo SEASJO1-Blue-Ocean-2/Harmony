@@ -7,8 +7,12 @@ import 'firebase/analytics';
 import 'firebase/database';
 
 const MainPage = ({ db, user, auth }) => {
-
-  const [friendsList, loading, error] = useList(db.ref(`friends/${user.uid}`));
+  const friendsRef = () => {
+    if (user) {
+      return db.ref(`friends/${user.uid}`);
+    }
+  };
+  const [friendsList, loading, error] = useList(friendsRef());
 
   return (
     <div>
