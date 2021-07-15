@@ -8,7 +8,8 @@ import {
 
 import FriendsList from '../FriendsList/FriendsList.jsx';
 import NotificationsList from '../Notifications/NotificationsList.jsx';
-import RoomsList from '../Rooms/RoomsList.jsx';
+import RoomsRoutes from '../Rooms/RoomsRoutes.jsx';
+import Logout from './Logout.jsx'
 
 
 
@@ -21,13 +22,12 @@ class SearchBar extends React.Component {
   handleSubmitButton(event) {
     var currentDropDown = document.getElementsByClassName('currentPage')[0].innerText;
     var searchBarText = document.getElementById('searchBarText').value;
-    if(currentDropDown === 'Friends List') {
+    if (currentDropDown === 'Friends List') {
       var currentFriends = document.getElementsByClassName('friend-container');
-      for(var i = 0; i < currentFriends.length; i++) {
-        if(!(currentFriends[i]).outerHTML.toLowerCase().includes(searchBarText)){
+      for (var i = 0; i < currentFriends.length; i++) {
+        if (!(currentFriends[i]).outerHTML.toLowerCase().includes(searchBarText.toLowerCase())) {
           currentFriends[i].remove();
           i--;
-        } else {
         }
       }
     }
@@ -42,6 +42,7 @@ class SearchBar extends React.Component {
     return (
       <>
         <div>
+
           <div className='search'>
             <input type='text' className='SearchBar' placeholder='Search' id='searchBarText'>
             </input>
@@ -51,23 +52,25 @@ class SearchBar extends React.Component {
           <Router>
             <div>
               <nav className='mainPageOptions'>
-                <Link to="/Notifications" onClick ={this.resetSearchText}>Notifications</Link>
-                <Link to="/Rooms" onClick ={this.resetSearchText}>Rooms</Link>
-                <Link to="/FriendsList" onClick ={this.resetSearchText}>Friends List</Link>
+                <Link to="/Notifications" onClick={this.resetSearchText}>Notifications</Link>
+                <Link to="/rooms" onClick={this.resetSearchText}>Rooms</Link>
+                <Link to="/FriendsList" onClick={this.resetSearchText}>Friends List</Link>
               </nav>
               <Switch>
-                <Route path="/Rooms">
-                  <RoomsList auth={this.props.auth} />
+                <Route path="/rooms">
+                  <RoomsRoutes auth={this.props.auth} user={this.props.user} db={this.props.db} />
                 </Route>
                 <Route path="/FriendsList">
-                  <FriendsList db={this.props.db} user={this.props.user}/>
+                  <FriendsList db={this.props.db} user={this.props.user} friendsList={this.props.friendsList}/>
                 </Route>
                 <Route path="/Notifications">
-                  <NotificationsList />
+                  <NotificationsList db={this.props.db} user={this.props.user} />
                 </Route>
+
               </Switch>
             </div>
           </Router>
+          <Logout auth={this.props.auth} />
         </div>
       </>
     );

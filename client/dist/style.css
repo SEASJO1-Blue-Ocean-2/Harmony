@@ -4,6 +4,10 @@
   justify-content: center;
 }
 
+body {
+  font-family: sans-serif;
+}
+
 .column-default {
   display: flex;
   flex-direction: column;
@@ -94,6 +98,7 @@ img.MagnifyingGlass {
   width: 8vw;
 }
 
+<<<<<<< HEAD
 .sent-message {
   background-color: lightblue;
 }
@@ -101,10 +106,21 @@ img.MagnifyingGlass {
 .received-message {
   background-color: tan;
 }
+=======
+.create-a-room{
+  width: 90vw;
+  margin-top: .5vh;
+  margin-bottom: .5vh;
+}
+
+>>>>>>> 167497524902271810bad7bfaeb9b027393d44a1
 .logout {
+  margin-top: .5vh;
+  margin-bottom: .5vh;
   position: absolute;
-  bottom: 0;
-  right: 0;
+  bottom: 2%;
+  margin: 0 auto;
+  right: 40%;
 }
 
 .searchButton {
@@ -125,6 +141,7 @@ img.MagnifyingGlass {
   margin: -100px 0 0 -150px;
 }
 
+<<<<<<< HEAD
 /* video css */
 
 .main {
@@ -188,3 +205,28 @@ flex-wrap: wrap;
 .background__red {
   background-color: white;
 }
+=======
+.inviteIcon, .directMessageButton {
+  margin-left: 30px;
+
+}
+
+img.directMessageButton {
+  margin-top: 7px;
+}
+
+.unreadNotifications{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 2px solid black;
+  text-align: center;
+  padding: 5px;
+  margin: 10px;
+  border-radius: 20px;
+}
+
+a {
+  font-size: larger;
+  color: black;
+}
+>>>>>>> 167497524902271810bad7bfaeb9b027393d44a1

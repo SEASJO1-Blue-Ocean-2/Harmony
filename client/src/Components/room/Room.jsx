@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import firebase from 'firebase/app';
 import 'firebase/analytics';
@@ -14,7 +13,6 @@ import { TextMenu, VoiceMenu } from './Menus';
 import './RoomStyles.css';
 
 const Room = ({ db, auth, roomId }) => {
-  console.log('id:', roomId);
   const roomRef = db.ref('/rooms/' + roomId);
   const [room, loadRooms, errRooms] = useList(roomRef);
 
@@ -71,12 +69,27 @@ const Room = ({ db, auth, roomId }) => {
   };
 
   return (<div>
+<<<<<<< HEAD
     {<div><button onClick={() => setMenu(1)}>Show Text Channels</button> <button onClick={() => setMenu(2)}>Show Voice Channels</button> </div>}
     {menu === 1 && textChannels && <TextMenu channels={textChannels} channelId={textChannelId} setChannel={setTextChannel}/>}
     {menu === 2 && voiceChannels && <VoiceMenu channels={voiceChannels} channelId={voiceChannelId} setChannel={setVoiceChannel} />}
     <div>
       {textChannelId && <MessageView channelId={textChannelId} db={db} uid={user.uid} />}
     </div>
+=======
+    {(
+      <div>
+        {snapshots.map(v => {
+          return <React.Fragment>
+            {/* {v.key} */}
+            {/* <ul>
+              <Message data={v.val()}>
+            </ul> */}
+          </React.Fragment>
+        })}
+      </div>
+    )}
+>>>>>>> 167497524902271810bad7bfaeb9b027393d44a1
 
     <form onSubmit={sendMessage}>
       <input type='text' value={message} onChange={e => setMessage(e.target.value)} />
@@ -99,4 +112,4 @@ const MessageView = ({ channelId, db, uid }) => {
 
 };
 
-export default Room
+export default Room;

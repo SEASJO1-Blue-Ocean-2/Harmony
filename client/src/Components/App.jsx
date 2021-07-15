@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   BrowserRouter as Router, Switch, Route,
 } from 'react-router-dom';
@@ -20,6 +20,8 @@ import NotificationsList from './Notifications/NotificationsList';
 import Room from './room/Room';
 import VideoChannel from './room/videoChannel';
 
+
+
 firebase.initializeApp(config);
 const auth = firebase.auth();
 const db = firebase.database();
@@ -29,7 +31,6 @@ const App = (props) => {
   const [user] = useAuthState(auth);
 
   return (
-
     <Router>
       <div>
         <NavigationBar user={user} db={db} auth={auth} />
@@ -41,7 +42,7 @@ const App = (props) => {
           />
           <Route
             path="/home"
-            render={() => <MainPage user={user} auth={auth} db={db} />}
+            render={() => <MainPage user={user} auth={auth} db={db}/>}
           />
           <Route
             path="/signUp"

@@ -12,20 +12,22 @@ function Profile({ auth, db }) {
   /* const [snapshots, loading, error] = useList(db.ref('users')); */
   const [user] = useAuthState(auth);
 
-  const [profileData, setProfileData] = useState({
-    bio: 'NA', country: 'NA', email: 'NA', name: 'NA', picture: 'https://upload.wikimedia.org/wikipedia/commons/1/12/ThreeTimeAKCGoldWinnerPembrookeWelshCorgi.jpg',
-  });
+  const [profileData, setProfileData] = useState({});
 
   function updateData(data) {
     setProfileData(data);
-    db.ref(`users/${user.uid}`).update(data);
+    db.ref(`userData/${user.uid}`).update(data);
   }
 
   useEffect(() => {
     const userId = user.uid;
+    let userData = {};
     db.ref(`users/${userId}`).on('value', (snapshot) => {
-      console.log(snapshot.val());
-      setProfileData(snapshot.val());
+      userData = snapshot.val();
+      db.ref(`userData/${userId}`).on('value', (addtionalData) => {
+        userData = { ...userData, ...addtionalData.val() };
+        setProfileData(userData);
+      });
     });
   }, []);
 
@@ -34,7 +36,7 @@ function Profile({ auth, db }) {
       <div>
         <Switch>
           <Route path="/profile" exact render={() => <DisplayProfile profileData={profileData} />} />
-          <Route path="/updateprofile" render={() => <UpdateProfile updateData={updateData} profilePic={profileData.picture} />} />
+          <Route path="/updateprofile" render={() => <UpdateProfile updateData={updateData} profileData={profileData} />} />
         </Switch>
       </div>
     </Router>

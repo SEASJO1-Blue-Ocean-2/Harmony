@@ -10,7 +10,7 @@ function checkIfNameInDatabase(name) {
   return false;
 }
 
-function RoomName() {
+function RoomName({ nameHandler }) {
   const [textValue, setTextValue] = useState('');
   const isInUse = checkIfNameInDatabase(textValue);
   return (
@@ -20,7 +20,7 @@ function RoomName() {
           Room Name:
         </span>
         <span>
-          <input type="text" onChange={(e) => setTextValue(e.target.value)} />
+          <input type="text" onChange={nameHandler} />
         </span>
       </div>
       <div className="row-default">

@@ -1,0 +1,33 @@
+/* Colors!
+discord purple - #7289DA
+pastel green - #D2E7D6 */
+.mainpage {
+  border: 3px solid #7289DA;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.toggleRoomContainer {
+  background: #7289DA;
+  display: flex;
+  justify-content: center;
+  width: 90vw;
+  margin-top: 1vh;
+  margin-bottom: 1vh
+}
+
+.toggleRoomButton {
+  width: 50vw
+}
+
+.roomsList {
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.roomsList a {
+  text-decoration: none;
+}
