@@ -19,7 +19,10 @@
   grid-template-columns: 2fr 1fr 1fr;
   border: 3px solid #7289da;
   border-radius: 10px;
-  color: #7289da;
+  text-align: center;
+  background-color: #7289da;
+  font-size: larger;
+  color: black;
 }
 
 #friendContainer:hover {
