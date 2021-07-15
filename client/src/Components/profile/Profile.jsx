@@ -12,9 +12,7 @@ function Profile({ auth, db }) {
   /* const [snapshots, loading, error] = useList(db.ref('users')); */
   const [user] = useAuthState(auth);
 
-  const [profileData, setProfileData] = useState({
-    bio: 'NA', country: 'NA', email: 'NA', name: 'NA', picture: 'https://upload.wikimedia.org/wikipedia/commons/1/12/ThreeTimeAKCGoldWinnerPembrookeWelshCorgi.jpg',
-  });
+  const [profileData, setProfileData] = useState({});
 
   function updateData(data) {
     setProfileData(data);
@@ -38,7 +36,7 @@ function Profile({ auth, db }) {
       <div>
         <Switch>
           <Route path="/profile" exact render={() => <DisplayProfile profileData={profileData} />} />
-          <Route path="/updateprofile" render={() => <UpdateProfile updateData={updateData} profilePic={profileData.picture} />} />
+          <Route path="/updateprofile" render={() => <UpdateProfile updateData={updateData} profileData={profileData} />} />
         </Switch>
       </div>
     </Router>
