@@ -83,7 +83,7 @@ const Room = ({ db, auth, roomId }) => {
 const MessageView = ({ channelId, db, uid }) => {
   const [messages, load, err] = useList(db.ref('/messages/' + channelId));
   return (
-    <div>
+    <div className='messageContainer'>
       {!load && messages.map(message => {
         return <Message key={message.key} data={message.val()} uid={uid} />
       })}
