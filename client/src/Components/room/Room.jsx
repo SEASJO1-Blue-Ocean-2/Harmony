@@ -14,6 +14,7 @@ import { TextMenu, VoiceMenu } from './Menus';
 import './RoomStyles.css';
 
 const Room = ({ db, auth, roomId }) => {
+  console.log('id:', roomId);
   const roomRef = db.ref('/rooms/' + roomId);
   const [room, loadRooms, errRooms] = useList(roomRef);
 
@@ -31,6 +32,7 @@ const Room = ({ db, auth, roomId }) => {
   const [userObj, loadUser, errUser] = useObject(userRef);
 
   const [menu, setMenu] = useState(0);
+  const [count, setCount] = useState(0);
 
   useEffect(() => {
     if (!loadRooms) {
@@ -80,6 +82,7 @@ const Room = ({ db, auth, roomId }) => {
       <input type='text' value={message} onChange={e => setMessage(e.target.value)} />
       <input type='submit' />
     </form>
+    <VideoChannel user={user} count={count} setCount={setCount}/>
   </div >);
 };
 

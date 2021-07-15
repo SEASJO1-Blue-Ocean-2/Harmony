@@ -69,6 +69,7 @@ const RoomsList = (props) => {
           path="/create"
           render={() => <CreateRoom auth={props.auth} db={props.db} />}
         />
+        <Route path="/room/:roomId" render={match => console.log(match)} />
       </Switch>
     </Router>
   )
