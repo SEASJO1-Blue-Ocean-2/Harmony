@@ -34,6 +34,10 @@ class SearchBar extends React.Component {
   resetSearchText() {
     var currentSearchText = document.getElementById('searchBarText');
     currentSearchText.value = '';
+    var test = document.getElementById('test');
+    if(test){
+      test.remove();
+    }
   }
 
   render() {

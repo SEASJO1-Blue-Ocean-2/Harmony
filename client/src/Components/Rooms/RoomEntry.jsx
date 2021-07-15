@@ -18,9 +18,14 @@ const RoomEntry = ({ room }) => {
 
   return (
     <div
-      className={css.roomEntry}>
-      <span>{room.roomname}</span>
-      <span>{userCount} - Users</span>
+    className={css.roomEntry}>
+      <div className='roomName'>
+      {room.room_name}
+      </div>
+      <div className='userCount'>
+      {userCount} users
+      </div>
+
     </div>
   )
 }
