@@ -97,16 +97,11 @@ const Room = ({ db, auth, roomId }) => {
         )}
       </div>
 
-      <form onSubmit={sendMessage}>
-        <input
-          type="text"
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-        />
-        <input type="submit" />
-      </form>
-    </div>
-  );
+    <form onSubmit={sendMessage} className='submitMessageInRoom'>
+      <input type='text' value={message} onChange={e => setMessage(e.target.value)} className='setMessageSubmit' />
+      <input type='submit' className='submitMessageButton' />
+    </form>
+  </div >);
 };
 
 const MessageView = ({ channelId, db, uid }) => {
