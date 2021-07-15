@@ -8,7 +8,7 @@ const myPeer = new Peer(undefined, {
 });
 const peers = {};
 
-const VideoChannel = ({user, count ,setCount}) => {
+const VideoChannel = ({user, roomId}) => {
 
   const [myVideoStream, setMyVideoStream] = useState(null);
   const [joined, setJoined] = useState(false);

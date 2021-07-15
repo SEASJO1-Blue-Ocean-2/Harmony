@@ -10,6 +10,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 
 import Message from './Message';
 import { TextMenu, VoiceMenu } from './Menus';
+import VideoChannel from './videoChannel'
 
 import './RoomStyles.css';
 
@@ -69,9 +70,9 @@ const Room = ({ db, auth, roomId }) => {
   };
 
   return (<div>
-    {<div><button onClick={() => setMenu(1)}>Show Text Channels</button> <button onClick={() => setMenu(2)}>Show Voice Channels</button> </div>}
+    {<div><button onClick={() => setMenu(1)}>Show Text Channels</button> <button onClick={() => setMenu(2)}>Show Video Channels</button> </div>}
     {menu === 1 && textChannels && <TextMenu channels={textChannels} channelId={textChannelId} setChannel={setTextChannel}/>}
-    {menu === 2 && voiceChannels && <VoiceMenu channels={voiceChannels} channelId={voiceChannelId} setChannel={setVoiceChannel} />}
+    {menu === 2 && voiceChannels && <VideoChannel roomId={roomId}/>}
     <div>
       {textChannelId && <MessageView channelId={textChannelId} db={db} uid={user.uid} />}
     </div>
