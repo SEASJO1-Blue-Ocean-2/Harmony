@@ -30,7 +30,7 @@ const SendMediaButton = (props) => {
   }
 
   return (
-    <div>
+    <div id= 'sendMediabutton'>
       {showMediaInput
         ? (
           <div className='fileInput'>
@@ -39,7 +39,7 @@ const SendMediaButton = (props) => {
             {fileUploaded ? <div>file uploaded</div> : null}
           </div>
         )
-        : <button onClick={handleSendMedia}>send media</button>}
+        : <button onClick={handleSendMedia} id='sendMediabutton'>send media</button>}
     </div>
   )
 }
