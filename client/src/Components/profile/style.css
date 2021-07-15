@@ -1,8 +1,11 @@
 .profilePic {
-  width: 180px;
+  width: 200px;
   height: 200px;
   vertical-align: top;
+  margin-left: 23%;
   display: inline-block;
+  border-radius: 20%;
+  margin-bottom: 15px;
 }
 
 .profile {
@@ -10,17 +13,33 @@
 
 }
 
-.text {
-  width: 150px;
-  float:right;
-  line-height: 2.5em;
+.textBlock {
+  line-height: 1.0em;
   margin-right:0px;
   word-wrap: break-word;
+  text-align: center;
+}
+
+.text {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border-style: solid;
+  border-radius: 20px;
+  background-color: grey;
+  color:white
+}
+
+.inputText {
+  color:white;
+
 }
 
 .bio {
   display: block;
-  margin-top: 10px;
+  margin-top: 5px;
+  word-wrap: break-word;
 }
 
 .bioUpdateText {
@@ -29,7 +48,8 @@
 }
 
 .updateButton {
-  position: relative;
-  margin-left: 35%;
-  margin-top: 70%;
+  position: absolute;
+  margin-left: 32%;
+  width: 120px;
+  margin-top: 1.5%;
 }
