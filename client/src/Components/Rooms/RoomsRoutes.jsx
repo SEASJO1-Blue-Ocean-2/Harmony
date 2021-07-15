@@ -11,7 +11,7 @@ import CreateRoom from '../CreateRoom/CreateRoom.jsx';
 import Room from '../room/Room.jsx';
 
 
-const RoomsRoutes = ({ auth, db }) => {
+const RoomsRoutes = ({ auth, db, user }) => {
 return (
   <Router>
       <Switch>
@@ -24,7 +24,7 @@ return (
 
         <Route
           path="/create"
-          render={() => <CreateRoom auth={auth} db={db} />}
+          render={() => <CreateRoom user={user} db={db} />}
         />
 
 
