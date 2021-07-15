@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 
 const Message = ({ data, uid }) => {
   var date = new Date(data.created);
-  console.log(date.toString());
   date = date.toString().slice(4,10);
   return (<div className={data.uid === uid ? 'sent-message' : 'received-message'} id='messages'>
     <div className='author'>
@@ -18,7 +17,7 @@ const Message = ({ data, uid }) => {
     {data.message}
       </div>
       <div className='mediaMessage'>
-        <img src = {data.photo}  width='50px;'></img>
+        <img src = {data.photo} width='300px;'></img>
       </div>
   </div>);
 };

@@ -2,13 +2,16 @@ import React, { useState, useEffect } from 'react';
 import firebase from 'firebase/app';
 import 'firebase/analytics';
 import 'firebase/database';
+import 'firebase/storage';
 
 import { addData } from '../../util.js';
 import { useList, useObject } from 'react-firebase-hooks/database';
 import { useAuthState } from 'react-firebase-hooks/auth';
 
 import Message from './Message';
+import SendMediaButton from './SendMediaButton.jsx';
 import { TextMenu, VoiceMenu } from './Menus';
+import VideoChannel from './videoChannel'
 
 import './RoomStyles.css';
 
@@ -30,6 +33,8 @@ const Room = ({ db, auth, roomId }) => {
 
   const [menu, setMenu] = useState(0);
   const [count, setCount] = useState(0);
+
+  const [currentUrl, setCurrentUrl] = useState('');
 
   useEffect(() => {
     if (!loadRooms) {
@@ -55,6 +60,7 @@ const Room = ({ db, auth, roomId }) => {
         uid: user.uid,
         message: message,
         created: Date.now(),
+        photo: currentUrl
       };
       var res = addData(data, db.ref('/messages/' + textChannelId));
       setMessage('');
@@ -96,7 +102,7 @@ const Room = ({ db, auth, roomId }) => {
           <MessageView channelId={textChannelId} db={db} uid={user.uid} />
         )}
       </div>
-
+      <SendMediaButton setCurrentUrl={setCurrentUrl} sendMessage={sendMessage}/>
     <form onSubmit={sendMessage} className='submitMessageInRoom'>
       <input type='text' value={message} onChange={e => setMessage(e.target.value)} className='setMessageSubmit' />
       <input type='submit' className='submitMessageButton' />
