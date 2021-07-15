@@ -71,17 +71,20 @@ const Room = ({ db, auth, roomId }) => {
 
   return (<div>
     {<div><button onClick={() => setMenu(1)}>Show Text Channels</button> <button onClick={() => setMenu(2)}>Show Video Channels</button> </div>}
-    {menu === 1 && textChannels && <TextMenu channels={textChannels} channelId={textChannelId} setChannel={setTextChannel}/>}
     {menu === 2 && voiceChannels && <VideoChannel roomId={roomId}/>}
+    {menu === 1 && textChannels &&
     <div>
-      {textChannelId && <MessageView channelId={textChannelId} db={db} uid={user.uid} />}
-    </div>
+      <TextMenu channels={textChannels} channelId={textChannelId} setChannel={setTextChannel}/>
+      <div>
+        {textChannelId && <MessageView channelId={textChannelId} db={db} uid={user.uid} />}
+      </div>
 
-    <form onSubmit={sendMessage}>
-      <input type='text' value={message} onChange={e => setMessage(e.target.value)} />
-      <input type='submit' />
-    </form>
-  </div >);
+      <form onSubmit={sendMessage}>
+        <input type='text' value={message} onChange={e => setMessage(e.target.value)} />
+        <input type='submit' />
+      </form>
+    </div >}
+  </div>);
 };
 
 const MessageView = ({ channelId, db, uid }) => {
