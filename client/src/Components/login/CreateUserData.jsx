@@ -21,7 +21,7 @@ const CreateUserData = ({ auth, db, info }) => {
       bio: bio
       // TODO: picture: pictureUrl
     }
-    db.ref(`userData/${user.uid}`).update(profileData);
+    db.ref(`userData/${user.uid}`).update(userData);
 
   }
 
@@ -54,7 +54,7 @@ const CreateUserData = ({ auth, db, info }) => {
         <input></input>
       </div>
       */}
-      <button onClick={testFunc}>test here</button>
+
       <Link to='/home'>
         <button type='button' onClick={AddUserData}>Finish Creating Profile</button>
       </Link>
