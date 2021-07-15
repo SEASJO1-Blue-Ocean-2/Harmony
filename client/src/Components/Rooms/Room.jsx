@@ -70,16 +70,16 @@ const Room = ({ db, auth, roomId }) => {
   };
 
   return (<div>
-    {<div><button onClick={() => setMenu(1)}>Show Text Channels</button> <button onClick={() => setMenu(2)}>Show Voice Channels</button> </div>}
-    {menu === 1 && textChannels && <TextMenu channels={textChannels} channelId={textChannelId} setChannel={setTextChannel}/>}
+    {<div className='showChannels'><button onClick={() => setMenu(1)} className='textChannels'>Show Text Channels</button> <button onClick={() => setMenu(2)} className='voiceChannels'>Show Voice Channels</button></div>}
+    {menu === 1 && textChannels && <TextMenu channels={textChannels} channelId={textChannelId} setChannel={setTextChannel} />}
     {menu === 2 && voiceChannels && <VoiceMenu channels={voiceChannels} channelId={voiceChannelId} setChannel={setVoiceChannel} />}
     <div>
       {textChannelId && <MessageView channelId={textChannelId} db={db} uid={user.uid} />}
     </div>
 
-    <form onSubmit={sendMessage}>
-      <input type='text' value={message} onChange={e => setMessage(e.target.value)} />
-      <input type='submit' />
+    <form onSubmit={sendMessage} className='submitMessageInRoom'>
+      <input type='text' value={message} onChange={e => setMessage(e.target.value)} className='setMessageSubmit' />
+      <input type='submit' className='submitMessageButton' />
     </form>
     <SendMediaButton setCurrentUrl={setCurrentUrl} sendMessage={sendMessage}/>
   </div >);
@@ -94,7 +94,6 @@ const MessageView = ({ channelId, db, uid }) => {
       })}
     </div>
   )
-
 
 };
 

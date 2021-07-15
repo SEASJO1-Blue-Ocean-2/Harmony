@@ -2,16 +2,25 @@ import React, { useState, useEffect } from 'react';
 
 
 const Message = ({ data, uid }) => {
-
-  return (
-    <div className={data.uid === uid ? 'sent-message' : 'received-message'}>
-      {data.author} wrote: {data.message} {data.created && new Date(data.created).toLocaleDateString("en-US")}
-      <div>
-        <img src={data.photo} width="50px;"/>
-      </div>
+  var date = new Date(data.created);
+  console.log(date.toString());
+  date = date.toString().slice(4,10);
+  return (<div className={data.uid === uid ? 'sent-message' : 'received-message'} id='messages'>
+    <div className='author'>
+    {data.author}
     </div>
-
-  );
+    <div>
+    </div>
+    <div className='date'>{data.created && date} </div>
+    <br>
+    </br>
+    <div className='message'>
+    {data.message}
+      </div>
+      <div className='mediaMessage'>
+        <img src = {data.photo}  width='50px;'></img>
+      </div>
+  </div>);
 };
 
 
