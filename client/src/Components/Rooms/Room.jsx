@@ -35,6 +35,8 @@ const Room = ({ db, auth, roomId }) => {
   const [count, setCount] = useState(0);
 
   const [currentUrl, setCurrentUrl] = useState('');
+  const [fileUploaded, setFileUploaded] = useState(false);
+  const [showMediaInput, setShowMediaInput] = useState(false);
 
   useEffect(() => {
     if (!loadRooms) {
@@ -67,6 +69,8 @@ const Room = ({ db, auth, roomId }) => {
       };
       var res = addData(data, db.ref('/messages/' + textChannelId));
       setMessage('');
+      setFileUploaded(false);
+      setShowMediaInput(false);
     }
   };
 
@@ -82,7 +86,14 @@ const Room = ({ db, auth, roomId }) => {
       <input type='text' value={message} onChange={e => setMessage(e.target.value)} className='setMessageSubmit' />
       <input type='submit' className='submitMessageButton' />
     </form>
-    <SendMediaButton setCurrentUrl={setCurrentUrl} sendMessage={sendMessage}/>
+    <SendMediaButton
+      setCurrentUrl={setCurrentUrl}
+      sendMessage={sendMessage}
+      setFileUploaded={setFileUploaded}
+      fileUploaded={fileUploaded}
+      showMediaInput={showMediaInput}
+      setShowMediaInput={setShowMediaInput}
+    />
   </div >);
 };
 

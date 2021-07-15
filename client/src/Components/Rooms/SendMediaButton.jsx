@@ -3,20 +3,17 @@ import firebase from 'firebase/app';
 import 'firebase/storage';
 
 const SendMediaButton = (props) => {
-  const { setCurrentUrl } = props;
-  const [showMediaInput, setShowMediaInput] = useState(false);
+  const { setCurrentUrl, showMediaInput, setShowMediaInput, fileUploaded, setFileUploaded } = props;
   const [mediaInputText, setMediaInputText] = useState('');
-  const [fileUploaded, setFileUploaded] = useState(false);
   const storage = firebase.storage();
   const storageRef = storage.ref();
-  // console.log(storageRef);
   const elCapRef = storageRef.child('el_cap.jpeg');
   const childRef = storageRef.child(mediaInputText);
-  // console.log(elCapRef);
 
   const handleSendMedia = () => {
     setShowMediaInput(!showMediaInput);
-  }
+  };
+
   const handleUpload = () => {
     elCapRef.getDownloadURL()
       .then((url) => console.log(url));
@@ -31,10 +28,6 @@ const SendMediaButton = (props) => {
     currentRef.getDownloadURL().then((url)=> setCurrentUrl(url));
     setFileUploaded(true);
   }
-
-
-  // elCapRef.getDownloadURL()
-  //   .then((url) => console.log(url));
 
   return (
     <div>
