@@ -13,7 +13,7 @@ function AddFriends({ friends, addFriendHandler }) {
   return (
     <div className="column-default">
       <div>
-        <span>
+        <span className='addFriends'>
           Add Friends:
         </span>
       </div>

@@ -6,6 +6,7 @@ const Logout = (props) => {
 
   const signOut = () => {
     props.auth.signOut();
+    event.preventDefault();
   };
 
   return (

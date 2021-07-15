@@ -13,12 +13,13 @@
 #friendContainer {
   display: grid;
   margin: 10px;
-  border: black 1px solid;
   background: lightgrey;
-  border-radius: 10px;
   width: 90%;
   padding: 10px;
   grid-template-columns: 2fr 1fr 1fr;
+  border: 3px solid #7289da;
+  border-radius: 10px;
+  color: #7289da;
 }
 
 #friendContainer:hover {
