@@ -19,7 +19,7 @@ const RoomEntry = ({ room, click }) => {
   return (
     <div
     className={css.roomEntry}>
-    {room.roomname} - # of Users: {userCount}
+    {room.room_name} - # of Users: {userCount}
     </div>
   )
 }
