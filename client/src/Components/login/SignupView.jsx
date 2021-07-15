@@ -4,7 +4,8 @@ import 'firebase/auth';
 import { addData } from '../../util.js';
 import { Redirect } from "react-router-dom";
 
-// import './signup.css';
+
+//import './signup.css';
 
 const Signup = ({ auth }) => {
   //Assume we aren't logged in. Don't show this page if we have already authenticated.
@@ -13,7 +14,6 @@ const Signup = ({ auth }) => {
   const [done, setDone] = useState(false);
   const [pass, setPass] = useState('');
   const [dbRef, setRef] = useState(null);
-  const [userData, setUserData] = useState({})
 
   useEffect(() => {
     setRef(firebase.database().ref(('/users')));
@@ -21,39 +21,32 @@ const Signup = ({ auth }) => {
 
   const signUp = (e) => {
     e.preventDefault();
-    auth.createUserWithEmailAndPassword(email, pass)
-      .then(uc => {
-        var data = {
-          email: email,
-          username: username
-        };
-        addData(data, dbRef, uc.user.uid);
-        setDone(true)
-      })
-      .catch(err => { console.log(err); });
+    auth.createUserWithEmailAndPassword(email, pass).then(uc => {
+      var data = {
+        email: email,
+        username: username
+      };
+      addData(data, dbRef, uc.user.uid);
+    }).then(() => setDone(true)).catch(err => {
+      console.log(err);
+    });
   }
+
 
   return (
     <div className='test'>
-      {done && <Redirect
-        to={{
-          pathname: "/createUserData",
-          state: {
-            username: username,
-            email: email
-          }}} />}
+      {done && <Redirect to="/home" />}
       {dbRef ?
         <form onSubmit={signUp}>
           <label>Username:</label>
-          <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
+          <input type="text" value={username} onChange={(e) => setUsername(e.target.value)}/>
           <label>Email:</label>
           <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
           <label>Password:</label>
           <input type="password" value={pass} onChange={(e) => setPass(e.target.value)} />
           <input type="submit" />
         </form> : null}
-    </div>
-  )
+    </div>)
 
 };
 
