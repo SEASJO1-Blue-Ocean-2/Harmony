@@ -5,7 +5,6 @@ import { useList } from 'react-firebase-hooks/database';
 import 'firebase/auth';
 import 'firebase/analytics';
 import 'firebase/database';
-import RoomsList from '../Rooms/RoomsList.jsx';
 
 const MainPage = ({ db, user, auth }) => {
   const friendsRef = () => {
@@ -16,13 +15,8 @@ const MainPage = ({ db, user, auth }) => {
   const [friendsList, loading, error] = useList(friendsRef());
 
   return (
-
     <div>
-      <SearchBar db={db} user={user} auth={auth} friendsList={friendsList} />
-      <div id='test'>
-        <RoomsList auth={auth} db={db} />
-      </div>
-
+      <SearchBar db={db} user={user} auth={auth} friendsList={friendsList}/>
     </div>
   )
 }
