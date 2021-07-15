@@ -319,6 +319,7 @@ input.setMessageSubmit {
 button#suggested-rooms {
   float: right;
   margin-left: 20px;
+}
 .sent-message {
   background-color: lightblue;
 }
