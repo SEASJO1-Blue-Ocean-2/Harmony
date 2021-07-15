@@ -15,6 +15,7 @@ const Login = ({ user, auth }) => {
 
   useEffect(() => {
     setRef(firebase.database().ref(('/users')));
+    setRedirect(true)
   }, []);
 
   const signInWithGoogle = () => {
@@ -35,10 +36,6 @@ const Login = ({ user, auth }) => {
       .catch(err => console.log(err));
   }
 
-  const signOut = () => {
-    auth.signOut();
-  };
-
   return (
     <div>
 
@@ -51,8 +48,6 @@ const Login = ({ user, auth }) => {
           }
         }} />}
 
-      {user && <button onClick={signOut}>Sign Out</button>}
-
       <div className="login-logo">
         <img src='https://image.flaticon.com/icons/png/512/1820/1820090.png' id={css.harmonyLogo}>
         </img></div>
@@ -60,7 +55,6 @@ const Login = ({ user, auth }) => {
       {(redirect && user) ? <Redirect to="/home" />
         :
         <div>
-
           <form className="signUpContainer">
             <input type="email" name="email" required placeholder='Enter your email' className='signUpForm' />
             <input type="password" name="password" minLength="8" required placeholder='Enter your password' className='signUpForm' />
