@@ -26,6 +26,7 @@ pastel green - #D2E7D6 */
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow:scroll;
 }
 
 .roomsList a {
