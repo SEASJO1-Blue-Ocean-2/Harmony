@@ -1,73 +1,93 @@
+import css from './RoomsListStyles.css'
 import React, { useState, useEffect } from 'react';
+import { useList } from 'react-firebase-hooks/database';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+
+import Room from '../room/Room.jsx';
 import RoomEntry from './RoomEntry.jsx';
 import CreateRoomButton from './CreateRoomButton.jsx';
+
 import Logout from './Logout.jsx';
 import {
   BrowserRouter as Router, Switch, Route,
 } from 'react-router-dom';
 import CreateRoom from '../CreateRoom';
 
-const RoomsList = (props) => {
+const RoomsList = ({ auth, db }) => {
+  const [user, setUser] = useState(auth.currentUser.uid);
   const [viewType, setView] = useState('your-rooms');
-  const [yourRooms, setRooms] = useState(['list', 'of', 'rooms']);
+  const [dbRef, setDbRef] = useState(db.ref('/rooms/'));
+  const [snapshots, loading, error] = useList(dbRef);
+  const [yourRooms, setRooms] = useState([]);
   const [suggestedRooms, setSuggestions] = useState(['list', 'of', 'suggestions']);
 
-  const handleRoomClick = () => {
-    // joins the room not sure how to route this yet.
+  const renderRooms = () => {
+    snapshots.forEach(
+      v => {
+        let room = v.val()
+        for (let uid in room.users) {
+          if (uid === user) {
+            room.roomid = v.key;
+            yourRooms.push(room);
+            setRooms([...yourRooms]);
+            break;
+          }
+        }
+      });
   }
+
+  useEffect(() => {
+    renderRooms();
+  }, [snapshots])
 
   const handleViewType = (e) => {
     e.target.id === 'your-rooms'
-    ? setView('your-rooms')
-    : setView('suggested-rooms')
+      ? setView('your-rooms')
+      : setView('suggested-rooms')
   }
 
   return (
-    <Router>
-      <Switch>
-        <Route
-          path="/rooms"
-          render={() => (
-            <div className='main-page'>
-            <h2 className='currentPage'>Rooms List</h2>
-            <div className='toggle-room-container'>
-              <button
-              className='toggle-room-button'
-              id='your-rooms'
-              onClick={ handleViewType }
-              >Your Rooms</button>
-              <button
-              className='toggle-room-button'
-              id='suggested-rooms'
-              onClick={ handleViewType }
-              >Room Suggestions</button>
-            </div>
+    <div className={css.mainpage}>
+      <h2 className='currentPage'>Rooms List</h2>
+      <div className={css.toggleRoomContainer}>
+        <button
+          className={css.toggleRoomButton}
+          id='your-rooms'
+          onClick={handleViewType}
+        >Your Rooms</button>
+        <button
+          className={css.toggleRoomButton}
+          id='suggested-rooms'
+          onClick={handleViewType}
+        >Room Suggestions</button>
+      </div>
 
-            <div className='rooms-list'>
-              {viewType === 'your-rooms'
-              ? yourRooms.map( (room, i) =>
-                <RoomEntry
+      <div className={css.roomsList}>
+        {viewType === 'your-rooms'
+          ? yourRooms.map((room, i) => {
+            return (<Link to={`/room/${room.roomid}`} key={i}>
+              <RoomEntry
                 key={i}
-                room={room}
-                click={ handleRoomClick }/>)
-              : suggestedRooms.map( (room, i) =>
-                <RoomEntry
+                room={room} />
+            </Link>)
+          })
+          : suggestedRooms.map((room, i) => {
+            return (<Link to={`/room/${room.roomid}`} key={i}>
+              <RoomEntry
                 key={i}
-                room={room}
-                click={ handleRoomClick }/>)}
-            </div>
-            <CreateRoomButton />
-            <Logout auth={props.auth}/>
+                room={room} />
+            </Link>)
+          })}
+      </div>
 
-          </div>
-          )}
-        />
-        <Route
-          path="/create"
-          render={() => <CreateRoom user={props.user} db={props.db} />}
-        />
-      </Switch>
-    </Router>
+      <CreateRoomButton />
+      <Logout auth={auth} />
+    </div>
   )
 }
 

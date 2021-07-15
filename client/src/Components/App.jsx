@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {
   BrowserRouter as Router, Switch, Route,
 } from 'react-router-dom';
@@ -13,6 +13,8 @@ import 'firebase/database';
 import config from '../../../config';
 import NavigationBar from './Homepage/NavigationBar';
 
+
+
 firebase.initializeApp(config);
 const auth = firebase.auth();
 const db = firebase.database();
@@ -24,7 +26,6 @@ const db = firebase.database();
 const App = (props) => {
   const [user] = useAuthState(auth);
   return (
-
     <Router>
       <div>
         <NavigationBar user={user} db={db} auth={auth} />
@@ -48,8 +49,7 @@ const App = (props) => {
           />
         </Switch>
       </div>
-    </Router>
-  );
+    </Router>);
 };
 
 export default App;
