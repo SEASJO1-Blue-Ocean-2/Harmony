@@ -5,7 +5,7 @@
 import React from 'react';
 import { render, screen, cleanup } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import CreateRoom from '../';
+import CreateRoom from '../CreateRoom';
 
 // TODO: test components indivdually
 // jest.mock('./header/Header', () => {
@@ -34,6 +34,7 @@ describe('CreateRoom', () => {
     render(
       <CreateRoom
         // pass all the props necessary for a basic render
+        user={{1: 'alex'}}
       />,
     );
     const element = await screen.getByTestId('create-room');
@@ -44,6 +45,7 @@ describe('CreateRoom', () => {
     render(
       <CreateRoom
         // pass all the props necessary for a basic render
+        user={{1: 'alex'}}
       />,
     );
     expect(consoleErrorSpy).not.toHaveBeenCalled();

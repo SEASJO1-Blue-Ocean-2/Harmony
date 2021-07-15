@@ -8,7 +8,7 @@ import {
   Link
 } from "react-router-dom";
 
-import Room from '../room/Room.jsx';
+import Room from './Room.jsx';
 import RoomEntry from './RoomEntry.jsx';
 import CreateRoomButton from './CreateRoomButton.jsx';
 import Logout from './Logout.jsx';
@@ -20,6 +20,8 @@ const RoomsList = ({ auth, db }) => {
   const [snapshots, loading, error] = useList(dbRef);
   const [yourRooms, setRooms] = useState([]);
   const [suggestedRooms, setSuggestions] = useState(['list', 'of', 'suggestions']);
+  const [destId, setDest] = useState(null);
+
 
   const renderRooms = () => {
     snapshots.forEach(
@@ -45,8 +47,8 @@ const RoomsList = ({ auth, db }) => {
       ? setView('your-rooms')
       : setView('suggested-rooms')
   }
-
   return (
+
     <div className={css.mainpage}>
 
       <h2 className='currentPage'>Rooms List</h2>

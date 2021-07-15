@@ -8,7 +8,7 @@ import {
 
 import RoomsList from './RoomsList.jsx';
 import CreateRoom from '../CreateRoom/CreateRoom.jsx';
-import Room from '../room/Room.jsx';
+import Room from './Room.jsx';
 
 
 const RoomsRoutes = ({ auth, db }) => {
@@ -20,14 +20,13 @@ const RoomsRoutes = ({ auth, db }) => {
           render={() => <RoomsList auth={auth} db={db} />}
         />
 
-        <Route
-          path={`/room/:roomid`}
-          render={match => <Room auth={auth} db={db} roomId={match} />}
+        <Route path='/room/:roomid'
+        render={match =>  <Room auth={auth} db={db} roomId={match.match.params.roomid}/>}
         />
 
         <Route
           path="/create"
-          render={() => <CreateRoom user={user} db={db} />}
+          render={() => <CreateRoom user={user} db={db} friendsList={friendsList} />}
         />
 
       </Switch>

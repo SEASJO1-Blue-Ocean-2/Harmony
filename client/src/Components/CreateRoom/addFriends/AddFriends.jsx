@@ -5,7 +5,7 @@ import FriendItem from './FriendItem';
 function AddFriends({ friends, addFriendHandler }) {
   const addFriendsList = friends.map((friend) => (
     <FriendItem
-      key={friend.id}
+      key={friend.key}
       friend={friend}
       addFriendHandler={addFriendHandler}
     />

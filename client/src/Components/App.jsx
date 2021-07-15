@@ -1,9 +1,10 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {
   BrowserRouter as Router, Switch, Route,
 } from 'react-router-dom';
 import firebase from 'firebase/app';
 import { useAuthState } from 'react-firebase-hooks/auth';
+
 import Profile from './profile/Profile';
 import MainPage from './Homepage/MainPage';
 import Login from './login/LoginView';
@@ -11,7 +12,13 @@ import Signup from './login/SignupView';
 import 'firebase/auth';
 import 'firebase/database';
 import config from '../../../config';
+
 import NavigationBar from './Homepage/NavigationBar';
+import RoomsList from './Rooms/RoomsList';
+import FriendsList from './FriendsList/FriendsList';
+import NotificationsList from './Notifications/NotificationsList';
+import Room from './Rooms/Room';
+import VideoChannel from './Rooms/videoChannel';
 
 
 
@@ -19,12 +26,10 @@ firebase.initializeApp(config);
 const auth = firebase.auth();
 const db = firebase.database();
 
-// <Login user={user} auth={auth} />
-// <Room db={db} user={user} />
-
 
 const App = (props) => {
   const [user] = useAuthState(auth);
+
   return (
     <Router>
       <div>
@@ -37,7 +42,7 @@ const App = (props) => {
           />
           <Route
             path="/home"
-            render={() => <MainPage user={user} auth={auth} db={db} />}
+            render={() => <MainPage user={user} auth={auth} db={db}/>}
           />
           <Route
             path="/signUp"
@@ -47,9 +52,20 @@ const App = (props) => {
             path="/profile"
             render={() => <Profile auth={auth} db={db} />}
           />
+          <Route path="/Rooms">
+            <RoomsList auth={auth} db={db} />
+          </Route>
+          <Route path="/FriendsList">
+            <FriendsList db={db} user={user} />
+          </Route>
+          <Route path="/Notifications">
+            <NotificationsList />
+          </Route>
         </Switch>
       </div>
-    </Router>);
+    </Router>
+
+  );
 };
 
 export default App;
