@@ -17,7 +17,7 @@ const Message = ({ data, uid }) => {
     {data.message}
       </div>
       <div className='mediaMessage'>
-        <img src = {data.photo}  width='50px;'></img>
+        <img src = {data.photo} width='300px;'></img>
       </div>
   </div>);
 };

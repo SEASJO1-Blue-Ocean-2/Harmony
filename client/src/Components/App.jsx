@@ -11,6 +11,7 @@ import Login from './login/LoginView';
 import Signup from './login/SignupView';
 import 'firebase/auth';
 import 'firebase/database';
+import 'firebase/storage';
 import config from '../../../config';
 import NavigationBar from './Homepage/NavigationBar';
 import RoomsList from './Rooms/RoomsList';
@@ -23,7 +24,9 @@ import VideoChannel from './Rooms/videoChannel';
 firebase.initializeApp(config);
 const auth = firebase.auth();
 const db = firebase.database();
-
+// const storage = firebase.storage();
+// const storageRef = storage.ref();
+// const elCapRef = storageRef.child('el_cap.jpeg');
 
 const App = (props) => {
   const [user] = useAuthState(auth);

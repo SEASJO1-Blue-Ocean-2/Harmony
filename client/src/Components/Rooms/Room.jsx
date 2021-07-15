@@ -2,12 +2,14 @@ import React, { useState, useEffect } from 'react';
 import firebase from 'firebase/app';
 import 'firebase/analytics';
 import 'firebase/database';
+import 'firebase/storage';
 
 import { addData } from '../../util.js';
 import { useList, useObject } from 'react-firebase-hooks/database';
 import { useAuthState } from 'react-firebase-hooks/auth';
 
 import Message from './Message';
+import SendMediaButton from './SendMediaButton.jsx';
 import { TextMenu, VoiceMenu } from './Menus';
 import VideoChannel from './videoChannel'
 
@@ -32,6 +34,8 @@ const Room = ({ db, auth, roomId }) => {
 
   const [menu, setMenu] = useState(0);
   const [count, setCount] = useState(0);
+
+  const [currentUrl, setCurrentUrl] = useState('');
 
   useEffect(() => {
     if (!loadRooms) {
@@ -59,7 +63,8 @@ const Room = ({ db, auth, roomId }) => {
         author: userObj.val().username,
         uid: user.uid,
         message: message,
-        created: Date.now()
+        created: Date.now(),
+        photo: currentUrl
       };
       var res = addData(data, db.ref('/messages/' + textChannelId));
       setMessage('');
@@ -80,6 +85,7 @@ const Room = ({ db, auth, roomId }) => {
         <input type='text' value={message} onChange={e => setMessage(e.target.value)} />
         <input type='submit' />
       </form>
+      <SendMediaButton setCurrentUrl={setCurrentUrl} sendMessage={sendMessage}/>
     </div >}
   </div>);
 };
@@ -93,7 +99,6 @@ const MessageView = ({ channelId, db, uid }) => {
       })}
     </div>
   )
-
 
 };
 
