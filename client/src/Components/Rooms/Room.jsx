@@ -73,7 +73,7 @@ const Room = ({ db, auth, roomId }) => {
 
   return (<div className='channels'>
     {<div><button onClick={() => setMenu(1)} className='textChannels'>Show Text Channels</button> <button onClick={() => setMenu(2)} className='videoChannels'>Show Video Channels</button> </div>}
-    {menu === 2 && voiceChannels && <VideoChannel roomId={roomId}/>}
+    {menu === 2 && voiceChannels && <VideoChannel db={db} roomId={roomId}/>}
     {menu === 1 && textChannels &&
     <div>
       <TextMenu channels={textChannels} channelId={textChannelId} setChannel={setTextChannel}/>
