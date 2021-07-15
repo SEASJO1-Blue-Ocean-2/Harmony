@@ -4,6 +4,10 @@
   justify-content: center;
 }
 
+body {
+  font-family: sans-serif;
+}
+
 .column-default {
   display: flex;
   flex-direction: column;
@@ -101,11 +105,11 @@ img.MagnifyingGlass {
 }
 
 .logout {
-  background-color: #F31313;
-  width: 90vw;
   margin-top: .5vh;
   margin-bottom: .5vh;
-  bottom: 10%;
+  position: absolute;
+  bottom: 2%;
+  margin: 0 auto;
   right: 40%;
 }
 

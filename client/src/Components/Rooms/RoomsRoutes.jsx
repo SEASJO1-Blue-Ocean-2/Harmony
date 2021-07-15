@@ -27,7 +27,7 @@ const RoomsRoutes = ({ auth, db }) => {
 
         <Route
           path="/create"
-          render={() => <CreateRoom auth={auth} db={db} />}
+          render={() => <CreateRoom user={user} db={db} />}
         />
 
       </Switch>
