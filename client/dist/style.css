@@ -208,3 +208,18 @@ button {
   border-radius: 20px;
   color: #7289da;
 }
+
+.row-default {
+  display: grid;
+  margin: 10px;
+  text-align: center;
+}
+
+#create-room-roomname{
+  text-align: center;
+    margin-top: 10px;
+}
+
+#create-room{
+  text-align:center;
+}

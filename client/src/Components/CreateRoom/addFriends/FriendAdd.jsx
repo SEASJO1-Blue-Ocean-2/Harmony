@@ -18,6 +18,7 @@ function AddFriends({ friend, addFriendHandler }) {
     <button
       type="button"
       onClick={friendAdded}
+
     >
       {clicked}
     </button>
