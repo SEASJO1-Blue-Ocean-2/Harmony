@@ -25,7 +25,6 @@ const Login = ({ user, auth }) => {
   const signOut = () => {
     auth.signOut();
   };
-  console.log(user);
 
   return (
     <div>

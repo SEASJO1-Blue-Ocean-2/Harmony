@@ -17,8 +17,8 @@ import NavigationBar from './Homepage/NavigationBar';
 import RoomsList from './Rooms/RoomsList';
 import FriendsList from './FriendsList/FriendsList';
 import NotificationsList from './Notifications/NotificationsList';
-import Room from './room/Room';
-import VideoChannel from './room/videoChannel';
+import Room from './Rooms/Room';
+import VideoChannel from './Rooms/videoChannel';
 
 
 
@@ -61,10 +61,6 @@ const App = (props) => {
           <Route path="/Notifications">
             <NotificationsList />
           </Route>
-          <Route
-            path="/room/:roomId"
-            render={match => <Room db={db} auth={auth} roomId={match.match.params.roomId} />}
-          />
         </Switch>
       </div>
     </Router>

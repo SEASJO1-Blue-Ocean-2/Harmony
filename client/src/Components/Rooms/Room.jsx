@@ -49,10 +49,7 @@ const Room = ({ db, auth, roomId }) => {
 
   }, [room]);
 
-  useEffect(() => {
-    console.log(textChannelId);
 
-  }, [textChannelId]);
 
   const sendMessage = (e) => {
     e.preventDefault();
@@ -69,33 +66,17 @@ const Room = ({ db, auth, roomId }) => {
   };
 
   return (<div>
-<<<<<<< HEAD
     {<div><button onClick={() => setMenu(1)}>Show Text Channels</button> <button onClick={() => setMenu(2)}>Show Voice Channels</button> </div>}
     {menu === 1 && textChannels && <TextMenu channels={textChannels} channelId={textChannelId} setChannel={setTextChannel}/>}
     {menu === 2 && voiceChannels && <VoiceMenu channels={voiceChannels} channelId={voiceChannelId} setChannel={setVoiceChannel} />}
     <div>
       {textChannelId && <MessageView channelId={textChannelId} db={db} uid={user.uid} />}
     </div>
-=======
-    {(
-      <div>
-        {snapshots.map(v => {
-          return <React.Fragment>
-            {/* {v.key} */}
-            {/* <ul>
-              <Message data={v.val()}>
-            </ul> */}
-          </React.Fragment>
-        })}
-      </div>
-    )}
->>>>>>> 167497524902271810bad7bfaeb9b027393d44a1
 
     <form onSubmit={sendMessage}>
       <input type='text' value={message} onChange={e => setMessage(e.target.value)} />
       <input type='submit' />
     </form>
-    <VideoChannel user={user} count={count} setCount={setCount}/>
   </div >);
 };
 

@@ -98,7 +98,6 @@ img.MagnifyingGlass {
   width: 8vw;
 }
 
-<<<<<<< HEAD
 .sent-message {
   background-color: lightblue;
 }
@@ -106,14 +105,12 @@ img.MagnifyingGlass {
 .received-message {
   background-color: tan;
 }
-=======
 .create-a-room{
   width: 90vw;
   margin-top: .5vh;
   margin-bottom: .5vh;
 }
 
->>>>>>> 167497524902271810bad7bfaeb9b027393d44a1
 .logout {
   margin-top: .5vh;
   margin-bottom: .5vh;

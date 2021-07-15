@@ -8,18 +8,11 @@ import {
   Link
 } from "react-router-dom";
 
-import Room from '../room/Room.jsx';
+import Room from './Room.jsx';
 import RoomEntry from './RoomEntry.jsx';
 import CreateRoomButton from './CreateRoomButton.jsx';
 import Logout from './Logout.jsx';
-<<<<<<< HEAD
-import { Redirect } from "react-router-dom";
-import {
-  BrowserRouter as Router, Switch, Route,
-} from 'react-router-dom';
-import CreateRoom from '../CreateRoom';
-=======
->>>>>>> 167497524902271810bad7bfaeb9b027393d44a1
+
 
 const RoomsList = ({ auth, db }) => {
   const [user, setUser] = useState(auth.currentUser.uid);
