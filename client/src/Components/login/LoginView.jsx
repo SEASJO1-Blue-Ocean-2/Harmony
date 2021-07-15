@@ -8,7 +8,9 @@ import { addData } from '../../util.js';
 const Login = ({ user, auth }) => {
 
   const [dbRef, setRef] = useState(null);
-
+  const [newUser, setNewUser] = useState(false)
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   useEffect(() => {
     setRef(firebase.database().ref(('/users')));
   }, []);
@@ -17,7 +19,17 @@ const Login = ({ user, auth }) => {
     const provider = new firebase.auth.GoogleAuthProvider();
     auth.signInWithPopup(provider)
       .then((results) => {
-        addData({ username: results.user.displayName, email: results.user.email, picture: results.user.photoURL}, dbRef, results.user.uid);
+        if (results.additionalUserInfo.isNewUser) {
+          setUsername(results.user.displayName);
+          setEmail(results.user.email);
+          setNewUser(true);
+        }
+        return results
+      })
+      .then((results) => {
+        if (results.additionalUserInfo.isNewUser) {
+          addData({ username: results.user.displayName, email: results.user.email, picture: results.user.photoURL }, dbRef, results.user.uid);
+        }
       });
   }
 
@@ -27,12 +39,20 @@ const Login = ({ user, auth }) => {
 
   return (
     <div>
+      {newUser && <Redirect
+        to={{
+          pathname: "/createUserData",
+          state: {
+            username: username,
+            email: email
+          }
+        }} />}
       {user && <button onClick={signOut}>Sign Out</button>}
       <div className="login-logo">
         <img src='https://image.flaticon.com/icons/png/512/1820/1820090.png' id={css.harmonyLogo}>
         </img></div>
-      {user ? <Redirect to="/home" />
 
+      {user ? <Redirect to="/home" />
         :
         <div>
 
