@@ -13,10 +13,6 @@ import RoomEntry from './RoomEntry.jsx';
 import CreateRoomButton from './CreateRoomButton.jsx';
 
 import Logout from './Logout.jsx';
-import {
-  BrowserRouter as Router, Switch, Route,
-} from 'react-router-dom';
-import CreateRoom from '../CreateRoom';
 
 const RoomsList = ({ auth, db }) => {
   const [user, setUser] = useState(auth.currentUser.uid);
@@ -27,6 +23,7 @@ const RoomsList = ({ auth, db }) => {
   const [suggestedRooms, setSuggestions] = useState(['list', 'of', 'suggestions']);
 
   const renderRooms = () => {
+
     snapshots.forEach(
       v => {
         let room = v.val()

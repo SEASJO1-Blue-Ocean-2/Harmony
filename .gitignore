@@ -9,3 +9,4 @@ config.js
 .DS_Store
 __snapshots__
 .prettierrc
+package-lock.json
