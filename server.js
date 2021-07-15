@@ -17,10 +17,6 @@ app.use(express.urlencoded({
 app.use(express.json());
 
 app.get('/', (req, res)=>{
-  res.redirect(`/${uuidV4()}`);
-});
-
-app.get('/:roomId', (req, res)=>{
   res.render('index', { roomId: req.params.roomId });
 });
 
