@@ -11,7 +11,14 @@ import FriendProfile from './FriendProfile.jsx';
 import css from './friendStyles.css';
 
 const FriendsList = (props) => {
-  const { db, user, friendsList } = props;
+  let { db, friendsList, user } = props;
+
+  if (user === null) {
+    const data = JSON.parse(window.localStorage.getItem('/friendlist'));
+    user = data.user;
+    db = data.db;
+    friendsList = data.friendsList;
+  }
   const [userId, setUserId] = useState(user.uid);
   // const [friendsList, loading, error] = useList(db.ref(`friends/${userId}`));
   const [showFriendsList, setShowFriendsList] = useState(true);
@@ -24,23 +31,40 @@ const FriendsList = (props) => {
     setShowFriendsList(false);
   };
 
+  useEffect(() => {
+    // console.log(friendsList);
+    window.localStorage.setItem('/friendlist', JSON.stringify({ user, friendsList, db }));
+  });
+
   return (
+
     <div>
+      {console.log(db)}
       {showFriendsList
         ? (
           <div data-test="friends-list">
-            <h2 className="friends-list-title" className='currentPage'>Friends List</h2>
+            <h2 className="friends-list-title" className="currentPage">Friends List</h2>
             <div className="friends-list-conatiner">
               {/* {!loading && friendsList.length > 0 && ( */}
-                <div>
-                  {friendsList.map(friendId => (
-                    <Friend
-                      friendId={friendId.val()}
-                      db={db}
-                      key={friendId.key}
-                      showFriendProfile={showFriendProfile}/>
-                  ))}
-                </div>
+              <div>
+                {typeof friendsList[0] !== 'string' && friendsList.map((friendId) => (
+                  <Friend
+                    friendId={friendId.val()}
+                    db={db}
+                    key={friendId.key}
+                    showFriendProfile={showFriendProfile}
+                  />
+                ))}
+
+                {typeof friendsList[0] === 'string' && friendsList.map((friendId) => (
+                  <Friend
+                    friendId={friendId}
+                    db={db}
+                    /* key={friendId.key} */
+                    showFriendProfile={showFriendProfile}
+                  />
+                ))}
+              </div>
               {/* // )} */}
             </div>
             <div className={css.incomingOutgoingContainer}>
@@ -51,11 +75,11 @@ const FriendsList = (props) => {
         )
         : (
           <FriendProfile
-              db={db}
-              friendId={friendProfileId}
-              setShowFriendsList={setShowFriendsList}/>
-        )
-      }
+            db={db}
+            friendId={friendProfileId}
+            setShowFriendsList={setShowFriendsList}
+          />
+        )}
     </div>
   );
 };

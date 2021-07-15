@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import css from './style.css';
 
 function DisplayProfile({ profileData }) {
+  console.log("this is profileData: ", profileData);
   return (
     <div>
       <img src={profileData.picture} className={css.profilePic} alt="" />

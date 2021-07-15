@@ -19,7 +19,7 @@ import FriendsList from './FriendsList/FriendsList';
 import NotificationsList from './Notifications/NotificationsList';
 import Room from './Rooms/Room';
 import VideoChannel from './Rooms/videoChannel';
-
+import history from './history';
 
 
 firebase.initializeApp(config);
@@ -42,7 +42,7 @@ const App = (props) => {
           />
           <Route
             path="/home"
-            render={() => <MainPage user={user} auth={auth} db={db}/>}
+            render={() => <MainPage user={user} auth={auth} db={db} />}
           />
           <Route
             path="/signUp"
@@ -50,7 +50,7 @@ const App = (props) => {
           />
           <Route
             path="/profile"
-            render={() => <Profile auth={auth} db={db} />}
+            render={() => <Profile auth={auth} db={db} user={user} />}
           />
           <Route path="/Rooms">
             <RoomsList auth={auth} db={db} />
