@@ -27,18 +27,7 @@ const Login = ({ user, auth }) => {
 
   return (
     <div>
-
-      {(redirect && newUser) && <Redirect
-        to={{
-          pathname: "/createUserData",
-          state: {
-            username: username,
-            email: email
-          }
-        }} />}
-
-
-
+      {user && <button onClick={signOut}>Sign Out</button>}
       <div className="login-logo">
         <img src='https://image.flaticon.com/icons/png/512/1820/1820090.png' id={css.harmonyLogo}>
         </img></div>
