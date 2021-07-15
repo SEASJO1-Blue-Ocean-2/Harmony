@@ -12,7 +12,9 @@ const InviteToRoom = (props) => {
   };
 
   return (
-    <button type="button" onClick={handleInvite}>invite icon</button>
+    <div className="message-icon">
+      <img className='inviteIcon' src='https://www.pngkey.com/png/full/408-4088649_group-s-contacts-people-chat-message-talk-im.png' width='30px;'></img>
+    </div>
   );
 };
 
