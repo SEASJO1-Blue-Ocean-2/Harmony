@@ -19,6 +19,8 @@ import FriendsList from './FriendsList/FriendsList';
 import NotificationsList from './Notifications/NotificationsList';
 import Room from './Rooms/Room';
 import VideoChannel from './Rooms/videoChannel';
+import CreateUserData from './login/CreateUserData'
+
 
 
 
@@ -40,6 +42,10 @@ const App = (props) => {
             exact
             render={() => <Login user={user} auth={auth} />}
           />
+          <Route
+            path='/createUserData'
+            render={(info) => <CreateUserData auth={auth} db={db} info={info.location.state}/>}
+            />
           <Route
             path="/home"
             render={() => <MainPage user={user} auth={auth} db={db}/>}
