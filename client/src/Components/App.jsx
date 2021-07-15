@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   BrowserRouter as Router, Switch, Route,
 } from 'react-router-dom';
@@ -12,7 +12,6 @@ import Signup from './login/SignupView';
 import 'firebase/auth';
 import 'firebase/database';
 import config from '../../../config';
-
 import NavigationBar from './Homepage/NavigationBar';
 import RoomsList from './Rooms/RoomsList';
 import FriendsList from './FriendsList/FriendsList';
@@ -20,8 +19,6 @@ import NotificationsList from './Notifications/NotificationsList';
 import Room from './Rooms/Room';
 import VideoChannel from './Rooms/videoChannel';
 
-
-import VideoChannel from './room/videoChannel';
 
 firebase.initializeApp(config);
 const auth = firebase.auth();
@@ -31,8 +28,6 @@ const db = firebase.database();
 const App = (props) => {
   const [user] = useAuthState(auth);
   const [ count , setCount] = useState(0)
-  return (
-
   return (
     <Router>
       <div>

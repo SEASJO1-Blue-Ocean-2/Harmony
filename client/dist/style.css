@@ -106,6 +106,13 @@ img.MagnifyingGlass {
   margin-bottom: .5vh;
 }
 
+button.videoChannels {
+  float: right;
+}
+
+.channels {
+  margin-top: 10px;
+}
 .logout {
   margin-top: .5vh;
   margin-bottom: .5vh;
@@ -249,7 +256,7 @@ button.voiceChannels {
 
 .messageContainer {
   overflow: scroll;
-  max-height: 450px;
+  max-height: 400px;
 }
 
 .text-menu {
@@ -257,11 +264,20 @@ button.voiceChannels {
   font-size: x-large;
 }
 
+.mediaMessage {
+  text-align: right;
+}
+
 .message {
   text-align: left;
   margin-top: 15px;
-
 }
+
+form.submitMessage {
+  text-align: center;
+  margin-top: 20px;
+}
+
 
 .author {
   float: left;

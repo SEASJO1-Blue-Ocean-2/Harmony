@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 
 const Message = ({ data, uid }) => {
   var date = new Date(data.created);
-  console.log(date.toString());
   date = date.toString().slice(4,10);
   return (<div className={data.uid === uid ? 'sent-message' : 'received-message'} id='messages'>
     <div className='author'>

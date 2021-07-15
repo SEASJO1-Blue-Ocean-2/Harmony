@@ -66,22 +66,8 @@ const Room = ({ db, auth, roomId }) => {
     }
   };
 
-  return (<div>
-<<<<<<< HEAD:client/src/Components/Rooms/Room.jsx
-    {<div className='showChannels'><button onClick={() => setMenu(1)} className='textChannels'>Show Text Channels</button> <button onClick={() => setMenu(2)} className='voiceChannels'>Show Voice Channels</button></div>}
-    {menu === 1 && textChannels && <TextMenu channels={textChannels} channelId={textChannelId} setChannel={setTextChannel} />}
-    {menu === 2 && voiceChannels && <VoiceMenu channels={voiceChannels} channelId={voiceChannelId} setChannel={setVoiceChannel} />}
-    <div>
-      {textChannelId && <MessageView channelId={textChannelId} db={db} uid={user.uid} />}
-    </div>
-
-    <form onSubmit={sendMessage} className='submitMessageInRoom'>
-      <input type='text' value={message} onChange={e => setMessage(e.target.value)} className='setMessageSubmit' />
-      <input type='submit' className='submitMessageButton' />
-    </form>
-  </div >);
-=======
-    {<div><button onClick={() => setMenu(1)}>Show Text Channels</button> <button onClick={() => setMenu(2)}>Show Video Channels</button> </div>}
+  return (<div className='channels'>
+    {<div><button onClick={() => setMenu(1)} className='textChannels'>Show Text Channels</button> <button onClick={() => setMenu(2)} className='videoChannels'>Show Video Channels</button> </div>}
     {menu === 2 && voiceChannels && <VideoChannel roomId={roomId}/>}
     {menu === 1 && textChannels &&
     <div>
@@ -90,13 +76,12 @@ const Room = ({ db, auth, roomId }) => {
         {textChannelId && <MessageView channelId={textChannelId} db={db} uid={user.uid} />}
       </div>
 
-      <form onSubmit={sendMessage}>
+      <form onSubmit={sendMessage}  className='submitMessage'>
         <input type='text' value={message} onChange={e => setMessage(e.target.value)} />
         <input type='submit' />
       </form>
     </div >}
   </div>);
->>>>>>> 10a052d92f18f87cab694e5e754dfe8c7b072862:client/src/Components/room/Room.jsx
 };
 
 const MessageView = ({ channelId, db, uid }) => {
