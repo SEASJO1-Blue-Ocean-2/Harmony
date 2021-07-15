@@ -18,7 +18,7 @@ export default AddFriends;
 AddFriends.propTypes = {
   friend: PropTypes.shape({
     displayName: PropTypes.string.isRequired,
-    id: PropTypes.number.isRequired,
+    uid: PropTypes.string.isRequired,
     online: PropTypes.bool.isRequired,
   }).isRequired,
   addFriendHandler: PropTypes.func.isRequired,
