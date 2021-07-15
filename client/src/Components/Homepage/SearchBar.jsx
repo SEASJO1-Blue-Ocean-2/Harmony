@@ -24,10 +24,9 @@ class SearchBar extends React.Component {
     if(currentDropDown === 'Friends List') {
       var currentFriends = document.getElementsByClassName('friend-container');
       for(var i = 0; i < currentFriends.length; i++) {
-        if(!(currentFriends[i]).outerHTML.toLowerCase().includes(searchBarText)){
+        if(!(currentFriends[i]).outerHTML.toLowerCase().includes(searchBarText.toLowerCase())){
           currentFriends[i].remove();
           i--;
-        } else {
         }
       }
     }
@@ -64,7 +63,7 @@ class SearchBar extends React.Component {
                   <FriendsList db={this.props.db} user={this.props.user}/>
                 </Route>
                 <Route path="/Notifications">
-                  <NotificationsList />
+                  <NotificationsList db={this.props.db} user={this.props.user}/>
                 </Route>
               </Switch>
             </div>
