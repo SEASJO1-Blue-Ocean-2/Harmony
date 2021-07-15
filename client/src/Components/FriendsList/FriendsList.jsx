@@ -11,11 +11,13 @@ import FriendProfile from './FriendProfile.jsx';
 import css from './friendStyles.css';
 
 const FriendsList = (props) => {
-  const { db, user } = props;
+  const { db, user, friendsList } = props;
   const [userId, setUserId] = useState(user.uid);
   // const [friendsList, loading, error] = useList(db.ref(`friends/${userId}`));
   const [showFriendsList, setShowFriendsList] = useState(true);
   const [friendProfileId, setFriendProfileId] = useState('');
+
+  // console.log('this i the friends list', friendsList)
 
   const showFriendProfile = (id) => {
     setFriendProfileId(id);
@@ -39,7 +41,7 @@ const FriendsList = (props) => {
                       showFriendProfile={showFriendProfile}/>
                   ))}
                 </div>
-              // )}
+              {/* // )} */}
             </div>
             <div className={css.incomingOutgoingContainer}>
               <IncomingButton />

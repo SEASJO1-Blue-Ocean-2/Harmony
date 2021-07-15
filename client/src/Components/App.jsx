@@ -1,9 +1,9 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect} from 'react';
 import {
   BrowserRouter as Router, Switch, Route,
 } from 'react-router-dom';
 import firebase from 'firebase/app';
-import { useAuthState, useList } from 'react-firebase-hooks/auth';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import Profile from './profile/Profile';
 import MainPage from './Homepage/MainPage';
 import Login from './login/LoginView';
@@ -22,10 +22,8 @@ const db = firebase.database();
 // <Login user={user} auth={auth} />
 // <Room db={db} user={user} />
 
-
 const App = (props) => {
   const [user] = useAuthState(auth);
-  const [friendsList, loading, error] = useList(db.ref(`friends/${user.uid}`));
   return (
     <Router>
       <div>
@@ -38,7 +36,7 @@ const App = (props) => {
           />
           <Route
             path="/home"
-            render={() => <MainPage user={user} auth={auth} db={db} friendsList={friendsList}/>}
+            render={() => <MainPage user={user} auth={auth} db={db}/>}
           />
           <Route
             path="/signUp"
