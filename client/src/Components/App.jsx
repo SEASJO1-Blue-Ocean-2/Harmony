@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   BrowserRouter as Router, Switch, Route,
 } from 'react-router-dom';
@@ -18,16 +18,16 @@ import FriendsList from './FriendsList/FriendsList';
 import NotificationsList from './Notifications/NotificationsList';
 import Room from './room/Room';
 
+import VideoChannel from './room/videoChannel';
 
 firebase.initializeApp(config);
 const auth = firebase.auth();
 const db = firebase.database();
 
-// <Login user={user} auth={auth} />
-// <Room db={db} user={user} />
 
 const App = (props) => {
   const [user] = useAuthState(auth);
+  const [ count , setCount] = useState(0)
   return (
 
     <Router>

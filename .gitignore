@@ -7,3 +7,6 @@ bundle.js
 config.js
 .eslintrc.json
 .DS_Store
+__snapshots__
+.prettierrc
+package-lock.json

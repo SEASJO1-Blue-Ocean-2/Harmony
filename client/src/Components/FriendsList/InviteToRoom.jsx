@@ -2,13 +2,15 @@ import React, { useState } from 'react';
 
 const InviteToRoom = (props) => {
   const inviteToRoom = () => {
-    // something here with friends user id and room id
+    // this will either open a pop up of rooms the auth user is joind to so an invite can be sent
+    // or redirect to a different page with "Invite ${friend name} to: then show a list of rooms"
   };
 
   const handleInvite = (event) => {
     event.preventDefault();
     inviteToRoom();
-  }
+  };
+
   return (
     <button type="button" onClick={handleInvite}>invite icon</button>
   );
