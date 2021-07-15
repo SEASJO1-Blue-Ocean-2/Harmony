@@ -7,10 +7,10 @@ const myPeer = new Peer(undefined, {
   host: '/', port: '3001'
 });
 const peers = {};
-
+let myVideoStream;
 const VideoChannel = ({user, roomId}) => {
 
-  const [myVideoStream, setMyVideoStream] = useState(null);
+  // const [myVideoStream, setMyVideoStream] = useState(null);
   const [joined, setJoined] = useState(false);
 
   useEffect(() => {
@@ -24,6 +24,7 @@ const VideoChannel = ({user, roomId}) => {
         video: true,
       })
       .then((stream) => {
+        myVideoStream = stream;
         addVideoStream(myVideo, stream);
 
         socket.on('user-connected', (userId) => {
@@ -47,11 +48,12 @@ const VideoChannel = ({user, roomId}) => {
         peers[userId].close();
       }
     });
-
-    myPeer.on('open', (id) => {
-      socket.emit('join-room', roomId, id, user);
-    });
   }, []);
+
+  myPeer.on('open', (id) => {
+    console.log('join room omit')
+    socket.emit('join-room', roomId, id, user);
+  });
 
   const addVideoStream = (video, stream) => {
     console.log('adding a video stream')
@@ -118,7 +120,6 @@ const VideoChannel = ({user, roomId}) => {
         <div className="header__back">
           <i className="fas fa-angle-left"></i>
         </div>
-        <h3>Video Chat</h3>
       </div>
     </div>
     <div className="main">
