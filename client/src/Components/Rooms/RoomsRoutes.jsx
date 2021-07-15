@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 
 import RoomsList from './RoomsList.jsx';
-import CreateRoom from '../CreateRoom/CreateRoom.jsx';
+import CreateRoom from '../CreateRoom/index.jsx';
 import Room from '../room/Room.jsx';
 
 
