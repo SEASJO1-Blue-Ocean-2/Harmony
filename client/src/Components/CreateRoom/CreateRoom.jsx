@@ -60,8 +60,12 @@ function CreateRoom({ db, user, friendsList }) {
     // possibly use same function that opens room in room module
   }
 
-  function addFriendHandler(friend) {
-    usersWithAccess[friend.uid] = friend.displayName;
+  function addFriendHandler(friend, isBeingAdded) {
+    if (isBeingAdded) {
+      usersWithAccess[friend.uid] = friend.displayName;
+    } else {
+      delete usersWithAccess[friend.uid];
+    }
   }
 
   function publicPrivateHandler(event) {

@@ -8,7 +8,7 @@ function AddFriends({ friend, addFriendHandler }) {
     <div className="row-default create-room-friend-item">
       <span>{friend.displayName}</span>
       <FriendOnline online={friend.online} />
-      <FriendAdd addFriendHandler={() => addFriendHandler(friend)} />
+      <FriendAdd addFriendHandler={addFriendHandler} friend={friend} />
     </div>
   );
 }
