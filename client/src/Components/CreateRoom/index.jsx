@@ -40,15 +40,17 @@ function CreateRoom({ db, user }) {
       return null;
     }
     const newRoomId = uuidV4();
+    const newChannelId = uuidV4();
+    const newVoiceId = uuidV4();
     db.ref(`rooms/${newRoomId}`).set({
       room_name: newName,
-      channels: [
-        'General',
-      ],
-      voice_channels: [
-        'Voice',
-      ],
-      default_channel: 0,
+      channels: {
+        [newChannelId]: 'General',
+      },
+      voice_channels: {
+        [newVoiceId]: 'Voice',
+      },
+      default_channel: newChannelId,
       public: isPublic,
       users: usersWithAccess,
     });
@@ -70,7 +72,7 @@ function CreateRoom({ db, user }) {
 
   function addFriendHandler(friend) {
     usersWithAccess[friend.uid] = friend.displayName;
-    
+
   }
 
   function publicPrivateHandler(event) {
