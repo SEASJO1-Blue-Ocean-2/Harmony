@@ -94,10 +94,20 @@ const Room = ({ db, auth, roomId }) => {
       {
         <div className="showChannels">
           <button onClick={() => menuToggle('text')} className="textChannels">
-            Show Text Channels
+            {
+              menu === 1 ?
+                'Hide Text Channels'
+              :
+                'Show Text Channels'
+            }
           </button>{' '}
           <button onClick={() => menuToggle('voice')} className="voiceChannels">
-            Show Voice Channels
+            {
+              menu === 2 ?
+                'Hide Voice Channels'
+              :
+                'Show Voice Channels'
+            }
           </button>
         </div>
       }
