@@ -8,31 +8,12 @@ import CreateButton from './createButton/CreateButton';
 
 const { v4: uuidV4 } = require('uuid');
 
-function CreateRoom({ db, user }) {
+function CreateRoom({ db, user, friendsList }) {
   const [isPublic, setIsPublic] = useState(false);
   const [newName, setNewName] = useState('');
   const [usersWithAccess, setUsersWithAccess] = useState({[user.uid]: user.displayName});
   const [createClicked, setCreateClicked] = useState(false);
-  const friends = [
-    {
-      displayName: 'Alex',
-      id: 0,
-      online: true,
-      uid: 'fake_uid_1'
-    },
-    {
-      displayName: 'Alex2',
-      id: 1,
-      online: true,
-      uid: 'fake_uid_2'
-    },
-    {
-      displayName: 'Alex3',
-      id: 2,
-      online: false,
-      uid: 'fake_uid_3'
-    },
-  ];
+  const friends = friendsList.map((item) => { return {[item.key]: item.val(), online: true} } )
 
   function createRoomHandler() {
     if (createClicked) {
@@ -91,6 +72,7 @@ function CreateRoom({ db, user }) {
     // set room name here in state
     // should have a debouncer
   }
+
   return (
     <div data-testid="create-room">
       <RoomName
