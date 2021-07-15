@@ -13,7 +13,7 @@ export const TextMenu = ({ channels, channelId, setChannel, db, roomId }) => {
   );
 };
 
-export const VoiceMenu = ({ channels, channelId, setChannel }) => {
+export const VoiceMenu = ({ channels, channelId, setChannel, db, roomId }) => {
   return (
     <div className="text-menu">
       {Object.entries(channels).map((e) => {
