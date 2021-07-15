@@ -117,7 +117,6 @@ button.videoChannels {
   margin-top: .5vh;
   margin-bottom: .5vh;
   position: absolute;
-  bottom: 2%;
   margin: 0 auto;
   right: 40%;
 }
@@ -261,7 +260,7 @@ button.voiceChannels {
 
 .text-menu {
   text-align: center;
-  font-size: x-large;
+  font-size: large;
 }
 
 .mediaMessage {
@@ -296,7 +295,12 @@ input[type="submit"] {
   border: 3px solid #7289da;
   border-radius: 20px;
   color: #7289da;
-  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-top: 5px;
+}
+
+.fileInput {
+  text-align: center;
 }
 
 input.setMessageSubmit {

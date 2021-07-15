@@ -81,11 +81,11 @@ const Room = ({ db, auth, roomId }) => {
         {textChannelId && <MessageView channelId={textChannelId} db={db} uid={user.uid} />}
       </div>
 
+        <SendMediaButton setCurrentUrl={setCurrentUrl} sendMessage={sendMessage}/>
       <form onSubmit={sendMessage}  className='submitMessage'>
         <input type='text' value={message} onChange={e => setMessage(e.target.value)} />
         <input type='submit' />
       </form>
-      <SendMediaButton setCurrentUrl={setCurrentUrl} sendMessage={sendMessage}/>
     </div >}
   </div>);
 };

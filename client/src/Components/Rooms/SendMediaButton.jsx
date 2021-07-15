@@ -40,7 +40,7 @@ const SendMediaButton = (props) => {
     <div>
       {showMediaInput
         ? (
-          <div>
+          <div className='fileInput'>
             <input id="fileInput" type="file" accept="image/*" onChange={(e) => setMediaInputText(e.target.value)}/>
             <button onClick={() => {handleSubmitFile()}}>Upload File</button>
             {fileUploaded ? <div>file uploaded</div> : null}
