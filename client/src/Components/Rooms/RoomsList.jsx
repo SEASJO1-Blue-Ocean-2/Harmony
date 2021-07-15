@@ -13,8 +13,6 @@ import RoomEntry from './RoomEntry.jsx';
 import CreateRoomButton from './CreateRoomButton.jsx';
 import Logout from './Logout.jsx';
 
-
-
 const RoomsList = ({ auth, db }) => {
   const [user, setUser] = useState(auth.currentUser.uid);
   const [viewType, setView] = useState('your-rooms');
@@ -24,7 +22,6 @@ const RoomsList = ({ auth, db }) => {
   const [suggestedRooms, setSuggestions] = useState(['list', 'of', 'suggestions']);
 
   const renderRooms = () => {
-
     snapshots.forEach(
       v => {
         let room = v.val()
@@ -51,7 +48,9 @@ const RoomsList = ({ auth, db }) => {
 
   return (
     <div className={css.mainpage}>
+
       <h2 className='currentPage'>Rooms List</h2>
+
       <div className={css.toggleRoomContainer}>
         <button
           className={css.toggleRoomButton}

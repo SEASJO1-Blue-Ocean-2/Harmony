@@ -101,10 +101,10 @@ img.MagnifyingGlass {
 }
 
 .logout {
+  background-color: #F31313;
   width: 90vw;
   margin-top: .5vh;
   margin-bottom: .5vh;
-  position: absolute;
   bottom: 10%;
   right: 40%;
 }

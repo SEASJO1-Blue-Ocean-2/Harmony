@@ -12,24 +12,27 @@ import Room from '../room/Room.jsx';
 
 
 const RoomsRoutes = ({ auth, db }) => {
-return (
-  <Router>
+  return (
+    <Router>
       <Switch>
         <Route
           path='/rooms'
-          render={() => <RoomsList auth={auth} db={db}/>}
+          render={() => <RoomsList auth={auth} db={db} />}
         />
 
-        <Route path={`/room/:roomid`} render={match => <Room auth={auth} db={db} roomId={match} />}/>
+        <Route
+          path={`/room/:roomid`}
+          render={match => <Room auth={auth} db={db} roomId={match} />}
+        />
 
         <Route
           path="/create"
           render={() => <CreateRoom auth={auth} db={db} />}
         />
 
-
       </Switch>
     </Router>
-)}
+  )
+}
 
 export default RoomsRoutes;

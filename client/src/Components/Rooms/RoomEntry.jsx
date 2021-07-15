@@ -1,10 +1,10 @@
 import css from './RoomEntryStyles.css'
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 
-const RoomEntry = ({ room, click }) => {
+const RoomEntry = ({ room }) => {
   const [userCount, setCount] = useState(0);
 
-  useEffect( () => {
+  useEffect(() => {
     countUsers(room.users)
   }, []);
 
@@ -18,8 +18,9 @@ const RoomEntry = ({ room, click }) => {
 
   return (
     <div
-    className={css.roomEntry}>
-    {room.roomname} - # of Users: {userCount}
+      className={css.roomEntry}>
+      <span>{room.roomname}</span>
+      <span>{userCount} - Users</span>
     </div>
   )
 }
