@@ -94,7 +94,16 @@ img.MagnifyingGlass {
   width: 8vw;
 }
 
+.create-a-room{
+  width: 90vw;
+  margin-top: .5vh;
+  margin-bottom: .5vh;
+}
+
 .logout {
+  width: 90vw;
+  margin-top: .5vh;
+  margin-bottom: .5vh;
   position: absolute;
   bottom: 10%;
   right: 40%;

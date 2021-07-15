@@ -27,9 +27,6 @@ class NavigationBar extends React.Component {
 
           </Link>
 
-          {/* <SearchBar db={this.props.db} user={this.props.user} auth={this.props.auth} /> */}
-          {this.props.user &&  <Logout auth={this.props.auth}/> }
-
         </div>
       </>
     );
