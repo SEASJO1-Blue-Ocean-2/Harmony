@@ -5,23 +5,28 @@ import {
   Route,
   Link
 } from "react-router-dom";
-
+import firebase from 'firebase/app';
+import { useList } from 'react-firebase-hooks/database';
+import 'firebase/auth';
+import 'firebase/analytics';
+import 'firebase/database';
 import './NotificationList.css';
 
-const testNotifications = ['notification1', 'notification2', 'notification3'];
+
 
 const NotificationsList = (props) => {
+
+  const [notificationsList, loading, error] = useList(props.db.ref(`/requests`));
   return (
     <>
-    <h2 className='currentPage'>Notifications</h2>
-      {testNotifications.map((element)=>{
-
-          return <div key={element} className='notification'>{element}</div>
-
-      })}
-
-    <div className ='clearNotifications'>Clear All</div>
-   </>
+      <h2 className='currentPage'>Notifications</h2>
+      {notificationsList.map((element) =>
+        <div className='unreadNotifications'>{element.val()['from']}
+          <div>
+            {element.val()['type']}
+          </div>
+        </div>)}
+    </>
   );
 }
 

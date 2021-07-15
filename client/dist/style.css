@@ -126,3 +126,18 @@ img.MagnifyingGlass {
 img.directMessageButton {
   margin-top: 7px;
 }
+
+.unreadNotifications{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 2px solid black;
+  text-align: center;
+  padding: 5px;
+  margin: 10px;
+  border-radius: 20px;
+}
+
+a {
+  font-size: larger;
+  color: black;
+}
