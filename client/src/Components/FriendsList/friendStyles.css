@@ -1,0 +1,33 @@
+/* .message-icon {
+  background-image: url('./messageicon.png');
+} */
+
+.incomingOutgoingContainer {
+  text-align: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 50px;
+}
+
+.friendContainer {
+  display: grid;
+  margin: 10px;
+  border: black 1px solid;
+  background: lightgrey;
+  border-radius: 10px;
+  width: 90%;
+  padding: 10px;
+  grid-template-columns: 2fr 1fr 1fr;
+}
+
+#friendContainer {
+  display: grid;
+  margin: 10px;
+  border: black 1px solid;
+  background: lightgrey;
+  border-radius: 10px;
+  width: 90%;
+  padding: 10px;
+  grid-template-columns: 2fr 1fr 1fr;
+}
+

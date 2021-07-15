@@ -2,6 +2,10 @@
  * @jest-environment jsdom
  */
 
+test('enter description here', () => {
+  expect('string').toBe('string');
+});
+
 // import React from 'react';
 // import ReactDOM from 'react-dom';
 // import { render, fireEvent, waitFor, screen } from '@testing-library/react';

@@ -31,7 +31,6 @@ const Signup = ({ auth }) => {
       console.log(err);
     });
   }
-  //
 
   return (
     <div className='test'>

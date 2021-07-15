@@ -45,7 +45,7 @@ const App = (props) => {
           />
           <Route
             path="/profile"
-            render={() => <Profile auth={auth} />}
+            render={() => <Profile auth={auth} db={db} />}
           />
         </Switch>
       </div>
