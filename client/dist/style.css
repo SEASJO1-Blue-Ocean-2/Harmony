@@ -298,4 +298,73 @@ input.setMessageSubmit {
 button#suggested-rooms {
   float: right;
   margin-left: 20px;
+.sent-message {
+  background-color: lightblue;
+}
+
+.received-message {
+  background-color: tan;
+}
+/* video css */
+
+.main {
+  overflow: hidden;
+  height: 80vh;
+}
+.main__left {
+flex: 0.7;
+display: flex;
+flex-direction: column;
+}
+.videos__group {
+flex-grow: 1;
+display: flex;
+justify-content: center;
+align-items: center;
+padding: 1rem;
+background-color: #eeee;
+height: 66vh;
+}
+video {
+height: 30vw;
+border-radius: 1rem;
+margin: 0.5rem;
+width: 40vw;
+object-fit: cover;
+transform: rotateY(180deg);
+-webkit-transform: rotateY(180deg);
+-moz-transform: rotateY(180deg);
+}
+.options {
+padding: 1rem;
+display: flex;
+background-color: #eee;
+}
+.options__left {
+display: flex;
+}
+.options__right {
+margin-left: auto;
+}
+.options__button {
+display: flex;
+justify-content: center;
+align-items: center;
+background-color: rgb(182, 182, 182);
+height: 50px;
+border-radius: 5px;
+color: blue;
+font-size: 1.2rem;
+width: 50px;
+margin: 0 0.5rem;
+}
+
+#video-grid {
+display: flex;
+justify-content: center;
+flex-wrap: wrap;
+}
+
+.background__red {
+  background-color: white;
 }

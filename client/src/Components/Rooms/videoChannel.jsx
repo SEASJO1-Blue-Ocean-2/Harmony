@@ -6,12 +6,21 @@ const socket = io();
 const myPeer = new Peer(undefined, {
   host: '/', port: '3001'
 });
+let peerId;
+
+myPeer.on('open', (id) => {
+  console.log('join room omit:' + id);
+  peerId = id;
+});
+
 const peers = {};
+let myVideoStream;
+const VideoChannel = ({user, roomId}) => {
 
-const VideoChannel = ({user, count ,setCount}) => {
-
-  const [myVideoStream, setMyVideoStream] = useState(null);
+  // const [myVideoStream, setMyVideoStream] = useState(null);
   const [joined, setJoined] = useState(false);
+
+
 
   useEffect(() => {
     const videoGrid = document.getElementById('video-grid');
@@ -24,6 +33,7 @@ const VideoChannel = ({user, count ,setCount}) => {
         video: true,
       })
       .then((stream) => {
+        myVideoStream = stream;
         addVideoStream(myVideo, stream);
 
         socket.on('user-connected', (userId) => {
@@ -47,11 +57,11 @@ const VideoChannel = ({user, count ,setCount}) => {
         peers[userId].close();
       }
     });
-
-    myPeer.on('open', (id) => {
-      socket.emit('join-room', roomId, id, user);
-    });
+    socket.emit('join-room', roomId, peerId, user);
   }, []);
+
+
+
 
   const addVideoStream = (video, stream) => {
     console.log('adding a video stream')
@@ -118,7 +128,6 @@ const VideoChannel = ({user, count ,setCount}) => {
         <div className="header__back">
           <i className="fas fa-angle-left"></i>
         </div>
-        <h3>Video Chat</h3>
       </div>
     </div>
     <div className="main">

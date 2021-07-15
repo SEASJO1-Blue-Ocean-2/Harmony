@@ -21,6 +21,7 @@ import Room from './Rooms/Room';
 import VideoChannel from './Rooms/videoChannel';
 
 
+import VideoChannel from './room/videoChannel';
 
 firebase.initializeApp(config);
 const auth = firebase.auth();
@@ -29,6 +30,8 @@ const db = firebase.database();
 
 const App = (props) => {
   const [user] = useAuthState(auth);
+  const [ count , setCount] = useState(0)
+  return (
 
   return (
     <Router>
@@ -64,7 +67,6 @@ const App = (props) => {
         </Switch>
       </div>
     </Router>
-
   );
 };
 
