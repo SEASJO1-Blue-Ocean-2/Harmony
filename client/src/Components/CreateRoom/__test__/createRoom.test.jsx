@@ -35,6 +35,15 @@ describe('CreateRoom', () => {
       <CreateRoom
         // pass all the props necessary for a basic render
         user={{1: 'alex'}}
+        db={{}}
+        friendsList={
+          [
+            {
+              key: 'fake_name',
+              val: () => 'fake_uid_1',
+            }
+          ]
+        }
       />,
     );
     const element = await screen.getByTestId('create-room');
@@ -46,6 +55,15 @@ describe('CreateRoom', () => {
       <CreateRoom
         // pass all the props necessary for a basic render
         user={{1: 'alex'}}
+        db={{}}
+        friendsList={
+          [
+            {
+              key: 'fake_name',
+              val: () => 'fake_uid_1',
+            }
+          ]
+        }
       />,
     );
     expect(consoleErrorSpy).not.toHaveBeenCalled();

@@ -118,7 +118,8 @@ button.videoChannels {
   margin-bottom: .5vh;
   position: absolute;
   margin: 0 auto;
-  right: 40%;
+  right: 0;
+  bottom: 0;
 }
 
 .searchButton {
@@ -299,7 +300,7 @@ input[type="submit"] {
   margin-top: 5px;
 }
 
-.fileInput {
+.fileInput, #sendMedia {
   text-align: center;
 }
 
