@@ -12,8 +12,8 @@ import 'firebase/auth';
 import 'firebase/database';
 import config from '../../../config';
 import NavigationBar from './Homepage/NavigationBar';
-import Room from './room/Room'
-import CreateRoom from './CreateRoom/CreateRoom.jsx'
+
+
 
 firebase.initializeApp(config);
 const auth = firebase.auth();
@@ -46,10 +46,6 @@ const App = (props) => {
           <Route
             path="/profile"
             render={() => <Profile auth={auth} />}
-          />
-          <Route
-            path={`/room/:roomid`}
-            render={match => <Room auth={auth} db={db} roomId={match}/>}
           />
         </Switch>
       </div>
