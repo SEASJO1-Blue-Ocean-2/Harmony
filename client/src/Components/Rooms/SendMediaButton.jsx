@@ -6,6 +6,7 @@ const SendMediaButton = (props) => {
   const { setCurrentUrl } = props;
   const [showMediaInput, setShowMediaInput] = useState(false);
   const [mediaInputText, setMediaInputText] = useState('');
+  const [fileUploaded, setFileUploaded] = useState(false);
   const storage = firebase.storage();
   const storageRef = storage.ref();
   // console.log(storageRef);
@@ -28,6 +29,7 @@ const SendMediaButton = (props) => {
       .then(snapshot => console.log('fileuploaded', snapshot));
     const currentRef = storageRef.child(mediaInputText)
     currentRef.getDownloadURL().then((url)=> setCurrentUrl(url));
+    setFileUploaded(true);
   }
 
 
@@ -41,10 +43,10 @@ const SendMediaButton = (props) => {
           <div>
             <input id="fileInput" type="file" accept="image/*" onChange={(e) => setMediaInputText(e.target.value)}/>
             <button onClick={() => {handleSubmitFile()}}>Upload File</button>
+            {fileUploaded ? <div>file uploaded</div> : null}
           </div>
         )
         : <button onClick={handleSendMedia}>send media</button>}
-      {/* <div>{elCapRef.val()}</div> */}
     </div>
   )
 }
