@@ -38,7 +38,7 @@ const App = (props) => {
           />
           <Route
             path="/home"
-            render={() => <MainPage user={user} auth={auth} db={db} friendList={friendsList}/>}
+            render={() => <MainPage user={user} auth={auth} db={db} friendsList={friendsList}/>}
           />
           <Route
             path="/signUp"
