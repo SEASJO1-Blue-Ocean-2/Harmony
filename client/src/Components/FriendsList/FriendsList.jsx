@@ -16,24 +16,10 @@ const FriendsList = (props) => {
   const [friendsList, loading, error] = useList(db.ref(`friends/${userId}`));
   const [showFriendsList, setShowFriendsList] = useState(true);
   const [friendProfileId, setFriendProfileId] = useState('');
-  // const [profileData, setProfileData] = ({});
-  // console.log(typeof userId);
-  // console.log('this is the friends lsit', friendsList);
 
   const showFriendProfile = (id) => {
     setFriendProfileId(id);
     setShowFriendsList(false);
-  }
-
-  useEffect(() => {
-    // this will set state for user id with setUserId('whatever is passed from app on auth')
-    // setUserId(user.uid);
-  });
-
-  const renderList = () => {
-    if (showFriendsList) {
-
-    }
   };
 
   return (
