@@ -9,9 +9,7 @@ import {
 import FriendsList from '../FriendsList/FriendsList.jsx';
 import NotificationsList from '../Notifications/NotificationsList.jsx';
 import RoomsRoutes from '../Rooms/RoomsRoutes.jsx';
-import Logout from './Logout.jsx'
-
-
+import Logout from './Logout.jsx';
 
 class SearchBar extends React.Component {
   constructor(props) {
@@ -77,9 +75,4 @@ class SearchBar extends React.Component {
   }
 }
 
-
-
-
-
 export default SearchBar;
-
