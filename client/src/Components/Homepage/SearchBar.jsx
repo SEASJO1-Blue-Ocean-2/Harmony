@@ -42,17 +42,6 @@ class SearchBar extends React.Component {
     return (
       <>
         <div>
-<<<<<<< HEAD
-          <input type='text' className='SearchBar' placeholder='Search' onChange={this.handleSearchBarChange}>
-          </input>
-            <div>
-              <nav className='mainPageOptions'>
-                <Link to="/Notifications">Notifications</Link>
-                <Link to="/Rooms">Rooms</Link>
-                <Link to="/FriendsList">Friends List</Link>
-              </nav>
-            </div>
-=======
           <div className='search'>
             <input type='text' className='SearchBar' placeholder='Search' id='searchBarText'>
             </input>
@@ -79,7 +68,6 @@ class SearchBar extends React.Component {
               </Switch>
             </div>
           </Router>
->>>>>>> 461c4557413ddd3f094afb3609f12803428c1860
         </div>
       </>
     );

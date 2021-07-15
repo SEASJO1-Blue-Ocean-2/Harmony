@@ -25,13 +25,9 @@ const Login = ({ user, auth }) => {
   const signOut = () => {
     auth.signOut();
   };
+  console.log(user);
 
-return (
-  <div className='test'>
-    {user && <button onClick={signOut}>Sign Out</button>}
-    <div className="login-logo">HARMONY LOGO PLACE HOLDER</div>
-    {user ? <Redirect to="/home" />
-    :
+  return (
     <div>
       {user && <button onClick={signOut}>Sign Out</button>}
       <div className="login-logo">
