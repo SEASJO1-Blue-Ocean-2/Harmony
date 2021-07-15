@@ -1,38 +1,28 @@
-import React, { useState } from 'react';
-import { PropTypes } from 'prop-types';
-import RoomName from './roomName/RoomName';
-import PublicPrivate from './publicPrivate/PublicPrivate';
-import AddFriends from './addFriends/AddFriends';
-import InviteUrl from './inviteUrl/InviteUrl';
-import CreateButton from './createButton/CreateButton';
+import React, { useState } from "react";
+import { PropTypes } from "prop-types";
+import RoomName from "./roomName/RoomName";
+import PublicPrivate from "./publicPrivate/PublicPrivate";
+import AddFriends from "./addFriends/AddFriends";
+import InviteUrl from "./inviteUrl/InviteUrl";
+import CreateButton from "./createButton/CreateButton";
 
-const { v4: uuidV4 } = require('uuid');
+const { v4: uuidV4 } = require("uuid");
 
-function CreateRoom({ db, user }) {
+function CreateRoom({ db, user, friendsList }) {
   const [isPublic, setIsPublic] = useState(false);
-  const [newName, setNewName] = useState('');
-  const [usersWithAccess, setUsersWithAccess] = useState({[user.uid]: user.displayName});
+  const [newName, setNewName] = useState("");
+  const [usersWithAccess, setUsersWithAccess] = useState({
+    [user.uid]: user.displayName,
+  });
   const [createClicked, setCreateClicked] = useState(false);
-  const friends = [
-    {
-      displayName: 'Alex',
-      id: 0,
+  const friends = friendsList.map((item, index) => {
+    return {
+      displayName: item.key,
+      uid: item.val(),
       online: true,
-      uid: 'fake_uid_1'
-    },
-    {
-      displayName: 'Alex2',
-      id: 1,
-      online: true,
-      uid: 'fake_uid_2'
-    },
-    {
-      displayName: 'Alex3',
-      id: 2,
-      online: false,
-      uid: 'fake_uid_3'
-    },
-  ];
+      key: index,
+    };
+  });
 
   function createRoomHandler() {
     if (createClicked) {
@@ -45,16 +35,16 @@ function CreateRoom({ db, user }) {
     db.ref(`rooms/${newRoomId}`).set({
       room_name: newName,
       channels: {
-        [newChannelId]: 'General',
+        [newChannelId]: "General",
       },
       voice_channels: {
-        [newVoiceId]: 'Voice',
+        [newVoiceId]: "Voice",
       },
       default_channel: newChannelId,
       public: isPublic,
       users: usersWithAccess,
     });
-    const uidList = Object.keys(usersWithAccess)
+    const uidList = Object.keys(usersWithAccess);
     uidList.forEach((uid) => addRoomIdToUserRecordInDb(uid, newRoomId));
     redirectToNewRoom(newRoomId);
     setCreateClicked(true);
@@ -70,16 +60,19 @@ function CreateRoom({ db, user }) {
     // possibly use same function that opens room in room module
   }
 
-  function addFriendHandler(friend) {
-    usersWithAccess[friend.uid] = friend.displayName;
-
+  function addFriendHandler(friend, isBeingAdded) {
+    if (isBeingAdded) {
+      usersWithAccess[friend.uid] = friend.displayName;
+    } else {
+      delete usersWithAccess[friend.uid];
+    }
   }
 
   function publicPrivateHandler(event) {
     const roomStatus = event.target.value;
-    if (roomStatus === 'public' && !isPublic) {
+    if (roomStatus === "public" && !isPublic) {
       setIsPublic(true);
-    } else if (roomStatus === 'private' && isPublic) {
+    } else if (roomStatus === "private" && isPublic) {
       setIsPublic(false);
     }
   }
@@ -91,22 +84,14 @@ function CreateRoom({ db, user }) {
     // set room name here in state
     // should have a debouncer
   }
+
   return (
     <div data-testid="create-room">
-      <RoomName
-        nameHandler={nameHandler}
-      />
-      <PublicPrivate
-        publicPrivateHandler={publicPrivateHandler}
-      />
-      <AddFriends
-        friends={friends}
-        addFriendHandler={addFriendHandler}
-      />
+      <RoomName nameHandler={nameHandler} />
+      <PublicPrivate publicPrivateHandler={publicPrivateHandler} />
+      <AddFriends friends={friends} addFriendHandler={addFriendHandler} />
       <InviteUrl />
-      <CreateButton
-        createRoomHandler={createRoomHandler}
-      />
+      <CreateButton createRoomHandler={createRoomHandler} />
     </div>
   );
 }

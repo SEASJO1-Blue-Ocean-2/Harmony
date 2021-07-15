@@ -8,7 +8,7 @@ function AddFriends({ friend, addFriendHandler }) {
     <div className="row-default create-room-friend-item">
       <span>{friend.displayName}</span>
       <FriendOnline online={friend.online} />
-      <FriendAdd addFriendHandler={() => addFriendHandler(friend)} />
+      <FriendAdd addFriendHandler={addFriendHandler} friend={friend} />
     </div>
   );
 }
@@ -18,7 +18,7 @@ export default AddFriends;
 AddFriends.propTypes = {
   friend: PropTypes.shape({
     displayName: PropTypes.string.isRequired,
-    id: PropTypes.number.isRequired,
+    uid: PropTypes.string.isRequired,
     online: PropTypes.bool.isRequired,
   }).isRequired,
   addFriendHandler: PropTypes.func.isRequired,
