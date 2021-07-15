@@ -8,7 +8,7 @@ export const TextMenu = ({ channels, channelId, setChannel, db, roomId }) => {
       {Object.entries(channels).map((e) => {
         return <div onClick={() => setChannel(e[0])}>{e[1]}</div>;
       })}
-      <CreateChannel db={db} roomId={roomId} />
+      <CreateChannel db={db} roomId={roomId} voice={false} />
     </div>
   );
 };
@@ -19,6 +19,7 @@ export const VoiceMenu = ({ channels, channelId, setChannel }) => {
       {Object.entries(channels).map((e) => {
         return <div onClick={() => setChannel(e[0])}>{e[1]}</div>;
       })}
+      <CreateChannel db={db} roomId={roomId} voice={true} />
     </div>
   );
 };

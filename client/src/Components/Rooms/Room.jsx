@@ -87,6 +87,8 @@ const Room = ({ db, auth, roomId }) => {
           channels={voiceChannels}
           channelId={voiceChannelId}
           setChannel={setVoiceChannel}
+          db={db}
+          roomId={roomId}
         />
       )}
       <div>

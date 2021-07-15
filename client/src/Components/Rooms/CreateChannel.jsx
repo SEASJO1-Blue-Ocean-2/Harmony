@@ -3,7 +3,7 @@ import { PropTypes } from 'prop-types';
 
 const { v4: uuidV4 } = require("uuid");
 
-function CreateChannel({ forTest, db , roomId }) {
+function CreateChannel({ forTest, db , roomId, voice }) {
   const [create, setCreate] = useState(false);
   const [newChanName, setNewChanName] = useState('');
 
@@ -21,8 +21,12 @@ function CreateChannel({ forTest, db , roomId }) {
   }
 
   function createHandler() {
+    let channels = 'channels'
     const newChanId = uuidV4();
-    db.ref(`rooms/${roomId}/channels/${newChanId}`).set(newChanName);
+    if (voice) {
+      channels = 'voice_channels';
+    }
+    db.ref(`rooms/${roomId}/${channels}/${newChanId}`).set(newChanName);
     setCreate(false);
   }
 
@@ -64,4 +68,5 @@ export default CreateChannel;
 CreateChannel.propTypes = {
   db: PropTypes.object.isRequired,
   roomId: PropTypes.string.isRequired,
+  voice: PropTypes.bool.isRequired,
 }
