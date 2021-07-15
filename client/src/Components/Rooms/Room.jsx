@@ -78,6 +78,8 @@ const Room = ({ db, auth, roomId }) => {
           channels={textChannels}
           channelId={textChannelId}
           setChannel={setTextChannel}
+          db={db}
+          roomId={roomId}
         />
       )}
       {menu === 2 && voiceChannels && (

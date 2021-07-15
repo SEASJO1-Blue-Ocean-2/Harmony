@@ -1,8 +1,9 @@
 import React, { useState } from "react";
+import { PropTypes } from 'prop-types';
 
 const { v4: uuidV4 } = require("uuid");
 
-function CreateChannel({ forTest }) {
+function CreateChannel({ forTest, db , roomId }) {
   const [create, setCreate] = useState(false);
   const [newChanName, setNewChanName] = useState('');
 
@@ -10,20 +11,19 @@ function CreateChannel({ forTest }) {
     setCreate(true);
   }
 
-  function showCreate(isShown) {
-    if (isShown) {
-      setCreate(false);
-    } else {
-      setCreate(true);
-    }
+  function showCreate() {
+    setCreate(!create);
   }
 
-  function updateNewChanName() {
-
+  function updateNewChanName(event) {
+    const name = event.target.value;
+    setNewChanName(name);
   }
 
   function createHandler() {
-
+    const newChanId = uuidV4();
+    db.ref(`rooms/${roomId}/channels/${newChanId}`).set(newChanName);
+    setCreate(false);
   }
 
   return(
@@ -60,3 +60,8 @@ function CreateChannel({ forTest }) {
 }
 
 export default CreateChannel;
+
+CreateChannel.propTypes = {
+  db: PropTypes.object.isRequired,
+  roomId: PropTypes.string.isRequired,
+}
