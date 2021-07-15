@@ -22,7 +22,6 @@ const CreateUserData = ({ auth, db, info }) => {
       // TODO: picture: pictureUrl
     }
     db.ref(`userData/${user.uid}`).update(userData);
-
   }
 
   function onCountryChange(event) {
@@ -34,7 +33,7 @@ const CreateUserData = ({ auth, db, info }) => {
   }
 
   return (
-    <div>
+    <div className='create-profile'>
       <h1>Welcome {info.username}!</h1>
       <span>Create your Profile</span>
 

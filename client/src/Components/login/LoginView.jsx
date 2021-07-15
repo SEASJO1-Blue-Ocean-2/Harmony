@@ -13,7 +13,6 @@ const Login = ({ user, auth }) => {
   const [email, setEmail] = useState('');
   const [redirect, setRedirect] = useState(false);
 
-
   useEffect(() => {
     setRef(firebase.database().ref(('/users')));
   }, []);
@@ -29,7 +28,6 @@ const Login = ({ user, auth }) => {
       })
       .then((results) => {
         if (results.additionalUserInfo.isNewUser) {
-          console.log('hello world')
           addData({ username: results.user.displayName, email: results.user.email, picture: results.user.photoURL }, dbRef, results.user.uid);
         }
         setRedirect(true);
@@ -43,6 +41,7 @@ const Login = ({ user, auth }) => {
 
   return (
     <div>
+
       {(redirect && newUser) && <Redirect
         to={{
           pathname: "/createUserData",
@@ -51,7 +50,9 @@ const Login = ({ user, auth }) => {
             email: email
           }
         }} />}
+
       {user && <button onClick={signOut}>Sign Out</button>}
+
       <div className="login-logo">
         <img src='https://image.flaticon.com/icons/png/512/1820/1820090.png' id={css.harmonyLogo}>
         </img></div>
@@ -88,8 +89,6 @@ const Login = ({ user, auth }) => {
       }
 
     </div>)
-
-
 };
 
 export default Login;
