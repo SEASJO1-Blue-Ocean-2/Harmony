@@ -1,0 +1,32 @@
+/* .message-icon {
+  background-image: url('./messageicon.png');
+} */
+
+.incomingOutgoingContainer {
+  text-align: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 50px;
+}
+
+
+#friendContainer {
+  display: grid;
+  margin: 10px;
+  background: lightgrey;
+  width: 90%;
+  padding: 10px;
+  grid-template-columns: 2fr 1fr 1fr;
+  border: 3px solid #7289da;
+  border-radius: 10px;
+  text-align: center;
+  background-color: #7289da;
+  font-size: larger;
+  color: black;
+}
+
+#friendContainer:hover {
+  opacity: 50%;
+}
+
+

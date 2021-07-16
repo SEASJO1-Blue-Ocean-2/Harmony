@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import css from './style.css';
 
-function UpdateProfile({ updateData }) {
+function UpdateProfile({ updateData, profileData }) {
   const [name, setName] = useState('');
   const [country, setCountry] = useState('');
   const [email, setEmail] = useState('');
@@ -31,7 +31,7 @@ function UpdateProfile({ updateData }) {
       country,
       email,
       bio,
-      picture: 'http://www.pngall.com/wp-content/uploads/5/User-Profile-PNG-Image.png',
+      picture: profileData.picture,
     });
   }
 
@@ -41,19 +41,19 @@ function UpdateProfile({ updateData }) {
       <br />
       <span>Name: </span>
       <br />
-      <input type="text" id="name" onChange={onChangeName} />
+      <input type="text" id="name" onChange={onChangeName} value={profileData.username} />
       <br />
       <span>Country: </span>
       <br />
-      <input type="text" id="name" onChange={onChangeCountry} />
+      <input type="text" id="name" onChange={onChangeCountry} value={profileData.country} />
       <br />
       <span>Email: </span>
       <br />
-      <input type="text" id="name" onChange={onChangeEmail} />
+      <input type="text" id="name" onChange={onChangeEmail} value={profileData.email} />
       <br />
       <span>Bio: </span>
       <br />
-      <textarea className={css.bioUpdateText} row="400" cols="20" id="bio" onChange={onChangeBio} />
+      <textarea className={css.bioUpdateText} row="400" cols="20" id="bio" onChange={onChangeBio} value={profileData.bio} />
       <br />
       <Link to="/profile">
         <button type="button" onClick={onClick}>Save Profile</button>
@@ -64,6 +64,13 @@ function UpdateProfile({ updateData }) {
 
 UpdateProfile.propTypes = {
   updateData: PropTypes.func.isRequired,
+  profileData: PropTypes.shape({
+    picture: PropTypes.string.isRequired,
+    username: PropTypes.string.isRequired,
+    country: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    bio: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default UpdateProfile;

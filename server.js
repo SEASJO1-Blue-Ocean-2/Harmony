@@ -1,9 +1,8 @@
+/*
 const express = require('express');
 const path = require('path');
 const app = express();
 const PORT = 3000;
-const server = require('http').Server(app);
-const io = require('socket.io')(server);
 const {v4: uuidV4} = require('uuid');
 const rooms = {};
 
@@ -20,6 +19,30 @@ app.get('/', (req, res)=>{
   res.render('index', { roomId: req.params.roomId });
 });
 
+server.listen(3000);
+app.listen(PORT, function() {
+  console.log(`Server listening at http://localhost:${PORT}`);
+});
+*/
+
+const express = require('express');
+const path = require('path');
+const app = express();
+const PORT = 3000;
+
+const server = require('http').Server(app);
+const io = require('socket.io')(server);
+
+
+app.use('/', express.static('./client/dist'));
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, '/client', '/dist', '/index.html'));
+});
+
+app.listen(PORT, function() {
+  console.log(`Server listening at http://localhost:${PORT}`);
+});
+
 io.on('connection', socket => {
   socket.on('join-room', (roomId, userId, socketId) => {
     console.log(roomId, userId);
@@ -33,5 +56,3 @@ io.on('connection', socket => {
     });
   });
 });
-
-server.listen(3000);

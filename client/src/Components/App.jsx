@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   BrowserRouter as Router, Switch, Route,
 } from 'react-router-dom';
@@ -11,28 +11,30 @@ import Login from './login/LoginView';
 import Signup from './login/SignupView';
 import 'firebase/auth';
 import 'firebase/database';
+import 'firebase/storage';
 import config from '../../../config';
 import NavigationBar from './Homepage/NavigationBar';
 import RoomsList from './Rooms/RoomsList';
 import FriendsList from './FriendsList/FriendsList';
 import NotificationsList from './Notifications/NotificationsList';
-import Room from './room/Room';
+import Room from './Rooms/Room';
+import VideoChannel from './Rooms/videoChannel';
 
-import VideoChannel from './room/videoChannel';
 
 firebase.initializeApp(config);
 const auth = firebase.auth();
 const db = firebase.database();
-
+// const storage = firebase.storage();
+// const storageRef = storage.ref();
+// const elCapRef = storageRef.child('el_cap.jpeg');
 
 const App = (props) => {
   const [user] = useAuthState(auth);
   const [ count , setCount] = useState(0)
   return (
-
     <Router>
       <div>
-        <NavigationBar user={user} db={db} auth={auth} />
+        {user && <NavigationBar user={user} db={db} auth={auth} />}
         <Switch>
           <Route
             path="/"
@@ -41,7 +43,7 @@ const App = (props) => {
           />
           <Route
             path="/home"
-            render={() => <MainPage user={user} auth={auth} db={db} />}
+            render={() => <MainPage user={user} auth={auth} db={db}/>}
           />
           <Route
             path="/signUp"
@@ -49,7 +51,7 @@ const App = (props) => {
           />
           <Route
             path="/profile"
-            render={() => <Profile auth={auth} />}
+            render={() => <Profile auth={auth} db={db} />}
           />
           <Route path="/Rooms">
             <RoomsList auth={auth} db={db} />
@@ -60,10 +62,6 @@ const App = (props) => {
           <Route path="/Notifications">
             <NotificationsList />
           </Route>
-          <Route
-            path="/room/:roomId"
-            render={match => <Room db={db} auth={auth} roomId={match.match.params.roomId} />}
-          />
         </Switch>
       </div>
     </Router>

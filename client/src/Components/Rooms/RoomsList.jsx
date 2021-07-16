@@ -1,59 +1,90 @@
+import css from './RoomsListStyles.css'
 import React, { useState, useEffect } from 'react';
+import { useList } from 'react-firebase-hooks/database';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+
+import Room from './Room.jsx';
 import RoomEntry from './RoomEntry.jsx';
-import CreateRoom from './CreateRoom.jsx';
+import CreateRoomButton from './CreateRoomButton.jsx';
 import Logout from './Logout.jsx';
-import { Redirect } from "react-router-dom";
 
 
-const RoomsList = (props) => {
+const RoomsList = ({ auth, db }) => {
+  const [user, setUser] = useState(auth.currentUser.uid);
   const [viewType, setView] = useState('your-rooms');
-  const [yourRooms, setRooms] = useState(['list', 'of', 'rooms']);
+  const [dbRef, setDbRef] = useState(db.ref('/rooms/'));
+  const [snapshots, loading, error] = useList(dbRef);
+  const [yourRooms, setRooms] = useState([]);
   const [suggestedRooms, setSuggestions] = useState(['list', 'of', 'suggestions']);
   const [destId, setDest] = useState(null);
 
-  const handleRoomClick = (e) => {
-    // joins the room not sure how to route this yet.
-    setDest('r1')
+
+  const renderRooms = () => {
+    snapshots.forEach(
+      v => {
+        let room = v.val()
+        for (let uid in room.users) {
+          if (uid === user) {
+            room.roomid = v.key;
+            yourRooms.push(room);
+            setRooms([...yourRooms]);
+            break;
+          }
+        }
+      });
   }
+
+  useEffect(() => {
+    renderRooms();
+  }, [snapshots])
 
   const handleViewType = (e) => {
     e.target.id === 'your-rooms'
-    ? setView('your-rooms')
-    : setView('suggested-rooms')
+      ? setView('your-rooms')
+      : setView('suggested-rooms')
   }
   return (
-    <div className='main-page'>
-      {destId && <Redirect to={"/room/" + destId}/> }
+
+    <div className={css.mainpage}>
       <h2 className='currentPage'>Rooms List</h2>
-      <div className='toggle-room-container'>
+      <div className={css.toggleRoomContainer}>
         <button
-        className='toggle-room-button'
-        id='your-rooms'
-        onClick={ handleViewType }
+          className={css.toggleRoomButton}
+          id='your-rooms'
+          onClick={handleViewType}
         >Your Rooms</button>
         <button
-        className='toggle-room-button'
-        id='suggested-rooms'
-        onClick={ handleViewType }
+          className={css.toggleRoomButton}
+          id='suggested-rooms'
+          onClick={handleViewType}
         >Room Suggestions</button>
       </div>
 
-      <div className='rooms-list'>
+      <div className={css.roomsList}>
         {viewType === 'your-rooms'
-        ? yourRooms.map( (room, i) =>
-          <RoomEntry
-          key={i}
-          room={room}
-          click={ handleRoomClick }/>)
-        : suggestedRooms.map( (room, i) =>
-          <RoomEntry
-          key={i}
-          room={room}
-          click={ handleRoomClick }/>)}
+          ? yourRooms.map((room, i) => {
+            return (<Link to={`/room/${room.roomid}`} key={i}>
+              <RoomEntry
+                key={i}
+                room={room} />
+            </Link>)
+          })
+          : suggestedRooms.map((room, i) => {
+            return (<Link to={`/room/${room.roomid}`} key={i}>
+              <RoomEntry
+                key={i}
+                room={room} />
+            </Link>)
+          })}
       </div>
-      <CreateRoom name={'Room ' + Math.floor(Math.random() * 1000)} db={props.db}/>
-      <Logout auth={props.auth}/>
 
+      <CreateRoomButton />
+      <Logout auth={auth} />
     </div>
   )
 }

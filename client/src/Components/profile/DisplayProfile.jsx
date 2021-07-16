@@ -7,33 +7,33 @@ function DisplayProfile({ profileData }) {
   return (
     <div>
       <img src={profileData.picture} className={css.profilePic} alt="" />
-      <div className={css.text}>
-        <span>
+      <br />
+      <div className={css.textBlock}>
+        <span className={css.inputText}>
           Name:
-          {' '}
-          {profileData.name}
         </span>
         <br />
-        <span>
+        <p className={css.text}>{profileData.username}</p>
+        <br />
+        <span className={css.inputText}>
           Country:
-          {' '}
-          {profileData.country}
         </span>
         <br />
-        <span>
+        <p className={css.text}>{profileData.country}</p>
+        <br />
+        <span className={css.inputText}>
           Email:
-          {' '}
-          {profileData.email}
         </span>
+        <br />
+        <p className={css.text}>{profileData.email}</p>
+        <br />
+        <span className={css.inputText}>
+          Bio:
+        </span>
+        <br />
+        <p className={css.text}>{profileData.bio}</p>
       </div>
       <br />
-      <div className={css.bio}>
-        <span>
-          Bio:
-          {' '}
-          {profileData.bio}
-        </span>
-      </div>
       <Link to="/updateprofile">
         <button type="button" className={css.updateButton}>Update Profile</button>
       </Link>
@@ -44,7 +44,7 @@ function DisplayProfile({ profileData }) {
 DisplayProfile.propTypes = {
   profileData: PropTypes.shape({
     picture: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
+    username: PropTypes.string.isRequired,
     country: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
     bio: PropTypes.string.isRequired,

@@ -32,21 +32,20 @@ const Signup = ({ auth }) => {
     });
   }
 
+
   return (
     <div className='test'>
       {done && <Redirect to="/home" />}
       {dbRef ?
         <form onSubmit={signUp}>
           <label>Username:</label>
-          <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
+          <input type="text" value={username} onChange={(e) => setUsername(e.target.value)}/>
           <label>Email:</label>
           <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
           <label>Password:</label>
           <input type="password" value={pass} onChange={(e) => setPass(e.target.value)} />
           <input type="submit" />
         </form> : null}
-
-
     </div>)
 
 };

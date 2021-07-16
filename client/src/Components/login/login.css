@@ -8,11 +8,24 @@
   border: solid 1px gray;
 }
 
+.signUpForm{
+  text-align: center;
+}
+
+.signUpContainer{
+  text-align: center;
+}
+
 .container {
   display: grid;
 }
 
-.test {
-  background-color: black;
+#harmonyLogo {
+  width: 50%;
+  margin: 0 auto;
+  margin-left: 100px;
 }
 
+input.signUpForm {
+  margin: 10px;
+}

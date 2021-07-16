@@ -1,21 +1,28 @@
-import React from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-} from 'react-router-dom';
-import Nav from '../Nav';
-import Profile from '../profile/Profile';
-import NavigationBar from './NavigationBar.jsx';
-import RoomsList from '../Rooms/RoomsList.jsx';
+import React, { useState, useEffect } from 'react';
 import SearchBar from './SearchBar';
+import firebase from 'firebase/app';
+import { useList } from 'react-firebase-hooks/database';
+import 'firebase/auth';
+import 'firebase/analytics';
+import 'firebase/database';
+import RoomsList from '../Rooms/RoomsList.jsx';
 
-const MainPage = (props) => (
-  <div>
-    <SearchBar db={props.db} user={props.user} auth={props.auth} />
-  </div>
+const MainPage = ({ db, user, auth }) => {
+  const friendsRef = () => {
+    if (user) {
+      return db.ref(`friends/${user.uid}`);
+    }
+  };
+  const [friendsList, loading, error] = useList(friendsRef());
+  return (
+    <div>
+      <SearchBar db={db} user={user} auth={auth} friendsList={friendsList} />
+      <div id='test'>
+        <RoomsList auth={auth} db={db} />
+      </div>
 
-);
+    </div>
+  )
+}
 
 export default MainPage;
