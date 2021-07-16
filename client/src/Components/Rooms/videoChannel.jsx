@@ -18,7 +18,7 @@ const VideoChannel = ({user, roomId, peerId}) => {
 
   useEffect(() => {
     const videoGrid = document.getElementById('video-grid');
-    const myVideo = document.createElement('video');
+    const myVideo = document.createElement('video');cons
     myVideo.muted = true;
 
     navigator.mediaDevices
@@ -45,7 +45,6 @@ const VideoChannel = ({user, roomId, peerId}) => {
 
     socket.on('user-disconnected', userId => {
       if (peers[userId]) {
-        console.log('closing', peers[userId]);
         peers[userId].close();
       }
     });
@@ -56,7 +55,6 @@ const VideoChannel = ({user, roomId, peerId}) => {
 
 
   const addVideoStream = (video, stream) => {
-    console.log('adding a video stream')
     const videoGrid = document.getElementById('video-grid');
     video.srcObject = stream;
     video.addEventListener('loadedmetadata', () => {
@@ -67,7 +65,6 @@ const VideoChannel = ({user, roomId, peerId}) => {
 
   const connectToNewUser = (userId, stream) => {
     let call = myPeer.call(userId, stream);
-    console.log('call');
     let userVideo = document.createElement('video');
     userVideo.muted = true;
     call.on('stream', (userVideoStream) => {
