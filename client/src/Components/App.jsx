@@ -34,7 +34,7 @@ const App = (props) => {
   return (
     <Router>
       <div>
-        <NavigationBar user={user} db={db} auth={auth} />
+        {user && <NavigationBar user={user} db={db} auth={auth} />}
         <Switch>
           <Route
             path="/"

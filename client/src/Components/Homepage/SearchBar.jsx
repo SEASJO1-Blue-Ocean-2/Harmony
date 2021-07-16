@@ -77,7 +77,6 @@ class SearchBar extends React.Component {
               </Switch>
             </div>
           </Router>
-          <Logout auth={this.props.auth} />
         </div>
       </>
     );
