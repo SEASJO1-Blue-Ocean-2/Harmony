@@ -20,9 +20,9 @@ const MainPage = ({ db, user, auth }) => {
 
     <div>
       <SearchBar db={db} user={user} auth={auth} friendsList={friendsList} />
-      <div id='test'>
-        <RoomsList auth={auth} db={db} />
-      </div>
+      {/* <div id='test'> */}
+        {/* <RoomsList auth={auth} db={db} /> */}
+      {/* </div> */}
 
     </div>
   )

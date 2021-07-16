@@ -67,14 +67,14 @@ const RoomsList = ({ auth, db }) => {
       <div className={css.roomsList}>
         {viewType === 'your-rooms'
           ? yourRooms.map((room, i) => {
-            return (<Link to={`/room/${room.roomid}`} key={i}>
+            return (<Link to={`/rooms/${room.roomid}`} key={i}>
               <RoomEntry
                 key={i}
                 room={room} />
             </Link>)
           })
           : suggestedRooms.map((room, i) => {
-            return (<Link to={`/room/${room.roomid}`} key={i}>
+            return (<Link to={`/rooms/${room.roomid}`} key={i}>
               <RoomEntry
                 key={i}
                 room={room} />
