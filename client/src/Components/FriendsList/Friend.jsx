@@ -20,12 +20,18 @@ const Friend = (props) => {
   }
 
   useEffect(() => {
-    friendNameRef.on('value', (snapshot) => {
+    var f1 = (snapshot) => {
       setFriendName(snapshot.val());
-    });
-    friendRef.on('value', (v) => {
+    };
+    var f2 = (v) => {
       setFriendInfo(v.val());
-    });
+    }
+    friendNameRef.on('value', f1);
+    friendRef.on('value', f2);
+    return () => {
+      friendNameRef.off('value', f1);
+      friendRef.off('value', f2);
+    };
   }, [friendId]);
   // console.log('this is the friend info', friendInfo);
 

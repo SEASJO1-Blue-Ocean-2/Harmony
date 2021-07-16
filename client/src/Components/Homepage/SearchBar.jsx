@@ -3,7 +3,8 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  Link,
+  Redirect
 } from "react-router-dom";
 
 import FriendsList from '../FriendsList/FriendsList.jsx';
@@ -35,7 +36,7 @@ class SearchBar extends React.Component {
     var currentSearchText = document.getElementById('searchBarText');
     currentSearchText.value = '';
     var test = document.getElementById('test');
-    if(test){
+    if (test) {
       test.remove();
     }
   }
@@ -52,6 +53,9 @@ class SearchBar extends React.Component {
           </div>
 
           <Router>
+
+            <Redirect to='/rooms'/>
+
             <div>
               <nav className='mainPageOptions'>
                 <Link to="/Notifications" onClick={this.resetSearchText}>Notifications</Link>
@@ -68,7 +72,7 @@ class SearchBar extends React.Component {
                   />
                 </Route>
                 <Route path="/FriendsList">
-                  <FriendsList db={this.props.db} user={this.props.user} friendsList={this.props.friendsList}/>
+                  <FriendsList db={this.props.db} user={this.props.user} friendsList={this.props.friendsList} />
                 </Route>
                 <Route path="/Notifications">
                   <NotificationsList db={this.props.db} user={this.props.user} />
