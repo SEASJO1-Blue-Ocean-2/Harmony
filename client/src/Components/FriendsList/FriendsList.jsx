@@ -11,14 +11,7 @@ import FriendProfile from './FriendProfile.jsx';
 import css from './friendStyles.css';
 
 const FriendsList = (props) => {
-  let { db, friendsList, user } = props;
-
-  if (user === null) {
-    const data = JSON.parse(window.localStorage.getItem('/friendlist'));
-    user = data.user;
-    db = data.db;
-    friendsList = data.friendsList;
-  }
+  const { db, user, friendsList} = props;
   const [userId, setUserId] = useState(user.uid);
   // const [friendsList, loading, error] = useList(db.ref(`friends/${userId}`));
   const [showFriendsList, setShowFriendsList] = useState(true);
@@ -31,15 +24,9 @@ const FriendsList = (props) => {
     setShowFriendsList(false);
   };
 
-  useEffect(() => {
-    // console.log(friendsList);
-    window.localStorage.setItem('/friendlist', JSON.stringify({ user, friendsList, db }));
-  });
-
   return (
 
     <div>
-      {console.log(db)}
       {showFriendsList
         ? (
           <div data-test="friends-list">
@@ -47,20 +34,11 @@ const FriendsList = (props) => {
             <div className="friends-list-conatiner">
               {/* {!loading && friendsList.length > 0 && ( */}
               <div>
-                {typeof friendsList[0] !== 'string' && friendsList.map((friendId) => (
+                {friendsList.map((friendId) => (
                   <Friend
                     friendId={friendId.val()}
                     db={db}
                     key={friendId.key}
-                    showFriendProfile={showFriendProfile}
-                  />
-                ))}
-
-                {typeof friendsList[0] === 'string' && friendsList.map((friendId) => (
-                  <Friend
-                    friendId={friendId}
-                    db={db}
-                    /* key={friendId.key} */
                     showFriendProfile={showFriendProfile}
                   />
                 ))}
