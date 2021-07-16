@@ -8,7 +8,7 @@ function PublicPrivate({ publicPrivateHandler }) {
   }, []);
 
   return (
-    <div className="column-default" onChange={publicPrivateHandler}>
+    <div className="row-default" onChange={publicPrivateHandler}>
       <div className="row-default">
         <input
           type="radio"
@@ -16,7 +16,7 @@ function PublicPrivate({ publicPrivateHandler }) {
           id="radio-private"
           value="private"
         />
-        <label htmlFor="radio-private">Make Private</label>
+        <label htmlFor="radio-private">Private</label>
       </div>
       <div className="row-default">
         <input
@@ -25,7 +25,7 @@ function PublicPrivate({ publicPrivateHandler }) {
           id="radio-public"
           value="public"
         />
-        <label htmlFor="radio-public">Make Public</label>
+        <label htmlFor="radio-public">Public</label>
       </div>
     </div>
   );
