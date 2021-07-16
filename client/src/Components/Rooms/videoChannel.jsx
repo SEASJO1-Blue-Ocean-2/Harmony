@@ -18,7 +18,7 @@ const VideoChannel = ({user, roomId, peerId}) => {
 
   useEffect(() => {
     const videoGrid = document.getElementById('video-grid');
-    const myVideo = document.createElement('video');cons
+    const myVideo = document.createElement('video');
     myVideo.muted = true;
 
     navigator.mediaDevices
