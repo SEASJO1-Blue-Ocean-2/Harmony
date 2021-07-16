@@ -4,18 +4,21 @@ import { Link, Redirect } from 'react-router-dom';
 import 'firebase/auth';
 import css from './login.css';
 import { addData } from '../../util.js';
-
 const Login = ({ user, auth }) => {
   const [dbRef, setRef] = useState(null);
-
+  const [newUser, setNewUser] = useState(false)
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [redirect, setRedirect] = useState(false);
   useEffect(() => {
     setRef(firebase.database().ref(('/users')));
+    setRedirect(true)
   }, []);
-
   const signInWithGoogle = () => {
     const provider = new firebase.auth.GoogleAuthProvider();
     auth.signInWithPopup(provider)
       .then((results) => {
+<<<<<<< HEAD
         addData({ username: results.user.displayName, email: results.user.email, picture: results.user.photoURL }, dbRef, results.user.uid);
       });
   };
@@ -24,10 +27,33 @@ const Login = ({ user, auth }) => {
     auth.signOut();
   };
 
+=======
+        setUsername(results.user.displayName);
+        setEmail(results.user.email);
+        setNewUser(results.additionalUserInfo.isNewUser);
+        return results;
+      })
+      .then((results) => {
+        if (results.additionalUserInfo.isNewUser) {
+          addData({ username: results.user.displayName, email: results.user.email, picture: results.user.photoURL }, dbRef, results.user.uid);
+        }
+        setRedirect(true);
+      })
+      .catch(err => console.log(err));
+  }
+>>>>>>> 3e74c77ed8a58c92bc3e72e0b4c011c1fc1cb582
   return (
     <div>
-      {user && <button onClick={signOut}>Sign Out</button>}
+      {(redirect && newUser) && <Redirect
+        to={{
+          pathname: "/createUserData",
+          state: {
+            username: username,
+            email: email
+          }
+        }} />}
       <div className="login-logo">
+<<<<<<< HEAD
         <img src="https://image.flaticon.com/icons/png/512/1820/1820090.png" id={css.harmonyLogo} />
       </div>
       {user ? <Redirect to="/home" />
@@ -38,6 +64,25 @@ const Login = ({ user, auth }) => {
             <form className="signUpContainer">
               <input type="email" name="email" required placeholder="Enter your email" className="signUpForm" />
               <input type="password" name="password" minLength="8" required placeholder="Enter your password" className="signUpForm" />
+=======
+        <img src='https://image.flaticon.com/icons/png/512/1820/1820090.png' id={css.harmonyLogo}>
+        </img></div>
+      {(redirect && user) ? <Redirect to="/home" />
+        :
+        <div>
+          <form className="signUpContainer">
+            <input type="email" name="email" required placeholder='Enter your email' className='signUpForm' />
+            <input type="password" name="password" minLength="8" required placeholder='Enter your password' className='signUpForm' />
+            <div>
+              <Link to="/signUp">
+                <button className='signButton'>Sign Up</button>
+              </Link>
+              <button className='signButton' >Sign In</button>
+            </div>
+          </form>
+          <div className="other-signUp">
+            <div className='loginLogos'>
+>>>>>>> 3e74c77ed8a58c92bc3e72e0b4c011c1fc1cb582
               <div>
                 <Link to="/signUp">
                   <button className="signButton">Sign Up</button>
@@ -60,10 +105,15 @@ const Login = ({ user, auth }) => {
               </div>
             </div>
           </div>
+<<<<<<< HEAD
         )}
 
     </div>
   );
+=======
+        </div>
+      }
+    </div>)
+>>>>>>> 3e74c77ed8a58c92bc3e72e0b4c011c1fc1cb582
 };
-
 export default Login;

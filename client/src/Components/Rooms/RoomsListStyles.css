@@ -1,15 +1,13 @@
 /* Colors!
-discord purple - #7289DA
+discord purple - #7289da
 pastel green - #D2E7D6 */
 .mainpage {
-  border: 3px solid #7289DA;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .toggleRoomContainer {
-  background: #7289DA;
   display: flex;
   justify-content: center;
   width: 90vw;

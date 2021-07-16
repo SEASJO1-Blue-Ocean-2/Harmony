@@ -21,14 +21,14 @@
 }
 
 .text {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  box-sizing: border-box;
-  border-style: solid;
-  border-radius: 20px;
-  background-color: grey;
-  color:white
+  padding: 5px;
+    margin: 10px;
+    border: 3px solid #7289da;
+    border-radius: 20px;
+    text-align: center;
+    color: black;
+    font-size: larger;
+    background-color: #7289da;
 }
 
 .inputText {
@@ -60,6 +60,7 @@
   margin-top: 1.5%;
 }
 
+<<<<<<< HEAD
 .updateProfile {
   color:white;
   margin-left: 36%;
@@ -68,3 +69,5 @@
 .saveButton {
   margin-left: 37%
 }
+=======
+>>>>>>> 3e74c77ed8a58c92bc3e72e0b4c011c1fc1cb582

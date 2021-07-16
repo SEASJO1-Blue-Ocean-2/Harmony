@@ -6,12 +6,21 @@ const socket = io();
 const myPeer = new Peer(undefined, {
   host: '/', port: '3001'
 });
+let peerId;
+
+myPeer.on('open', (id) => {
+  console.log('join room omit:' + id);
+  peerId = id;
+});
+
 const peers = {};
+let myVideoStream;
+const VideoChannel = ({user, roomId}) => {
 
-const VideoChannel = ({user, count ,setCount}) => {
-
-  const [myVideoStream, setMyVideoStream] = useState(null);
+  // const [myVideoStream, setMyVideoStream] = useState(null);
   const [joined, setJoined] = useState(false);
+
+
 
   useEffect(() => {
     const videoGrid = document.getElementById('video-grid');
@@ -24,15 +33,16 @@ const VideoChannel = ({user, count ,setCount}) => {
         video: true,
       })
       .then((stream) => {
+        myVideoStream = stream;
         addVideoStream(myVideo, stream);
 
         socket.on('user-connected', (userId) => {
-          console.log('connect to user')
+          // console.log('connect to user')
           connectToNewUser(userId, stream);
         });
 
         myPeer.on('call', call => {
-          console.log('test2')
+          // console.log('test2')
           call.answer(stream);
           let video1 = document.createElement('video');
           call.on('stream', userVideoStream => {
@@ -43,18 +53,18 @@ const VideoChannel = ({user, count ,setCount}) => {
 
     socket.on('user-disconnected', userId => {
       if (peers[userId]) {
-        console.log('closing', peers[userId]);
+        // console.log('closing', peers[userId]);
         peers[userId].close();
       }
     });
-
-    myPeer.on('open', (id) => {
-      socket.emit('join-room', roomId, id, user);
-    });
+    socket.emit('join-room', roomId, peerId, user);
   }, []);
 
+
+
+
   const addVideoStream = (video, stream) => {
-    console.log('adding a video stream')
+    // console.log('adding a video stream')
     const videoGrid = document.getElementById('video-grid');
     video.srcObject = stream;
     video.addEventListener('loadedmetadata', () => {
@@ -65,7 +75,7 @@ const VideoChannel = ({user, count ,setCount}) => {
 
   const connectToNewUser = (userId, stream) => {
     let call = myPeer.call(userId, stream);
-    console.log('call');
+    // console.log('call');
     let userVideo = document.createElement('video');
     userVideo.muted = true;
     call.on('stream', (userVideoStream) => {
@@ -118,7 +128,6 @@ const VideoChannel = ({user, count ,setCount}) => {
         <div className="header__back">
           <i className="fas fa-angle-left"></i>
         </div>
-        <h3>Video Chat</h3>
       </div>
     </div>
     <div className="main">

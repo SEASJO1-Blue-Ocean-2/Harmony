@@ -6,22 +6,16 @@ const PORT = 3000;
 const {v4: uuidV4} = require('uuid');
 const rooms = {};
 
-
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/./client/dist');
-app.use("/", express.static(path.join(__dirname, '/client', '/dist/')));
+app.use("/", express.static('./client/dist/'));
 
 app.use(express.urlencoded({
   extended: false
 }));
 app.use(express.json());
 
-
-app.get('/video/:videoId', (req, res)=>{
-  res.redirect(`/${uuidV4()}`);
-});
-
-app.get('/video/:videoId', (req, res)=>{
+app.get('/', (req, res)=>{
   res.render('index', { roomId: req.params.roomId });
 });
 
