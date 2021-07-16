@@ -19,7 +19,6 @@ import FriendsList from './FriendsList/FriendsList';
 import NotificationsList from './Notifications/NotificationsList';
 import Room from './Rooms/Room';
 import VideoChannel from './Rooms/videoChannel';
-import history from './history';
 
 
 firebase.initializeApp(config);
