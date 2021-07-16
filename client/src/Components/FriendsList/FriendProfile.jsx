@@ -5,7 +5,7 @@ import css from '../profile/style.css';
 const FriendProfile = (props) => {
   const { friendId, db, setShowFriendsList } = props;
   const [profileData, setProfileData] = useState({});
-  const friendRef = db.ref(`users/${friendId}`);
+  const friendRef = db.ref(`userData/${friendId}`);
 
   useEffect(() => {
     friendRef.on('value', (v) => {

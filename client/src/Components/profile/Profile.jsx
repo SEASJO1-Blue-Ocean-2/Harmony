@@ -34,7 +34,6 @@ function Profile({ auth, db}) {
       db.ref(`userData/${userId}`).on('value', (addtionalData) => {
         userData = { ...userData, ...addtionalData.val() };
         setProfileData(userData);
-        console.log(userData);
         const dataToSave = {
           user,
           auth,
