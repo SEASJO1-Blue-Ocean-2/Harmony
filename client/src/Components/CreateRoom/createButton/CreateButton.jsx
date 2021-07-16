@@ -4,7 +4,7 @@ import { PropTypes } from 'prop-types';
 function CreateButton({ createRoomHandler }) {
   return (
     <button
-      type="button"
+      type="button" className='createRoomButton'
       onClick={createRoomHandler}
     >
       Create Room

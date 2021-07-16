@@ -403,3 +403,11 @@ flex-wrap: wrap;
   margin-bottom: 15px;
   font-weight: bold;
 }
+
+div#column-defaultFriends {
+  margin-left: 125px;
+}
+
+button.createRoomButton {
+  margin-left: 125px;
+}
