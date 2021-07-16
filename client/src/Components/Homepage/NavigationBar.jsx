@@ -18,7 +18,7 @@ class NavigationBar extends React.Component {
       <>
         <div>
           <Link to='/' exact='true'>
-          {this.props.user && <input type='image' src='http://cdn.onlinewebfonts.com/svg/img_153287.png' className='homePageIcon'></input> }
+          {this.props.user && <input type='image' src='https://img.icons8.com/material/452/home--v5.png' className='homePageIcon'></input> }
           </Link>
 
           <h1 className='Harmony'>harmony</h1>

@@ -17,10 +17,10 @@
   width: 90%;
   padding: 10px;
   grid-template-columns: 2fr 1fr 1fr;
-  border: 3px solid #7289da;
+  border: 3px solid #7B9FCF;
   border-radius: 10px;
   text-align: center;
-  background-color: #7289da;
+  background-color: #7B9FCF;
   font-size: larger;
   color: black;
 }
