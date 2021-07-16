@@ -6,25 +6,19 @@ const socket = io();
 const myPeer = new Peer(undefined, {
   host: '/', port: '3001'
 });
-let peerId;
-
-myPeer.on('open', (id) => {
-  console.log('join room omit:' + id);
-  peerId = id;
-});
 
 const peers = {};
-let myVideoStream;
-const VideoChannel = ({user, roomId}) => {
 
-  // const [myVideoStream, setMyVideoStream] = useState(null);
+const VideoChannel = ({user, roomId, peerId}) => {
+
+
   const [joined, setJoined] = useState(false);
-
+  let myVideoStream;
 
 
   useEffect(() => {
     const videoGrid = document.getElementById('video-grid');
-    const myVideo = document.createElement('video');
+    const myVideo = document.createElement('video');cons
     myVideo.muted = true;
 
     navigator.mediaDevices
@@ -37,12 +31,10 @@ const VideoChannel = ({user, roomId}) => {
         addVideoStream(myVideo, stream);
 
         socket.on('user-connected', (userId) => {
-          // console.log('connect to user')
           connectToNewUser(userId, stream);
         });
 
         myPeer.on('call', call => {
-          // console.log('test2')
           call.answer(stream);
           let video1 = document.createElement('video');
           call.on('stream', userVideoStream => {
@@ -53,7 +45,6 @@ const VideoChannel = ({user, roomId}) => {
 
     socket.on('user-disconnected', userId => {
       if (peers[userId]) {
-        // console.log('closing', peers[userId]);
         peers[userId].close();
       }
     });
@@ -64,7 +55,6 @@ const VideoChannel = ({user, roomId}) => {
 
 
   const addVideoStream = (video, stream) => {
-    // console.log('adding a video stream')
     const videoGrid = document.getElementById('video-grid');
     video.srcObject = stream;
     video.addEventListener('loadedmetadata', () => {
@@ -75,7 +65,6 @@ const VideoChannel = ({user, roomId}) => {
 
   const connectToNewUser = (userId, stream) => {
     let call = myPeer.call(userId, stream);
-    // console.log('call');
     let userVideo = document.createElement('video');
     userVideo.muted = true;
     call.on('stream', (userVideoStream) => {

@@ -7,7 +7,8 @@
   "scripts": {
     "test": "jest",
     "react-dev": "webpack --mode=development --watch",
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "start-peer": "peerjs --port 3001"
   },
   "keywords": [],
   "author": "",
