@@ -20,11 +20,11 @@ const SendMediaButton = (props) => {
   };
 
   const handleSubmitFile = async () => {
-    console.log(document.getElementById('fileInput'))
+    // console.log(document.getElementById('fileInput'))
     const selectedFile = document.getElementById('fileInput').files[0];
     await childRef.put(selectedFile)
       .then(snapshot => console.log('fileuploaded', snapshot));
-    const currentRef = storageRef.child(mediaInputText)
+    const currentRef = storageRef.child(mediaInputText);
     currentRef.getDownloadURL().then((url)=> setCurrentUrl(url));
     setFileUploaded(true);
   }

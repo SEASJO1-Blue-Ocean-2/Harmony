@@ -68,6 +68,7 @@ const Room = ({ db, auth, roomId }) => {
       setMessage('');
       setFileUploaded(false);
       setShowMediaInput(false);
+      setCurrentUrl('');
     }
   };
 
