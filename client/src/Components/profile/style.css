@@ -33,7 +33,6 @@
 
 .inputText {
   color:white;
-
 }
 
 .bio {
@@ -44,7 +43,14 @@
 
 .bioUpdateText {
   height: 300px;
-  width: 180px;
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border-style: solid;
+  border-radius: 20px;
+  background-color: grey;
+  color:white
 }
 
 .updateButton {
@@ -54,3 +60,11 @@
   margin-top: 1.5%;
 }
 
+.updateProfile {
+  color:white;
+  margin-left: 36%;
+}
+
+.saveButton {
+  margin-left: 37%
+}
