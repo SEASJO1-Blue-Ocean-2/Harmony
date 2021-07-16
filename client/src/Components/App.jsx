@@ -47,16 +47,16 @@ const App = (props) => {
             render={() => <Signup auth={auth} db={db} />}
           />
           <Route
-            path='/createUserData'
-            render={(info) => <CreateUserData auth={auth} db={db} info={info.location.state}/>}
-            />
+            path="/createUserData"
+            render={(info) => <CreateUserData auth={auth} db={db} info={info.location.state} />}
+          />
           <Route
             path="/home"
-            render={() => <MainPage user={user} auth={auth} db={db}/>}
+            render={() => <MainPage user={user} auth={auth} db={db} />}
           />
           <Route
             path="/profile"
-            render={() => <Profile auth={auth} db={db} />}
+            render={() => <Profile auth={auth} db={db} user={user} />}
           />
           <Route path="/Rooms">
             <RoomsList auth={auth} db={db} />
