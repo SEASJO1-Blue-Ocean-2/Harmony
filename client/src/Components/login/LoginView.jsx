@@ -34,6 +34,10 @@ const Login = ({ user, auth }) => {
       .catch(err => console.log(err));
   }
 
+  const signOut = () => {
+
+  }
+
   return (
     <div>
       {(redirect && newUser) && <Redirect
@@ -45,7 +49,7 @@ const Login = ({ user, auth }) => {
           }
         }} />}
 
-      {user && <button onClick={signOut}>Sign Out</button>}
+      {/* {user && <button onClick={signOut}>Sign Out</button>} */}
 
       <div className="login-logo">
         <img src='https://image.flaticon.com/icons/png/512/1820/1820090.png' id={css.harmonyLogo}>
