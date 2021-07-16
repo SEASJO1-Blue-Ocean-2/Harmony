@@ -100,6 +100,7 @@ function CreateRoom({ db, user, friendsList }) {
       <RoomName nameHandler={nameHandler} />
       <PublicPrivate publicPrivateHandler={publicPrivateHandler} />
       <AddFriends friends={friends} addFriendHandler={addFriendHandler} />
+      {/* Invite url is obsolete now because of redirect, where should this go? */}
       <InviteUrl roomId={roomId} />
       <CreateButton createRoomHandler={createRoomHandler} />
     </div>
