@@ -6,7 +6,15 @@ export const TextMenu = ({ channels, channelId, setChannel, db, roomId }) => {
   return (
     <div className="text-menu">
       {Object.entries(channels).map((e) => {
-        return <div key={e[0]} onClick={() => setChannel(e[0])}>{e[1]}</div>;
+        // e[0] appears to be channelId
+        // e[1] is channel name?
+        let active = '';
+        if (e[0] === channelId) {
+          active = 'channel-active';
+        } else {
+          active = 'channel-inactive';
+        }
+        return <div key={e[0]} className={active} onClick={() => setChannel(e[0])}>{e[1]}</div>;
       })}
       <CreateChannel db={db} roomId={roomId} voice={false} />
     </div>
