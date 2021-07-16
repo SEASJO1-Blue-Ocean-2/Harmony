@@ -6,8 +6,7 @@ import FriendAdd from './FriendAdd';
 function AddFriends({ friend, addFriendHandler }) {
   return (
     <div className="row-default create-room-friend-item">
-      <span>{friend.displayName}</span>
-      <FriendOnline online={friend.online} />
+      <span className='friendCreateRoom'>{friend.displayName}</span>
       <FriendAdd addFriendHandler={addFriendHandler} friend={friend} />
     </div>
   );

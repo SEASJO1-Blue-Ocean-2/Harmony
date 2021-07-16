@@ -8,6 +8,14 @@
   border: solid 1px gray;
 }
 
+.signUpForm{
+  text-align: center;
+}
+
+.signUpContainer{
+  text-align: center;
+}
+
 .container {
   display: grid;
 }
@@ -18,3 +26,6 @@
   margin-left: 100px;
 }
 
+input.signUpForm {
+  margin: 10px;
+}

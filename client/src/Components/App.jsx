@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   BrowserRouter as Router, Switch, Route,
 } from 'react-router-dom';
@@ -11,8 +11,8 @@ import Login from './login/LoginView';
 import Signup from './login/SignupView';
 import 'firebase/auth';
 import 'firebase/database';
+import 'firebase/storage';
 import config from '../../../config';
-
 import NavigationBar from './Homepage/NavigationBar';
 import RoomsList from './Rooms/RoomsList';
 import FriendsList from './FriendsList/FriendsList';
@@ -21,19 +21,20 @@ import Room from './Rooms/Room';
 import VideoChannel from './Rooms/videoChannel';
 
 
-
 firebase.initializeApp(config);
 const auth = firebase.auth();
 const db = firebase.database();
-
+// const storage = firebase.storage();
+// const storageRef = storage.ref();
+// const elCapRef = storageRef.child('el_cap.jpeg');
 
 const App = (props) => {
   const [user] = useAuthState(auth);
-
+  const [ count , setCount] = useState(0)
   return (
     <Router>
       <div>
-        <NavigationBar user={user} db={db} auth={auth} />
+        {user && <NavigationBar user={user} db={db} auth={auth} />}
         <Switch>
           <Route
             path="/"
@@ -64,7 +65,6 @@ const App = (props) => {
         </Switch>
       </div>
     </Router>
-
   );
 };
 

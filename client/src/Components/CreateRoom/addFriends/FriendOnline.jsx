@@ -3,11 +3,7 @@ import { PropTypes } from 'prop-types';
 
 function FriendOnline({ online }) {
   let friendStatus;
-  if (online) {
-    friendStatus = 'G';
-  } else {
-    friendStatus = 'R';
-  }
+
   return (
     <span>
       {friendStatus}

@@ -39,7 +39,7 @@ const Signup = ({ auth }) => {
       {dbRef ?
         <form onSubmit={signUp}>
           <label>Username:</label>
-          <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
+          <input type="text" value={username} onChange={(e) => setUsername(e.target.value)}/>
           <label>Email:</label>
           <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
           <label>Password:</label>

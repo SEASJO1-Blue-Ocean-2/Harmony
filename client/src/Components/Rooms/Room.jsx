@@ -2,13 +2,16 @@ import React, { useState, useEffect } from 'react';
 import firebase from 'firebase/app';
 import 'firebase/analytics';
 import 'firebase/database';
+import 'firebase/storage';
 
 import { addData } from '../../util.js';
 import { useList, useObject } from 'react-firebase-hooks/database';
 import { useAuthState } from 'react-firebase-hooks/auth';
 
 import Message from './Message';
+import SendMediaButton from './SendMediaButton.jsx';
 import { TextMenu, VoiceMenu } from './Menus';
+import VideoChannel from './videoChannel'
 
 import './RoomStyles.css';
 
@@ -22,7 +25,6 @@ const Room = ({ db, auth, roomId }) => {
   const [textChannels, setTextChannels] = useState(null);
   const [voiceChannels, setVoiceChannels] = useState(null);
 
-
   const [user] = useAuthState(auth);
   const [message, setMessage] = useState('');
 
@@ -31,6 +33,10 @@ const Room = ({ db, auth, roomId }) => {
 
   const [menu, setMenu] = useState(0);
   const [count, setCount] = useState(0);
+
+  const [currentUrl, setCurrentUrl] = useState('');
+  const [fileUploaded, setFileUploaded] = useState(false);
+  const [showMediaInput, setShowMediaInput] = useState(false);
 
   useEffect(() => {
     if (!loadRooms) {
@@ -46,10 +52,7 @@ const Room = ({ db, auth, roomId }) => {
         }
       }
     }
-
   }, [room]);
-
-
 
   const sendMessage = (e) => {
     e.preventDefault();
@@ -58,24 +61,90 @@ const Room = ({ db, auth, roomId }) => {
         author: userObj.val().username,
         uid: user.uid,
         message: message,
-        created: Date.now()
+        created: Date.now(),
+        photo: currentUrl
       };
       var res = addData(data, db.ref('/messages/' + textChannelId));
       setMessage('');
+      setFileUploaded(false);
+      setShowMediaInput(false);
     }
   };
 
-  return (<div>
-    {<div><button onClick={() => setMenu(1)}>Show Text Channels</button> <button onClick={() => setMenu(2)}>Show Voice Channels</button> </div>}
-    {menu === 1 && textChannels && <TextMenu channels={textChannels} channelId={textChannelId} setChannel={setTextChannel}/>}
-    {menu === 2 && voiceChannels && <VoiceMenu channels={voiceChannels} channelId={voiceChannelId} setChannel={setVoiceChannel} />}
-    <div>
-      {textChannelId && <MessageView channelId={textChannelId} db={db} uid={user.uid} />}
-    </div>
+  function menuToggle(type) {
+    // type is 'text' or 'voice'
+    // 0 is closed
+    // 1 is open text channels
+    // 2 is open voice channels
+    // menu
+    if (type === 'text' && menu !== 1) {
+      // open text menu
+      setMenu(1);
+    } else if (type === 'voice' && menu !== 2) {
+      // open voice channels
+      setMenu(2);
+    } else {
+      // close channel list
+      setMenu(0);
+    }
+  }
 
-    <form onSubmit={sendMessage}>
-      <input type='text' value={message} onChange={e => setMessage(e.target.value)} />
-      <input type='submit' />
+  return (
+    <div>
+      {
+        <div className="showChannels">
+          <button onClick={() => menuToggle('text')} className="textChannels">
+            {
+              menu === 1 ?
+                'Hide Text Channels'
+              :
+                'Show Text Channels'
+            }
+          </button>{' '}
+          <button onClick={() => menuToggle('voice')} className="voiceChannels">
+            {
+              menu === 2 ?
+                'Hide Voice Channels'
+              :
+                'Show Voice Channels'
+            }
+          </button>
+        </div>
+      }
+      {menu === 1 && textChannels && (
+        <TextMenu
+          channels={textChannels}
+          channelId={textChannelId}
+          setChannel={setTextChannel}
+          db={db}
+          roomId={roomId}
+        />
+      )}
+      {menu === 2 && voiceChannels && (
+        <VoiceMenu
+          channels={voiceChannels}
+          channelId={voiceChannelId}
+          setChannel={setVoiceChannel}
+          db={db}
+          roomId={roomId}
+        />
+      )}
+      <div>
+        {textChannelId && (
+          <MessageView channelId={textChannelId} db={db} uid={user.uid} />
+        )}
+      </div>
+      <SendMediaButton
+        setCurrentUrl={setCurrentUrl}
+        sendMessage={sendMessage}
+        setFileUploaded={setFileUploaded}
+        fileUploaded={fileUploaded}
+        showMediaInput={showMediaInput}
+        setShowMediaInput={setShowMediaInput}
+      />
+    <form onSubmit={sendMessage} className='submitMessageInRoom'>
+      <input type='text' value={message} onChange={e => setMessage(e.target.value)} className='setMessageSubmit' />
+      <input type='submit' className='submitMessageButton' />
     </form>
   </div >);
 };
@@ -83,14 +152,13 @@ const Room = ({ db, auth, roomId }) => {
 const MessageView = ({ channelId, db, uid }) => {
   const [messages, load, err] = useList(db.ref('/messages/' + channelId));
   return (
-    <div>
-      {!load && messages.map(message => {
-        return <Message key={message.key} data={message.val()} uid={uid} />
-      })}
+    <div className='messageContainer'>
+      {!load &&
+        messages.map((message) => {
+          return <Message key={message.key} data={message.val()} uid={uid} />;
+        })}
     </div>
-  )
-
-
+  );
 };
 
 export default Room;

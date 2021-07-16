@@ -20,12 +20,19 @@ const NotificationsList = (props) => {
   return (
     <>
       <h2 className='currentPage'>Notifications</h2>
-      {notificationsList.map((element) =>
-        <div className='unreadNotifications'>{element.val()['from']}
+      {notificationsList.map((element) => (
+        element.val()['to'] == props.user.bc.displayName ?
           <div>
-            {element.val()['type']}
+            <div className='unreadNotifications'>{element.val()['from']}
+              <div>
+                {element.val()['type']}
+              </div>
+            </div>
           </div>
-        </div>)}
+          :
+          null
+      )
+      )}
     </>
   );
 }
