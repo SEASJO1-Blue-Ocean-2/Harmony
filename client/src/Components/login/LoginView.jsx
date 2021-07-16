@@ -4,22 +4,18 @@ import { Link, Redirect } from "react-router-dom";
 import 'firebase/auth';
 import css from './login.css';
 import { addData } from '../../util.js';
-
 const Login = ({ user, auth }) => {
-
   const [dbRef, setRef] = useState(null);
   const [newUser, setNewUser] = useState(false)
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [redirect, setRedirect] = useState(false);
 
-
   useEffect(() => {
     setRef(firebase.database().ref(('/users')));
 
     if (user) {setRedirect(true)};
   }, []);
-
   const signInWithGoogle = () => {
     const provider = new firebase.auth.GoogleAuthProvider();
     auth.signInWithPopup(provider)
@@ -37,10 +33,6 @@ const Login = ({ user, auth }) => {
       })
       .catch(err => console.log(err));
   }
-
-  const signOut = () => {
-    auth.signOut();
-  };
 
   return (
     <div>
@@ -87,10 +79,7 @@ const Login = ({ user, auth }) => {
           </div>
         </div>
       }
-
     </div>)
-
-
 };
 
 export default Login;
