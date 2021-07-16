@@ -41,7 +41,7 @@ const SendMediaButton = (props) => {
         )
         : <button onClick={handleSendMedia} id='sendMediabutton'>send media</button>}
     </div>
-  )
-}
+  );
+};
 
 export default SendMediaButton;
