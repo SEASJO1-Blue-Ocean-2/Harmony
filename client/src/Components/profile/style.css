@@ -23,12 +23,12 @@
 .text {
   padding: 5px;
     margin: 10px;
-    border: 3px solid #7289da;
+    border: 3px solid #7B9FCF;
     border-radius: 20px;
     text-align: center;
     color: black;
     font-size: larger;
-    background-color: #7289da;
+    background-color: #7B9FCF;
 }
 
 .inputText {
