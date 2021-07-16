@@ -16,6 +16,7 @@ const Login = ({ user, auth }) => {
     setRedirect(true);
   }, []);
 
+
   const signInWithGoogle = () => {
     const provider = new firebase.auth.GoogleAuthProvider();
 
