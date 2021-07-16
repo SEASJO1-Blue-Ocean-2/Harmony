@@ -31,12 +31,10 @@ const VideoChannel = ({user, roomId, peerId}) => {
         addVideoStream(myVideo, stream);
 
         socket.on('user-connected', (userId) => {
-          console.log('connect to user')
           connectToNewUser(userId, stream);
         });
 
         myPeer.on('call', call => {
-          console.log('test2')
           call.answer(stream);
           let video1 = document.createElement('video');
           call.on('stream', userVideoStream => {

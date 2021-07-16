@@ -46,7 +46,6 @@ const Room = ({ db, auth, roomId }) => {
   let peerId;
 
   myPeer.on('open', (id) => {
-    console.log('join room omit:' + id);
     peerId = id;
   });
 
