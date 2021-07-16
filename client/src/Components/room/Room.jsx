@@ -33,6 +33,16 @@ const Room = ({ db, auth, roomId }) => {
 
   const [menu, setMenu] = useState(0);
 
+  const myPeer = new Peer(undefined, {
+    host: '/', port: '3001'
+  });
+  let peerId;
+
+  myPeer.on('open', (id) => {
+    console.log('join room omit:' + id);
+    peerId = id;
+  });
+
   useEffect(() => {
     if (!loadRooms) {
       for (var i = 0; i < room.length; i++) {
@@ -71,7 +81,7 @@ const Room = ({ db, auth, roomId }) => {
 
   return (<div>
     {<div><button onClick={() => setMenu(1)}>Show Text Channels</button> <button onClick={() => setMenu(2)}>Show Video Channels</button> </div>}
-    {menu === 2 && voiceChannels && <VideoChannel roomId={roomId}/>}
+    {menu === 2 && voiceChannels && <VideoChannel roomId={roomId, peerId}/>}
     {menu === 1 && textChannels &&
     <div>
       <TextMenu channels={textChannels} channelId={textChannelId} setChannel={setTextChannel}/>

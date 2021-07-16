@@ -6,18 +6,12 @@ const socket = io();
 const myPeer = new Peer(undefined, {
   host: '/', port: '3001'
 });
-let peerId;
-
-myPeer.on('open', (id) => {
-  console.log('join room omit:' + id);
-  peerId = id;
-});
 
 const peers = {};
-let myVideoStream;
-const VideoChannel = ({user, roomId}) => {
 
-  // const [myVideoStream, setMyVideoStream] = useState(null);
+const VideoChannel = ({user, roomId, peerId}) => {
+
+
   const [joined, setJoined] = useState(false);
 
 
@@ -26,7 +20,7 @@ const VideoChannel = ({user, roomId}) => {
     const videoGrid = document.getElementById('video-grid');
     const myVideo = document.createElement('video');
     myVideo.muted = true;
-
+    let myVideoStream;
     navigator.mediaDevices
       .getUserMedia({
         audio: true,
