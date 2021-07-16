@@ -23,7 +23,6 @@ const RoomsList = ({ auth, db }) => {
   const [suggestedRooms, setSuggestions] = useState(['list', 'of', 'suggestions']);
   const [destId, setDest] = useState(null);
 
-
   const renderRooms = () => {
     snapshots.forEach(
       v => {
