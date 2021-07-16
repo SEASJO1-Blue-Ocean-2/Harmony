@@ -6,7 +6,7 @@
 
 body {
   font-family: sans-serif;
-  color: #7289da;
+  color: #7B9FCF;
 }
 
 .column-default {
@@ -46,7 +46,7 @@ input {
 }
 
 .homePageIcon {
-
+  background-color: transparent !important;
   position: absolute;
   top: 15px;
   left: 5px;
@@ -70,9 +70,9 @@ input {
 }
 
 .SearchBar {
-  border: 3px solid #7289da;
+  border: 3px solid #7B9FCF;
   border-radius: 20px;
-  color: #7289da;
+  color: #7B9FCF;
   width: 75%;
   text-align: center;
   margin-left: 40px;
@@ -158,10 +158,10 @@ img.directMessageButton {
   text-align: center;
   padding: 5px;
   margin: 10px;
-  border: 3px solid #7289da;
+  border: 3px solid #7B9FCF;
   border-radius: 20px;
   color: black;
-  background-color: #7289da;
+  background-color: #7B9FCF;
 }
 
 .other-signUp img {
@@ -192,20 +192,20 @@ input.signUpForm {
 
 a {
   font-size: larger;
-  color: #7289da;
+  color: #7B9FCF;
 }
 
 .signButton {
   margin: 25px;
-  border: 3px solid #7289da;
+  border: 3px solid #7B9FCF;
   border-radius: 20px;
-  color: #7289da;
+  color: #7B9FCF;
 }
 
 input.signUpForm {
-  border: 3px solid #7289da;
+  border: 3px solid #7B9FCF;
   border-radius: 25px;
-  color: #7289da;
+  color: #7B9FCF;
 }
 
 .loginLogos {
@@ -215,9 +215,9 @@ input.signUpForm {
 }
 
 button {
-  border: 3px solid #7289da;
+  border: 3px solid #7B9FCF;
   border-radius: 20px;
-  color: #7289da;
+  color: #7B9FCF;
 }
 
 .row-default {
@@ -246,9 +246,9 @@ button.voiceChannels {
 
 #messages {
   margin-top: 10px;
-  border: 2px solid #7289da;
+  border: 2px solid #7B9FCF;
   padding: 10px;
-  background-color: #7289da;
+  background-color: #7B9FCF;
   color: black;
   border-radius: 25px;
   text-align: center;
@@ -293,9 +293,9 @@ form.submitMessageInRoom {
 }
 
 input[type="submit"] {
-  border: 3px solid #7289da;
+  border: 3px solid #7B9FCF;
   border-radius: 20px;
-  color: #7289da;
+  color: #7B9FCF;
   margin-bottom: 20px;
   margin-top: 5px;
 }
@@ -305,7 +305,7 @@ input[type="submit"] {
 }
 
 input.setMessageSubmit {
-  border: 2px solid #7289da;
+  border: 2px solid #7B9FCF;
 }
 
 .roomName {
@@ -319,6 +319,8 @@ input.setMessageSubmit {
 button#suggested-rooms {
   float: right;
   margin-left: 20px;
+}
+
 .sent-message {
   background-color: lightblue;
 }

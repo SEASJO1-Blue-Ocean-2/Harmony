@@ -14,6 +14,7 @@ import { TextMenu, VoiceMenu } from './Menus';
 import VideoChannel from './videoChannel'
 
 import './RoomStyles.css';
+import Peer from 'peerjs';
 
 const Room = ({ db, auth, roomId }) => {
   const roomRef = db.ref('/rooms/' + roomId);
@@ -37,6 +38,16 @@ const Room = ({ db, auth, roomId }) => {
   const [currentUrl, setCurrentUrl] = useState('');
   const [fileUploaded, setFileUploaded] = useState(false);
   const [showMediaInput, setShowMediaInput] = useState(false);
+
+
+  const myPeer = new Peer(undefined, {
+    host: '/', port: '3001'
+  });
+  let peerId;
+
+  myPeer.on('open', (id) => {
+    peerId = id;
+  });
 
   useEffect(() => {
     if (!loadRooms) {
@@ -112,6 +123,7 @@ const Room = ({ db, auth, roomId }) => {
           </button>
         </div>
       }
+      {menu === 2 && voiceChannels && <VideoChannel roomId={roomId, peerId}/>}
       {menu === 1 && textChannels && (
         <TextMenu
           channels={textChannels}
@@ -121,15 +133,7 @@ const Room = ({ db, auth, roomId }) => {
           roomId={roomId}
         />
       )}
-      {menu === 2 && voiceChannels && (
-        <VoiceMenu
-          channels={voiceChannels}
-          channelId={voiceChannelId}
-          setChannel={setVoiceChannel}
-          db={db}
-          roomId={roomId}
-        />
-      )}
+
       <div>
         {textChannelId && (
           <MessageView channelId={textChannelId} db={db} uid={user.uid} />
