@@ -4,24 +4,33 @@ import { Link, Redirect } from "react-router-dom";
 import 'firebase/auth';
 import css from './login.css';
 import { addData } from '../../util.js';
-
 const Login = ({ user, auth }) => {
-
   const [dbRef, setRef] = useState(null);
-
+  const [newUser, setNewUser] = useState(false)
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [redirect, setRedirect] = useState(false);
   useEffect(() => {
     setRef(firebase.database().ref(('/users')));
     setRedirect(true)
   }, []);
-
   const signInWithGoogle = () => {
     const provider = new firebase.auth.GoogleAuthProvider();
     auth.signInWithPopup(provider)
       .then((results) => {
-        addData({ username: results.user.displayName, email: results.user.email, picture: results.user.photoURL}, dbRef, results.user.uid);
-      });
+        setUsername(results.user.displayName);
+        setEmail(results.user.email);
+        setNewUser(results.additionalUserInfo.isNewUser);
+        return results;
+      })
+      .then((results) => {
+        if (results.additionalUserInfo.isNewUser) {
+          addData({ username: results.user.displayName, email: results.user.email, picture: results.user.photoURL }, dbRef, results.user.uid);
+        }
+        setRedirect(true);
+      })
+      .catch(err => console.log(err));
   }
-
   return (
     <div>
       {(redirect && newUser) && <Redirect
@@ -35,8 +44,7 @@ const Login = ({ user, auth }) => {
       <div className="login-logo">
         <img src='https://image.flaticon.com/icons/png/512/1820/1820090.png' id={css.harmonyLogo}>
         </img></div>
-      {user ? <Redirect to="/home" />
-
+      {(redirect && user) ? <Redirect to="/home" />
         :
         <div>
           <form className="signUpContainer">
@@ -65,10 +73,6 @@ const Login = ({ user, auth }) => {
           </div>
         </div>
       }
-
     </div>)
-
-
 };
-
 export default Login;
