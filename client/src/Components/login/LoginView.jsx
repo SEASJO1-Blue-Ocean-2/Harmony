@@ -13,11 +13,12 @@ const Login = ({ user, auth }) => {
 
   useEffect(() => {
     setRef(firebase.database().ref(('/users')));
-
-    if (user) {setRedirect(true)};
+    setRedirect(true);
   }, []);
+
   const signInWithGoogle = () => {
     const provider = new firebase.auth.GoogleAuthProvider();
+
     auth.signInWithPopup(provider)
       .then((results) => {
         setUsername(results.user.displayName);
@@ -29,13 +30,9 @@ const Login = ({ user, auth }) => {
         if (results.additionalUserInfo.isNewUser) {
           addData({ username: results.user.displayName, email: results.user.email, picture: results.user.photoURL }, dbRef, results.user.uid);
         }
-        setRedirect(true);
+
       })
       .catch(err => console.log(err));
-  }
-
-  const signOut = () => {
-
   }
 
   return (
@@ -48,8 +45,6 @@ const Login = ({ user, auth }) => {
             email: email
           }
         }} />}
-
-      {/* {user && <button onClick={signOut}>Sign Out</button>} */}
 
       <div className="login-logo">
         <img src='https://image.flaticon.com/icons/png/512/1820/1820090.png' id={css.harmonyLogo}>
