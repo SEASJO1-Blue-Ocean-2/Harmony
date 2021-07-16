@@ -2,10 +2,15 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import CreateLink from '../CreateLink';
 
-function InviteUrl() {
+function InviteUrl({ roomId }) {
   return (
     <div>
-      <CreateLink href="room.html">Invite Url</CreateLink>
+      {
+        roomId ?
+          <CreateLink href={`/rooms/${roomId}`}>Invite Url</CreateLink>
+        : null
+      }
+
     </div>
 
   );
@@ -14,4 +19,5 @@ function InviteUrl() {
 export default InviteUrl;
 
 InviteUrl.propTypes = {
+
 };
