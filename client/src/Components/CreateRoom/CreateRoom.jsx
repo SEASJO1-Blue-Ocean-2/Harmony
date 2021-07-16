@@ -1,16 +1,19 @@
-import React, { useState } from "react";
-import { PropTypes } from "prop-types";
-import RoomName from "./roomName/RoomName";
-import PublicPrivate from "./publicPrivate/PublicPrivate";
-import AddFriends from "./addFriends/AddFriends";
-import InviteUrl from "./inviteUrl/InviteUrl";
-import CreateButton from "./createButton/CreateButton";
+import React, { useState } from 'react';
+import { PropTypes } from 'prop-types';
+import RoomName from './roomName/RoomName';
+import PublicPrivate from './publicPrivate/PublicPrivate';
+import AddFriends from './addFriends/AddFriends';
+import InviteUrl from './inviteUrl/InviteUrl';
+import CreateButton from './createButton/CreateButton';
+import { Redirect } from 'react-router-dom';
 
-const { v4: uuidV4 } = require("uuid");
+const { v4: uuidV4 } = require('uuid');
 
 function CreateRoom({ db, user, friendsList }) {
   const [isPublic, setIsPublic] = useState(false);
-  const [newName, setNewName] = useState("");
+  const [newName, setNewName] = useState('');
+  const [redirecting, setRedirecting] = useState(false);
+  const [roomId, setRoomId] = useState(null);
   const [usersWithAccess, setUsersWithAccess] = useState({
     [user.uid]: user.displayName,
   });
@@ -35,10 +38,10 @@ function CreateRoom({ db, user, friendsList }) {
     db.ref(`rooms/${newRoomId}`).set({
       room_name: newName,
       channels: {
-        [newChannelId]: "General",
+        [newChannelId]: 'General',
       },
       voice_channels: {
-        [newVoiceId]: "Voice",
+        [newVoiceId]: 'Voice',
       },
       default_channel: newChannelId,
       public: isPublic,
@@ -48,6 +51,7 @@ function CreateRoom({ db, user, friendsList }) {
     uidList.forEach((uid) => addRoomIdToUserRecordInDb(uid, newRoomId));
     redirectToNewRoom(newRoomId);
     setCreateClicked(true);
+    setRoomId(newRoomId);
   }
 
   function addRoomIdToUserRecordInDb(uid, roomId) {
@@ -58,6 +62,7 @@ function CreateRoom({ db, user, friendsList }) {
   function redirectToNewRoom(roomId) {
     // TODO: redirect to room
     // possibly use same function that opens room in room module
+    setRedirecting(true);
   }
 
   function addFriendHandler(friend, isBeingAdded) {
@@ -70,9 +75,9 @@ function CreateRoom({ db, user, friendsList }) {
 
   function publicPrivateHandler(event) {
     const roomStatus = event.target.value;
-    if (roomStatus === "public" && !isPublic) {
+    if (roomStatus === 'public' && !isPublic) {
       setIsPublic(true);
-    } else if (roomStatus === "private" && isPublic) {
+    } else if (roomStatus === 'private' && isPublic) {
       setIsPublic(false);
     }
   }
@@ -87,10 +92,16 @@ function CreateRoom({ db, user, friendsList }) {
 
   return (
     <div data-testid="create-room">
+      {
+        redirecting ?
+          <Redirect to={`/room/${roomId}`} />
+        : null
+      }
       <RoomName nameHandler={nameHandler} />
       <PublicPrivate publicPrivateHandler={publicPrivateHandler} />
       <AddFriends friends={friends} addFriendHandler={addFriendHandler} />
-      <InviteUrl />
+      {/* Invite url is obsolete now because of redirect, where should this go? */}
+      <InviteUrl roomId={roomId} />
       <CreateButton createRoomHandler={createRoomHandler} />
     </div>
   );
