@@ -32,7 +32,11 @@ const Login = ({ user, auth }) => {
         setRedirect(true);
       })
       .catch(err => console.log(err));
-  }
+  };
+
+  const signOut = () => {
+    auth.signOut();
+  };
 
   return (
     <div>
