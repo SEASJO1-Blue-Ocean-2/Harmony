@@ -31,3 +31,7 @@ function RoomName({ nameHandler }) {
 }
 
 export default RoomName;
+
+RoomName.propTypes = {
+  nameHandler: PropTypes.func.isRequired,
+};
