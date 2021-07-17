@@ -112,4 +112,13 @@ export default CreateRoom;
 CreateRoom.propTypes = {
   db: PropTypes.object.isRequired,
   user: PropTypes.object.isRequired,
+  friendsList:
+    PropTypes.arrayOf(
+      PropTypes.shape(
+        {
+          key: PropTypes.string.isRequired,
+          val: PropTypes.func.isRequired,
+        }
+      ).isRequired
+    ).isRequired,
 };

@@ -11,7 +11,7 @@ function AddFriends({ friends, addFriendHandler }) {
     />
   ));
   return (
-    <div className="column-default">
+    <div className="column-default" data-testid="create-room-addfriends">
       <div className='addFriends'>
         <span className='addFriends'>
           Add Friends:
