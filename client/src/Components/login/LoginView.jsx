@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import firebase from 'firebase/app';
-import { Link, Redirect } from "react-router-dom";
+import { Link, Redirect } from 'react-router-dom';
 import 'firebase/auth';
 import css from './login.css';
-import { addData } from '../../util.js';
+import { addData } from '../../util';
+
 const Login = ({ user, auth }) => {
   const [dbRef, setRef] = useState(null);
-  const [newUser, setNewUser] = useState(false)
+  const [newUser, setNewUser] = useState(false);
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [redirect, setRedirect] = useState(false);
@@ -15,7 +16,6 @@ const Login = ({ user, auth }) => {
     setRef(firebase.database().ref(('/users')));
     setRedirect(true);
   }, []);
-
 
   const signInWithGoogle = () => {
     const provider = new firebase.auth.GoogleAuthProvider();
@@ -29,59 +29,68 @@ const Login = ({ user, auth }) => {
       })
       .then((results) => {
         if (results.additionalUserInfo.isNewUser) {
-          addData({ username: results.user.displayName, email: results.user.email, picture: results.user.photoURL }, dbRef, results.user.uid);
+          addData(
+            {
+              username: results.user.displayName,
+              email: results.user.email,
+              picture: results.user.photoURL,
+            }, dbRef, results.user.uid,
+          );
         }
-
       })
-      .catch(err => console.log(err));
-  }
+      .catch((err) => console.log(err));
+  };
 
   return (
     <div>
-      {(redirect && newUser) && <Redirect
+      {(redirect && newUser) && (
+      <Redirect
         to={{
-          pathname: "/createUserData",
+          pathname: '/createUserData',
           state: {
-            username: username,
-            email: email
-          }
-        }} />}
+            username,
+            email,
+          },
+        }}
+      />
+      )}
 
       <div className="login-logo">
-        <img src='https://image.flaticon.com/icons/png/512/1820/1820090.png' id={css.harmonyLogo}>
-        </img></div>
+        <img src="https://image.flaticon.com/icons/png/512/1820/1820090.png" id={css.harmonyLogo} alt="loginLogo" />
+      </div>
 
       {(redirect && user) ? <Redirect to="/home" />
-        :
-        <div>
+        : (
+          <div>
 
-          <form className="signUpContainer">
-            <input type="email" name="email" required placeholder='Enter your email' className='signUpForm' />
-            <input type="password" name="password" minLength="8" required placeholder='Enter your password' className='signUpForm' />
-            <div>
-              <Link to="/signUp">
-                <button className='signButton'>Sign Up</button>
-              </Link>
-              <button className='signButton' >Sign In</button>
-            </div>
-          </form>
-          <div className="other-signUp">
-            <div className='loginLogos'>
+            <form className="signUpContainer">
+              <input type="email" name="email" required placeholder="Enter your email" className="signUpForm" />
+              <input type="password" name="password" minLength="8" required placeholder="Enter your password" className="signUpForm" />
               <div>
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/480px-Google_%22G%22_Logo.svg.png" width='50px;' alt="Google logo" ></img>
-                <br></br>
-                <button onClick={signInWithGoogle}>Sign In with Google</button>
+                <Link to="/signUp">
+                  <button type="button" className="signButton">Sign Up</button>
+                </Link>
+                <button type="button" className="signButton">Sign In</button>
               </div>
-              <div>
-                <img src="https://facebookbrand.com/wp-content/uploads/2019/04/f_logo_RGB-Hex-Blue_512.png?" width='50px;' alt="Facebook logo" ></img>
-                <br></br>
-                <button onClick={signInWithGoogle}>Sign In with Facebook</button>
+            </form>
+            <div className="other-signUp">
+              <div className="loginLogos">
+                <div>
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/480px-Google_%22G%22_Logo.svg.png" width="50px;" alt="Google logo" />
+                  <br />
+                  <button type="button" onClick={signInWithGoogle}>Sign In with Google</button>
+                </div>
+                <div>
+                  <img src="https://facebookbrand.com/wp-content/uploads/2019/04/f_logo_RGB-Hex-Blue_512.png?" width="50px;" alt="Facebook logo" />
+                  <br />
+                  <button type="button" onClick={signInWithGoogle}>Sign In with Facebook</button>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      }
-    </div>)
+        )}
+    </div>
+  );
 };
 
 export default Login;
