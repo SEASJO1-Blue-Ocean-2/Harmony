@@ -15,11 +15,6 @@ test('enter description here', () => {
 //   ReactDOM.render(<RatingEntry />, div);
 // });
 
-// import React from 'react';
-// import { render, screen, cleanup } from '@testing-library/react';
-// import '@testing-library/jest-dom';
-// import FriendsList from '../FriendsList.jsx';
-
 // // const db = "www.database.com";
 // // const user = {
 // //   uid: "uid"
@@ -30,8 +25,8 @@ test('enter description here', () => {
 //     render(
 //       <FriendsList
 //         // pass all the props necessary for a basic render
-//         db={db}
-//         user= {user}
+//         db={{1: 'spencer'}}
+//         user= {{}}
 //       />,
 //     );
 //     const element = await screen.getByTestId('friends-list');

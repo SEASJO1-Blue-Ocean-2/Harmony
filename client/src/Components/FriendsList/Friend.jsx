@@ -11,10 +11,6 @@ const Friend = (props) => {
   const friendNameRef = db.ref(`users/${friendId}/username`);
   const friendRef = db.ref(`users/${friendId}`);
 
-  // friendRef.on('value', (v) => {
-  //   setFriendInfo(v.val());
-  // })
-
   const handleFriendClick = () => {
 
   }
@@ -33,7 +29,6 @@ const Friend = (props) => {
       friendRef.off('value', f2);
     };
   }, [friendId]);
-  // console.log('this is the friend info', friendInfo);
 
   return (
       <div id={css.friendContainer} className='friend-container'>

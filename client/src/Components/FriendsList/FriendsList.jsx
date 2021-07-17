@@ -13,11 +13,8 @@ import css from './friendStyles.css';
 const FriendsList = (props) => {
   const { db, user, friendsList} = props;
   const [userId, setUserId] = useState(user.uid);
-  // const [friendsList, loading, error] = useList(db.ref(`friends/${userId}`));
   const [showFriendsList, setShowFriendsList] = useState(true);
   const [friendProfileId, setFriendProfileId] = useState('');
-
-  // console.log('this i the friends list', friendsList)
 
   const showFriendProfile = (id) => {
     setFriendProfileId(id);
@@ -32,7 +29,6 @@ const FriendsList = (props) => {
           <div data-test="friends-list">
             <h2 className="friends-list-title" className="currentPage">Friends List</h2>
             <div className="friends-list-conatiner">
-              {/* {!loading && friendsList.length > 0 && ( */}
               <div>
                 {friendsList.map((friendId) => (
                   <Friend
@@ -43,7 +39,6 @@ const FriendsList = (props) => {
                   />
                 ))}
               </div>
-              {/* // )} */}
             </div>
             <div className={css.incomingOutgoingContainer}>
               <IncomingButton />
