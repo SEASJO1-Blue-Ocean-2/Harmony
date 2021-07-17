@@ -13,6 +13,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-bottom: 20px;
 }
 
 #app {
@@ -220,12 +221,6 @@ button {
   color: #7B9FCF;
 }
 
-.row-default {
-  display: grid;
-  margin: 10px;
-  text-align: center;
-}
-
 #create-room-roomname {
   text-align: center;
   margin-top: 10px;
@@ -391,4 +386,28 @@ flex-wrap: wrap;
 
 .background__red {
   background-color: white;
+}
+
+#radio-private, #radio-public {
+  width: 10vw;
+}
+
+.row-default {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.addFriends {
+  /* text-align: center; */
+  font-size: larger;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+div#column-defaultFriends {
+  margin-left: 125px;
+}
+
+button.createRoomButton {
+  margin-left: 125px;
 }
