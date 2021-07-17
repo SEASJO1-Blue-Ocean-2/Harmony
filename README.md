@@ -1,5 +1,5 @@
 # Harmony
-**Connect From Anywhere**
+**Connect From Anywhere** <br />
 Harmony is a mobile-first group chat app that lets you and your friends stay connected.
 
 ## Features
