@@ -19,5 +19,5 @@ function InviteUrl({ roomId }) {
 export default InviteUrl;
 
 InviteUrl.propTypes = {
-
+  roomId: PropTypes.string,
 };
