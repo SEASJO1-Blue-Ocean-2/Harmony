@@ -15,7 +15,7 @@ Jacob Siegelman, Architect <br />
 Julian Thong, Back-End Engineer <br />
 Kathy Jin, Back-end Engineer <br />
 Simon Lu, UI Design <br />
-Spencer Asavadejkajorn, Front-end Engineer
+Spencer Asavadejkajorn, Full-Stack Engineer
 
 ## Technology
 Harmony was written in Javascript with a React front-end. The backend uses Firebase Realtime Database for low latency and high reliability. Firebase also handles Authentication and file uploads. Video and audio chat is done peer-to-peer using Socket.io and Peer.js.
