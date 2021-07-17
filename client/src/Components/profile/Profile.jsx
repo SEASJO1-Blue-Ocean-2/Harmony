@@ -1,6 +1,7 @@
+/* eslint-disable react/forbid-prop-types */
 import React, { useState, useEffect } from 'react';
 import {
-  BrowserRouter as Router, Switch, Route, useHistory,
+  BrowserRouter as Router, Switch, Route,
 } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import PropTypes from 'prop-types';
@@ -10,7 +11,7 @@ import 'firebase/auth';
 import 'firebase/analytics';
 import 'firebase/database';
 
-function Profile({ auth, db}) {
+function Profile({ auth, db }) {
   /* const [snapshots, loading, error] = useList(db.ref('users')); */
   const [profileData, setProfileData] = useState({});
   const [user] = useAuthState(auth);
@@ -20,7 +21,6 @@ function Profile({ auth, db}) {
   }
 
   useEffect(() => {
-    // console.log(user);
     const data = JSON.parse(window.localStorage.getItem('/profile'));
     let userId;
     if (user !== null) {
@@ -57,15 +57,9 @@ function Profile({ auth, db}) {
   );
 }
 
-/* Profile.propTypes = {
-  profileData: PropTypes.shape({
-    picture: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    country: PropTypes.string.isRequired,
-    email: PropTypes.string.isRequired,
-    bio: PropTypes.string.isRequired,
-  }).isRequired,
-}; */
-export default Profile;
+Profile.propTypes = {
+  auth: PropTypes.object.isRequired,
+  db: PropTypes.object.isRequired,
+};
 
-//  bio: 'test', country: 'usa', email: 'jake@fake.com', name: 'Alex', picture: 'https://upload.wikimedia.org/wikipedia/commons/1/12/ThreeTimeAKCGoldWinnerPembrookeWelshCorgi.jpg',
+export default Profile;
