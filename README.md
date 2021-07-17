@@ -9,12 +9,12 @@ Harmony is a mobile-first group chat app that lets you and your friends stay con
 * Authentication via email or Google account
 
 ## The Team
-Alex Tarnawski, Full-Stack Engineer
-Alex Ting, Project Manager
-Jacob Siegelman, Architect
-Julian Thong, Back-End Engineer
-Kathy Jin, Back-end Engineer
-Simon Lu, UI Design
+Alex Tarnawski, Full-Stack Engineer <br />
+Alex Ting, Project Manager <br />
+Jacob Siegelman, Architect <br />
+Julian Thong, Back-End Engineer <br />
+Kathy Jin, Back-end Engineer <br />
+Simon Lu, UI Design <br />
 Spencer Asavadejkajorn, Front-end Engineer
 
 ## Technology
