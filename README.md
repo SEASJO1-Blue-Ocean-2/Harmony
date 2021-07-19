@@ -1,6 +1,6 @@
 # Harmony
 **Connect From Anywhere** <br />
-Harmony is a mobile-first group chat app that lets you and your friends stay connected.
+Harmony is a mobile-first group chat app that lets you and your friends stay connected. Users for our app can create chat rooms with multiple text and video channels.
 
 ## Features
 * Real-time text, voice, and video chat
