@@ -15,38 +15,38 @@ const FriendProfile = (props) => {
 
   return (
     <div>
-    <img src={profileData.picture} className={css.profilePic} alt="" />
-    <div className={css.text}>
-      <span>
-        Name:
-        {' '}
-        {profileData.username}
-      </span>
+      <img src={profileData.picture} className={css.profilePic} alt="" />
+      <div className={css.text}>
+        <span>
+          Name:
+          {' '}
+          {profileData.username}
+        </span>
+        <br />
+        <span>
+          Country:
+          {' '}
+          {profileData.country}
+        </span>
+        <br />
+        <span>
+          Email:
+          {' '}
+          {profileData.email}
+        </span>
+      </div>
       <br />
-      <span>
-        Country:
-        {' '}
-        {profileData.country}
-      </span>
-      <br />
-      <span>
-        Email:
-        {' '}
-        {profileData.email}
-      </span>
+      <div className={css.bio}>
+        <span>
+          Bio:
+          {' '}
+          {profileData.bio}
+        </span>
+      </div>
+      <Link to="/FriendsList">
+        <button type="button" className={css.updateButton} onClick={() => setShowFriendsList(true)}>Back</button>
+      </Link>
     </div>
-    <br />
-    <div className={css.bio}>
-      <span>
-        Bio:
-        {' '}
-        {profileData.bio}
-      </span>
-    </div>
-    <Link to="/FriendsList">
-      <button type="button" className={css.updateButton} onClick={() => setShowFriendsList(true)}>Back</button>
-    </Link>
-  </div>
   );
 };
 
