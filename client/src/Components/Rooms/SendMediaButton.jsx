@@ -20,7 +20,6 @@ const SendMediaButton = (props) => {
   };
 
   const handleSubmitFile = async () => {
-    // console.log(document.getElementById('fileInput'))
     const selectedFile = document.getElementById('fileInput').files[0];
     await childRef.put(selectedFile)
       .then(snapshot => console.log('fileuploaded', snapshot));
