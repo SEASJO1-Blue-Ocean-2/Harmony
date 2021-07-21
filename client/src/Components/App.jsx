@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   BrowserRouter as Router, Switch, Route,
 } from 'react-router-dom';
@@ -17,10 +17,7 @@ import NavigationBar from './Homepage/NavigationBar';
 import RoomsList from './Rooms/RoomsList';
 import FriendsList from './FriendsList/FriendsList';
 import NotificationsList from './Notifications/NotificationsList';
-import Room from './Rooms/Room';
-import VideoChannel from './Rooms/videoChannel';
-import CreateUserData from './login/CreateUserData'
-
+import CreateUserData from './login/CreateUserData';
 
 firebase.initializeApp(config);
 const auth = firebase.auth();
@@ -29,9 +26,8 @@ const db = firebase.database();
 // const storageRef = storage.ref();
 // const elCapRef = storageRef.child('el_cap.jpeg');
 
-const App = (props) => {
+const App = () => {
   const [user] = useAuthState(auth);
-  const [ count , setCount] = useState(0)
   return (
     <Router>
       <div>

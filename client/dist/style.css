@@ -411,3 +411,9 @@ div#column-defaultFriends {
 button.createRoomButton {
   margin-left: 125px;
 }
+
+.channel-active {
+  color: white;
+  background-color: #7B9FCF;
+  border-radius: 10px;
+}

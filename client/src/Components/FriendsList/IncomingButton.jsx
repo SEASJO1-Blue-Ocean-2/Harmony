@@ -1,13 +1,9 @@
 import React from 'react';
 
-const IncomingButton = (props) => {
-
-  return (
-    <div>
-      <button>Incoming</button>
-      {/* this button will route to incoming list of friend request still pending */}
-    </div>
-  )
-}
+const IncomingButton = () => (
+  <div>
+    <button type="button">Incoming</button>
+  </div>
+);
 
 export default IncomingButton;

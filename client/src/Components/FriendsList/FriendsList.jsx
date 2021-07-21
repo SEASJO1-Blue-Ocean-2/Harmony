@@ -1,18 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import firebase from 'firebase/app';
-import { useList } from 'react-firebase-hooks/database';
+import React, { useState } from 'react';
 import 'firebase/auth';
 import 'firebase/analytics';
 import 'firebase/database';
-import Friend from './Friend.jsx';
-import IncomingButton from './IncomingButton.jsx';
-import OutgoingButton from './OutgoingButton.jsx';
-import FriendProfile from './FriendProfile.jsx';
+import Friend from './Friend';
+import IncomingButton from './IncomingButton';
+import OutgoingButton from './OutgoingButton';
+import FriendProfile from './FriendProfile';
 import css from './friendStyles.css';
 
-const FriendsList = (props) => {
-  const { db, user, friendsList} = props;
-  const [userId, setUserId] = useState(user.uid);
+const FriendsList = ({ db, friendsList }) => {
   const [showFriendsList, setShowFriendsList] = useState(true);
   const [friendProfileId, setFriendProfileId] = useState('');
 
@@ -27,7 +23,7 @@ const FriendsList = (props) => {
       {showFriendsList
         ? (
           <div data-test="friends-list">
-            <h2 className="friends-list-title" className="currentPage">Friends List</h2>
+            <h2 className="friends-list-title">Friends List</h2>
             <div className="friends-list-conatiner">
               <div>
                 {friendsList.map((friendId) => (
